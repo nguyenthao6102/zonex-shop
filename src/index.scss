@@ -1,0 +1,42 @@
+body {
+	margin: 0;
+	font-family: "Jost", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+* {
+	font-family: "Jost", sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+ul {
+	list-style: none;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}
+.pt-30 {
+	padding-top: 30px;
+}
+.pb-30 {
+	padding-bottom: 30px;
+}
+.pt-80 {
+	padding-top: 80px;
+}
+.pb-80 {
+	padding-bottom: 80px;
+}
+.boder-bottom {
+	border-bottom: 1px solid #ccc;
+}
+li:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}

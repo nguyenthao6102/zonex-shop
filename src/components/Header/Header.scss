@@ -1,0 +1,71 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.header {
+	padding: 12px 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	background-color: $white-color;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+	.navbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		&__list {
+			display: flex;
+			li {
+				a {
+					display: inline-block;
+					padding: 10px 12px;
+					font-weight: 600;
+					color: $black-color;
+					font-size: 15px;
+				}
+			}
+			@include atMobileTabletScreen {
+				display: none;
+			}
+		}
+		&__bars {
+			display: none;
+			padding: 10px 16px;
+			@include atMobileTabletScreen {
+				display: block;
+			}
+		}
+		&__logo {
+			text-align: center;
+		}
+		&__control {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			li {
+				position: relative;
+				i {
+					display: block;
+					padding: 10px 16px;
+					@include atMobileScreen {
+						padding: 10px 16px 10px 0;
+					}
+				}
+				span {
+					position: absolute;
+					display: inline-block;
+					font-size: 12px;
+					top: 10px;
+					right: 5px;
+					@include atMobileScreen {
+						top: 0px;
+						right: 10px;
+					}
+				}
+			}
+		}
+	}
+}

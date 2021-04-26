@@ -1,0 +1,78 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+.product {
+	position: relative;
+	margin-top: 40px;
+	height: 100%;
+	cursor: pointer;
+	&__img {
+		background-image: url(../../assets/images/product-1.jpg);
+		padding-top: 120%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+	}
+	&__content {
+		width: 100%;
+		padding: 0 4px;
+		h3 {
+			font-size: 15px;
+			font-weight: 500;
+			color: $gray-color;
+			padding: 26px 0;
+			@include atMobileScreen {
+				padding: 20px 0;
+			}
+		}
+		span {
+			font-size: 13px;
+			font-weight: 700;
+		}
+	}
+	&__action {
+		position: absolute;
+		bottom: -20px;
+		left: 16px;
+		right: 16px;
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 0;
+		opacity: 0;
+		visibility: hidden;
+		transition: all ease-in 0.15s;
+		@include atTabletScreen {
+			left: 12px;
+			right: 12px;
+		}
+		@include atMobileScreen {
+			left: 8px;
+			right: 8px;
+		}
+
+		button {
+			background-color: transparent;
+			border: none;
+			cursor: pointer;
+			font-weight: 600;
+			@include atMobileScreen {
+				font-size: 13px;
+			}
+		}
+		ul {
+			display: flex;
+			i {
+				margin-left: 20px;
+				@include atMobileScreen {
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+	&:hover .product__action {
+		bottom: 0;
+		opacity: 1;
+		visibility: visible;
+		transition: all 0.15s ease-in;
+		background-color: $white-color;
+	}
+}

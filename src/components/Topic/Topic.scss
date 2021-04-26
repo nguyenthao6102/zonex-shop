@@ -1,0 +1,53 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.topic {
+	padding: 50px;
+	@include atMobileScreen {
+		padding: 10px;
+	}
+	@include atTabletScreen {
+		padding: 5px;
+		padding-top: 20px;
+		padding-bottom: 40px;
+	}
+	&__item {
+		position: relative;
+		@include atMobileScreen {
+			margin-top: 10px;
+		}
+		.topic__img {
+			width: 100%;
+
+			@include atTabletScreen {
+				height: 100%;
+			}
+		}
+
+		.topic__content {
+			padding-left: 20px;
+			position: absolute;
+			width: 50%;
+			top: 50%;
+			transform: translateY(-50%);
+
+			.topic__name {
+				font-size: 26px;
+				line-height: 36px;
+				font-weight: 500;
+				@include atTabletScreen {
+					font-size: 20px;
+					line-height: 20px;
+				}
+			}
+			.topic__btn {
+				display: block;
+				padding-top: 10px;
+				font-size: 15px;
+				@include atTabletScreen {
+					font-size: 10px;
+				}
+			}
+		}
+	}
+}
