@@ -24,8 +24,22 @@ function Header(props) {
 							<a href=".">Contact</a>
 						</li>
 					</ul>
+					<ul className="navbar__mobile">
+						<li>
+							<a href=".">Home</a>
+						</li>
+						<li>
+							<a href=".">Product</a>
+						</li>
+						<li>
+							<a href=".">About us</a>
+						</li>
+						<li>
+							<a href=".">Contact</a>
+						</li>
+					</ul>
 					<div className="navbar__bars col m-5">
-						<i class="fas fa-bars"></i>
+						<i className="fas fa-bars"></i>
 					</div>
 					<div className="navbar__logo col l-2 m-2">
 						<img src={logoImage} alt="logo" />

@@ -13,6 +13,10 @@
 	}
 	&__item {
 		position: relative;
+		cursor: pointer;
+		&:hover {
+			opacity: 0.8;
+		}
 		@include atMobileScreen {
 			margin-top: 10px;
 		}

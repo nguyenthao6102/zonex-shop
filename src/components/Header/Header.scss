@@ -26,14 +26,51 @@
 					color: $black-color;
 					font-size: 15px;
 				}
+				&:hover {
+					opacity: 0.5;
+				}
 			}
+
 			@include atMobileTabletScreen {
 				display: none;
+			}
+		}
+		&__mobile {
+			display: block;
+			padding: 40px;
+			position: fixed;
+			overflow: auto;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			margin-top: 50px;
+			width: 300px;
+			max-width: 100%;
+			z-index: -1;
+			background-color: $white-color;
+			transform: translateX(-100%);
+			opacity: 0;
+			transition: transform linear 0.4s, opacity linear 0.2s;
+			li {
+				a {
+					color: $black-color;
+					font-size: 15px;
+					font-weight: 600;
+					display: block;
+					padding: 20px;
+				}
+			}
+		}
+		&__mobile.active {
+			@include atMobileTabletScreen {
+				opacity: 1;
+				transform: translateX(0);
 			}
 		}
 		&__bars {
 			display: none;
 			padding: 10px 16px;
+			font-size: 20px;
 			@include atMobileTabletScreen {
 				display: block;
 			}
@@ -48,11 +85,15 @@
 			li {
 				position: relative;
 				i {
+					cursor: pointer;
 					display: block;
 					padding: 10px 16px;
 					@include atMobileScreen {
 						padding: 10px 16px 10px 0;
 					}
+				}
+				&:hover {
+					opacity: 0.5;
 				}
 				span {
 					position: absolute;

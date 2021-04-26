@@ -19,6 +19,10 @@
 				font-size: 14px;
 				font-weight: 500;
 				line-height: 36px;
+				cursor: pointer;
+				&:hover {
+					opacity: 0.5;
+				}
 			}
 		}
 	}
@@ -51,6 +55,9 @@
 				font-size: 13px;
 				font-weight: 500;
 				cursor: pointer;
+				&:hover {
+					opacity: 0.5;
+				}
 			}
 		}
 	}
@@ -62,6 +69,9 @@
 				font-weight: 500;
 				padding-right: 20px;
 				cursor: pointer;
+				&:hover {
+					opacity: 0.5;
+				}
 				@include atMobileTabletScreen {
 					font-size: 12px;
 					padding-right: 10px;
@@ -78,6 +88,9 @@
 			list-style: none;
 			padding-left: 30px;
 			cursor: pointer;
+			&:hover {
+				opacity: 0.5;
+			}
 			@include atMobileScreen {
 				float: left;
 				padding: 0 20px 0 0;
