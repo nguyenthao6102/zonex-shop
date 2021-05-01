@@ -2,15 +2,21 @@ import "./Product.scss";
 import React from "react";
 import PropTypes from "prop-types";
 
-Product.propTypes = {};
+Product.propTypes = {
+	product: PropTypes.object,
+};
 
 function Product(props) {
+	const { product } = props;
 	return (
 		<div className="product col l-2-4 m-4 c-6">
-			<div className="product__img"></div>
+			<div
+				className="product__img"
+				style={{ backgroundImage: `url(${product.image})` }}
+			></div>
 			<div className="product__content">
-				<h3>Nordic Half-zip Pullover</h3>
-				<span>$120</span>
+				<h3>{product.name}</h3>
+				<span>${product.price}</span>
 			</div>
 			<div className="product__action">
 				<button>ADD TO CART</button>

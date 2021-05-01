@@ -1,11 +1,22 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { useState } from "react";
 import logoImage from "../../assets/images/logo.png";
+import Cart from "../Cart/Cart";
 import "./Header.scss";
 
-Header.propTypes = {};
-
 function Header(props) {
+	const [showcart, setShowcart] = useState(false);
+	const [navmobile, setNavmobile] = useState(false);
+
+	const onCloseCart = () => {
+		setShowcart(false);
+	};
+	const onShowCart = () => {
+		setShowcart(true);
+	};
+	const toggleNavMobile = () => {
+		setNavmobile(!navmobile);
+	};
 	return (
 		<header className="header">
 			<div className="header-wrapper grid wide">
@@ -24,7 +35,9 @@ function Header(props) {
 							<a href=".">Contact</a>
 						</li>
 					</ul>
-					<ul className="navbar__mobile">
+					<ul
+						className={navmobile ? "navbar__mobile active" : "navbar__mobile"}
+					>
 						<li>
 							<a href=".">Home</a>
 						</li>
@@ -39,7 +52,7 @@ function Header(props) {
 						</li>
 					</ul>
 					<div className="navbar__bars col m-5">
-						<i className="fas fa-bars"></i>
+						<i className="fas fa-bars" onClick={() => toggleNavMobile()}></i>
 					</div>
 					<div className="navbar__logo col l-2 m-2">
 						<img src={logoImage} alt="logo" />
@@ -56,13 +69,14 @@ function Header(props) {
 						<li>
 							<i className="fas fa-user"></i>
 						</li>
-						<li>
+						<li onClick={() => onShowCart()}>
 							<i className="fas fa-shopping-bag"></i>
 							<span>3</span>
 						</li>
 					</ul>
 				</div>
 			</div>
+			<Cart showcart={showcart} onCloseCart={onCloseCart} />
 		</header>
 	);
 }

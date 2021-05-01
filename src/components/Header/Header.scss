@@ -20,14 +20,28 @@
 			display: flex;
 			li {
 				a {
+					position: relative;
 					display: inline-block;
-					padding: 10px 12px;
+					padding: 10px 0;
+					margin-right: 30px;
 					font-weight: 600;
 					color: $black-color;
 					font-size: 15px;
+					&::after {
+						content: "";
+						position: absolute;
+						display: inline-block;
+						left: 0;
+						bottom: 0px;
+						width: 0;
+						height: 2px;
+						background-color: $black-color;
+						transition: all 0.3s linear;
+					}
 				}
-				&:hover {
-					opacity: 0.5;
+				&:hover a::after {
+					width: 100%;
+					transition: all 0.3s linear;
 				}
 			}
 
@@ -69,7 +83,7 @@
 		}
 		&__bars {
 			display: none;
-			padding: 10px 16px;
+			padding: 10px 15px;
 			font-size: 20px;
 			@include atMobileTabletScreen {
 				display: block;
@@ -87,7 +101,7 @@
 				i {
 					cursor: pointer;
 					display: block;
-					padding: 10px 16px;
+					padding: 10px 14px;
 					@include atMobileScreen {
 						padding: 10px 16px 10px 0;
 					}

@@ -1,15 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
-import "./Cart.scss";
 import CartItem from "../CartItem/CartItem";
-Cart.propTypes = {};
+import "./Cart.scss";
 
-function Cart(props) {
+function Cart({ showcart, onCloseCart }) {
 	return (
-		<div className="cart">
+		<div className={showcart ? "cart active" : "cart"}>
 			<div className="cart__top">
 				<h3>Cart</h3>
-				<i className="fas fa-times"></i>
+				<i className="fas fa-times" onClick={() => onCloseCart()}></i>
 			</div>
 			<ul className="cart__list">
 				<CartItem />

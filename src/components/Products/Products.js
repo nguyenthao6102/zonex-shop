@@ -1,11 +1,22 @@
-import "./Products.scss";
 import React from "react";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 import Product from "../Product/Product";
+import "./Products.scss";
 
 Products.propTypes = {};
 
 function Products(props) {
+	const products = useSelector((state) => state.products);
+	function showProducts(products) {
+		let result = null;
+		if (products.length > 0) {
+			result = products.map((product, index) => {
+				return <Product key={index} product={product} />;
+			});
+		}
+		return result;
+	}
+
 	return (
 		<div className="products grid">
 			<div className="row">
@@ -16,18 +27,7 @@ function Products(props) {
 				</div>
 			</div>
 
-			<div className="products__list row">
-				<Product />
-				<Product />
-				<Product />
-				<Product />
-				<Product />
-				<Product />
-				<Product />
-				<Product />
-				<Product />
-				<Product />
-			</div>
+			<div className="products__list row">{showProducts(products)}</div>
 			<div className="products__more">
 				<div>
 					<span>Load More</span>

@@ -1,8 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./Slider.scss";
-
-Slider.propTypes = {};
 
 function Slider(props) {
 	return (
