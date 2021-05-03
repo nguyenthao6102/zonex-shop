@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Product from "../Product/Product";
+import Product from "./Product/Product";
 import "./Products.scss";
 
 Products.propTypes = {};

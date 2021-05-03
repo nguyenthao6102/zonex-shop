@@ -1,10 +1,14 @@
 import "./App.scss";
-import HomePage from "./pages/HomePage";
+import Header from "./components/Header/Header";
+import CartPage from "./pages/CartPage";
+// import HomePage from "./pages/HomePage";
 
 function App() {
 	return (
 		<div className="App">
-			<HomePage />
+			<Header />
+			{/* <HomePage /> */}
+			<CartPage />
 		</div>
 	);
 }

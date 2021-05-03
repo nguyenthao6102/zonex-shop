@@ -1,13 +1,13 @@
-@import "../../assets/styles/variables.scss";
-@import "../../assets/styles/mixins.scss";
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
 
-.cart-item {
+.cart-modal-item {
 	display: flex;
 	justify-content: space-between;
 	padding: 20px 0px;
 	border-bottom: 2px solid #eeeaea;
 	&__img {
-		background-image: url(../../assets/images/product-1.jpg);
+		background-image: url(../../../assets/images/product-1.jpg);
 		width: 100px;
 		height: 100px;
 		background-position: center center;
@@ -20,7 +20,7 @@
 		h3 {
 			font-size: 15px;
 		}
-		.cart-item-amount {
+		.cart-modal-item-amount {
 			font-size: 13px;
 			i {
 				padding: 10px;

@@ -1,18 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import logoImage from "../../assets/images/logo.png";
-import Cart from "../Cart/Cart";
+import CartModal from "../CartModal/CartModal";
 import "./Header.scss";
 
 function Header(props) {
-	const [showcart, setShowcart] = useState(false);
+	const [cartmodal, setCartmodal] = useState(false);
 	const [navmobile, setNavmobile] = useState(false);
 
-	const onCloseCart = () => {
-		setShowcart(false);
+	const onCloseCartModal = () => {
+		setCartmodal(false);
 	};
-	const onShowCart = () => {
-		setShowcart(true);
+	const onShowCartModal = () => {
+		setCartmodal(true);
 	};
 	const toggleNavMobile = () => {
 		setNavmobile(!navmobile);
@@ -69,14 +69,14 @@ function Header(props) {
 						<li>
 							<i className="fas fa-user"></i>
 						</li>
-						<li onClick={() => onShowCart()}>
+						<li onClick={() => onShowCartModal()}>
 							<i className="fas fa-shopping-bag"></i>
 							<span>3</span>
 						</li>
 					</ul>
 				</div>
 			</div>
-			<Cart showcart={showcart} onCloseCart={onCloseCart} />
+			<CartModal cartmodal={cartmodal} onCloseCartModal={onCloseCartModal} />
 		</header>
 	);
 }
