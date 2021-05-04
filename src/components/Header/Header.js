@@ -63,10 +63,6 @@ function Header(props) {
 						</li>
 
 						<li>
-							<i className="fas fa-heart"></i>
-							<span>3</span>
-						</li>
-						<li>
 							<i className="fas fa-user"></i>
 						</li>
 						<li onClick={() => onShowCartModal()}>

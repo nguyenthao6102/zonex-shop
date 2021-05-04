@@ -12,6 +12,11 @@
 		background-position: center center;
 		background-size: cover;
 		margin: 20px;
+		@include atMobileScreen {
+			width: 50px;
+			height: 80px;
+			margin: 20px 10px;
+		}
 	}
 
 	&__price,
@@ -21,17 +26,30 @@
 		color: $light-black-color;
 		padding: 50px 20px;
 		text-align: center;
+		@include atMobileScreen {
+			padding: 5px;
+			font-size: 12px;
+		}
 	}
 	&__name {
 		font-size: 15px;
 		font-weight: 600;
 		color: $light-black-color;
 		padding: 0 10px;
+		@include atMobileScreen {
+			padding: 0;
+			font-size: 12px;
+		}
 	}
 	&__quantity {
 		div {
 			border: 1px solid $border-color;
 			display: flex;
+			@include atMobileScreen {
+				flex-direction: column-reverse;
+				align-items: center;
+				justify-content: center;
+			}
 			i {
 				padding: 12px;
 				font-size: 12px;
@@ -39,6 +57,9 @@
 				&:hover {
 					color: $light-black-color;
 					cursor: pointer;
+				}
+				@include atMobileScreen {
+					padding: 10px;
 				}
 			}
 			input {

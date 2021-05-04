@@ -16,7 +16,7 @@ function Cart(props) {
 							<th>PRODUCT</th>
 							<th></th>
 							<th>PRICE</th>
-							<th>QUANTITY</th>
+							<th></th>
 							<th>SUBTOTAL</th>
 							<th></th>
 						</tr>

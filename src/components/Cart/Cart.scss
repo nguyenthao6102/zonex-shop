@@ -3,16 +3,21 @@
 
 .cart {
 	padding-top: 100px;
+	overflow: hidden;
 	.cart-title {
 		font-size: 36px;
 		font-weight: 600;
 		color: $light-black-color;
 		padding: 30px 12px;
+		@include atMobileScreen {
+			font-size: 26px;
+		}
 	}
 	.cart-content {
 		&__list {
 			width: 100%;
 			border-collapse: collapse;
+			margin-bottom: 30px;
 			thead {
 				tr {
 					border-bottom: 1px solid $border-color;
@@ -20,11 +25,15 @@
 						padding: 20px;
 						color: $gray-color;
 						font-size: 11px;
+						@include atMobileScreen {
+							padding: 10px 0px;
+						}
 					}
 				}
 			}
 		}
 		&__bill {
+			padding: 0;
 			.bill-wrapper {
 				width: 100%;
 				padding: 40px;
