@@ -1,7 +1,8 @@
 import "./App.scss";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import CartPage from "./pages/CartPage";
+// import CartPage from "./pages/CartPage";
+import ErrorPage from "./pages/ErrorPage";
 // import HomePage from "./pages/HomePage";
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
 		<div className="App">
 			<Header />
 			{/* <HomePage /> */}
-			<CartPage />
+			{/* <CartPage /> */}
+			<ErrorPage />
 			<Footer />
 		</div>
 	);
