@@ -27,11 +27,10 @@
 			overflow: hidden;
 			display: -webkit-box;
 			-webkit-box-orient: vertical;
-			-webkit-line-clamp: 2;
+			-webkit-line-clamp: 1;
 
 			@include atMobileScreen {
 				margin: 20px 0;
-				-webkit-line-clamp: 1;
 			}
 		}
 		span {
@@ -79,7 +78,7 @@
 		}
 	}
 	&:hover .product__action {
-		bottom: 0;
+		bottom: -10px;
 		opacity: 1;
 		visibility: visible;
 		transition: all 0.15s ease-in;

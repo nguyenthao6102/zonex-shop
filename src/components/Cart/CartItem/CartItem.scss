@@ -7,15 +7,16 @@
 	&__img {
 		display: block;
 		background-image: url(../../../assets/images/product-1.jpg);
-		width: 100px;
-		height: 100px;
+		min-width: 90px;
+		min-height: 100px;
 		background-position: center center;
 		background-size: cover;
 		margin: 20px;
 		@include atMobileScreen {
-			width: 50px;
 			height: 80px;
 			margin: 20px 10px;
+			min-width: 50px;
+			min-height: 60px;
 		}
 	}
 

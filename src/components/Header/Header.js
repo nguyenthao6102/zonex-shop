@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logoImage from "../../assets/images/logo.png";
 import CartModal from "../CartModal/CartModal";
@@ -7,7 +7,24 @@ import "./Header.scss";
 function Header(props) {
 	const [cartmodal, setCartmodal] = useState(false);
 	const [navmobile, setNavmobile] = useState(false);
-
+	const [scroll, setScroll] = useState(false);
+	useEffect(() => {
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	});
+	const handleScroll = () => {
+		if (window.pageYOffset > 60) {
+			if (!scroll) {
+				setScroll(true);
+			}
+		} else {
+			if (scroll) {
+				setScroll(false);
+			}
+		}
+	};
 	const onCloseCartModal = () => {
 		setCartmodal(false);
 	};
@@ -19,7 +36,7 @@ function Header(props) {
 	};
 
 	return (
-		<header className="header">
+		<header className={scroll ? "header scroll" : "header"}>
 			<div className="header-wrapper grid wide">
 				<div className="navbar row">
 					<ul className="navbar__list col l-5">
