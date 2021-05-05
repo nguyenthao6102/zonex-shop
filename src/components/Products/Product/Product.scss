@@ -6,6 +6,7 @@
 	height: 100%;
 	cursor: pointer;
 	&__img {
+		display: block;
 		// background-image: url(../../assets/images/product-1.jpg);
 		padding-top: 120%;
 		background-repeat: no-repeat;
@@ -15,13 +16,22 @@
 	&__content {
 		width: 100%;
 		padding: 0 4px;
-		h3 {
+		a {
+			display: block;
 			font-size: 15px;
 			font-weight: 500;
 			color: $gray-color;
-			padding: 26px 0;
+			margin: 26px 0;
+
+			width: 100%;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+
 			@include atMobileScreen {
-				padding: 20px 0;
+				margin: 20px 0;
+				-webkit-line-clamp: 1;
 			}
 		}
 		span {

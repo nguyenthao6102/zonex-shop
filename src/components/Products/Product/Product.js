@@ -1,6 +1,7 @@
 import "./Product.scss";
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 Product.propTypes = {
 	product: PropTypes.object,
@@ -10,12 +11,13 @@ function Product(props) {
 	const { product } = props;
 	return (
 		<div className="product col l-2-4 m-4 c-6">
-			<div
+			<Link
+				to="/products/id"
 				className="product__img"
 				style={{ backgroundImage: `url(${product.image})` }}
-			></div>
+			></Link>
 			<div className="product__content">
-				<h3>{product.name}</h3>
+				<Link to="/products/id">{product.name}</Link>
 				<span>${product.price}</span>
 			</div>
 			<div className="product__action">
@@ -23,9 +25,6 @@ function Product(props) {
 				<ul>
 					<li>
 						<i className="fas fa-search"></i>
-					</li>
-					<li>
-						<i className="fas fa-heart"></i>
 					</li>
 				</ul>
 			</div>

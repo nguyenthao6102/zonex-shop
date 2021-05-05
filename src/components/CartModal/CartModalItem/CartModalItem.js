@@ -5,17 +5,19 @@ function CartModalItem(props) {
 	return (
 		<li className="cart-modal-item">
 			<div className="cart-modal-item__img"></div>
-			<div className="cart-modal-item__info">
-				<h3>Nordic Half-zip Pullover</h3>
-				<div className="cart-modal-item-amount">
-					<i className="fas fa-minus"></i>
-					<span>3</span>
-					<i className="fas fa-plus"></i>
+			<div className="cart-modal-item__content">
+				<div className="cart-modal-item__info">
+					<h3>Nordic Half-zip Pullover</h3>
+					<i className="far fa-times-circle"></i>
 				</div>
-			</div>
-			<div className="cart-modal-item__total">
-				<i className="fas fa-times"></i>
-				<span>$16900</span>
+				<div className="cart-modal-item__total">
+					<div className="cart-modal-item-amount">
+						<i className="fas fa-minus"></i>
+						<input type="text" />
+						<i className="fas fa-plus"></i>
+					</div>
+					<span>$169000</span>
+				</div>
 			</div>
 		</li>
 	);

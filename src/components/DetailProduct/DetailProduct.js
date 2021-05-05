@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./DetailProduct.scss";
 
 function DetailProduct(props) {
@@ -19,9 +20,9 @@ function DetailProduct(props) {
 						<i className="fas fa-plus"></i>
 					</div>
 					<button className="detail-product-btn">ADD TO CART</button>
-					<a href="/" className="detail-product-back">
+					<Link to="/" className="detail-product-back">
 						BACK TO HOME PAGE
-					</a>
+					</Link>
 					<div className="detail-product-footer">
 						<div className="detail-product-category">
 							<span className="detail-product-category__sku">

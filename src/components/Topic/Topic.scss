@@ -14,6 +14,7 @@
 	&__item {
 		position: relative;
 		cursor: pointer;
+		transition: all ease-in-out 0.3s;
 		&:hover {
 			opacity: 0.8;
 		}
@@ -21,9 +22,13 @@
 			margin-top: 10px;
 		}
 		.topic__img {
+			min-height: 250px;
 			width: 100%;
-
+			object-fit: cover;
 			@include atTabletScreen {
+				height: 100%;
+			}
+			@include atMobileScreen {
 				height: 100%;
 			}
 		}

@@ -20,7 +20,10 @@
 		align-items: center;
 		background-color: #fafafa;
 		line-height: 70px;
-		padding: 0 50px;
+		padding: 0 30px 0 50px;
+		@include atMobileScreen {
+			padding: 0 0 0 20px;
+		}
 		h3 {
 			font-size: 25px;
 			font-weight: bold;
@@ -30,12 +33,18 @@
 			padding: 20px;
 			font-size: 24px;
 			cursor: pointer;
+			&:hover {
+				color: $light-gray-color;
+			}
 		}
 	}
 	&__list {
 		padding: 20px 50px;
 		overflow-y: scroll;
 		height: 60%;
+		@include atMobileScreen {
+			padding: 20px;
+		}
 	}
 	&__bottom {
 		background-color: $white-color;
@@ -43,7 +52,10 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
-		padding: 0 50px 50px;
+		padding: 5px 50px 50px;
+		@include atMobileScreen {
+			padding: 5px 20px 20px;
+		}
 		.subtotal-modal {
 			display: flex;
 			justify-content: space-between;
@@ -54,6 +66,10 @@
 			}
 		}
 		.viewcart-modal-btn {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: $light-black-color;
 			width: 100%;
 			border: 2px solid $black-color;
 			height: 45px;
@@ -62,6 +78,11 @@
 			outline: none;
 			margin-bottom: 20px;
 			cursor: pointer;
+			&:hover {
+				background-color: $light-black-color;
+				color: $white-color;
+				transition: all ease-in-out 0.4s;
+			}
 		}
 		.checkout-modal-btn {
 			width: 100%;
@@ -71,6 +92,10 @@
 			font-weight: 600;
 			outline: none;
 			cursor: pointer;
+			&:hover {
+				opacity: 0.9;
+				transition: all ease-in-out 0.3s;
+			}
 		}
 	}
 }
