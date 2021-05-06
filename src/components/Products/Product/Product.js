@@ -2,6 +2,8 @@ import "./Product.scss";
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../redux/shop/shopActions";
 
 Product.propTypes = {
 	product: PropTypes.object,
@@ -9,6 +11,7 @@ Product.propTypes = {
 
 function Product(props) {
 	const { product } = props;
+	const dispatch = useDispatch();
 	return (
 		<div className="product col l-2-4 m-4 c-6">
 			<Link
@@ -21,7 +24,9 @@ function Product(props) {
 				<span>${product.price}</span>
 			</div>
 			<div className="product__action">
-				<button>ADD TO CART</button>
+				<button onClick={() => dispatch(addToCart(product.id))}>
+					ADD TO CART
+				</button>
 				<ul>
 					<li>
 						<i className="fas fa-search"></i>

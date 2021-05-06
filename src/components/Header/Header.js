@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import logoImage from "../../assets/images/logo.png";
 import CartModal from "../CartModal/CartModal";
@@ -8,12 +9,24 @@ function Header(props) {
 	const [cartmodal, setCartmodal] = useState(false);
 	const [navmobile, setNavmobile] = useState(false);
 	const [scroll, setScroll] = useState(false);
+	const [cartcount, setCartcount] = useState(0);
+
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll);
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
 	});
+
+	const cart = useSelector((state) => state.shop.cart);
+	useEffect(() => {
+		let count = 0;
+		cart.forEach((item) => {
+			count += item.qty;
+		});
+		setCartcount(count);
+	}, [cart, cartcount]);
+
 	const handleScroll = () => {
 		if (window.pageYOffset > 60) {
 			if (!scroll) {
@@ -25,6 +38,7 @@ function Header(props) {
 			}
 		}
 	};
+
 	const onCloseCartModal = () => {
 		setCartmodal(false);
 	};
@@ -98,7 +112,7 @@ function Header(props) {
 						</li>
 						<li onClick={() => onShowCartModal()}>
 							<i className="fas fa-shopping-bag"></i>
-							<span>3</span>
+							<span>{cartcount}</span>
 						</li>
 					</ul>
 				</div>

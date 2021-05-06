@@ -6,16 +6,16 @@ import "./Products.scss";
 Products.propTypes = {};
 
 function Products(props) {
-	const products = useSelector((state) => state.products);
-	function showProducts(products) {
+	const products = useSelector((state) => state.shop.products);
+	const showProducts = () => {
 		let result = null;
 		if (products.length > 0) {
 			result = products.map((product, index) => {
-				return <Product key={index} product={product} />;
+				return <Product key={product.id} product={product} />;
 			});
 		}
 		return result;
-	}
+	};
 
 	return (
 		<div className="products grid">
