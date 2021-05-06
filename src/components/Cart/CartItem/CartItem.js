@@ -1,10 +1,19 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../../../redux/shop/shopActions";
+import {
+	changeQuantity,
+	decreaseQuantity,
+	increaseQuantity,
+	removeFromCart,
+} from "../../../redux/shop/shopActions";
 import "./CartItem.scss";
 
 function CartItem({ cartItem }) {
 	const dispatch = useDispatch();
+	const onInputQtyChange = (e) => {
+		dispatch(changeQuantity(cartItem.id, e.target.value));
+	};
+
 	return (
 		<tr className="cart-item">
 			<td
@@ -15,9 +24,21 @@ function CartItem({ cartItem }) {
 			<td className="cart-item__price">${cartItem.price}</td>
 			<td className="cart-item__quantity">
 				<div>
-					<i className="fas fa-minus"></i>
-					<input type="text" value={cartItem.qty} />
-					<i className="fas fa-plus"></i>
+					<i
+						className="fas fa-minus"
+						onClick={() => dispatch(decreaseQuantity(cartItem.id))}
+					></i>
+					<input
+						type="number"
+						step="1"
+						min="1"
+						value={cartItem.qty}
+						onChange={onInputQtyChange}
+					/>
+					<i
+						className="fas fa-plus"
+						onClick={() => dispatch(increaseQuantity(cartItem.id))}
+					></i>
 				</div>
 			</td>
 			<td className="cart-item__subtotal">${cartItem.price * cartItem.qty}</td>
