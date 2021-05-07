@@ -1,18 +1,17 @@
 import * as actionTypes from "./shopTypes";
 
-export const loadCurrentProduct = (itemID) => {
+export const loadCurrentProduct = (item) => {
 	return {
 		type: actionTypes.LOAD_CURRENT_PRODUCT,
-		payload: {
-			id: itemID,
-		},
+		payload: item,
 	};
 };
-export const addToCart = (itemID) => {
+export const addToCart = (itemID, value) => {
 	return {
 		type: actionTypes.ADD_TO_CART,
 		payload: {
 			id: itemID,
+			qty: value,
 		},
 	};
 };

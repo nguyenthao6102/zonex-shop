@@ -1,30 +1,30 @@
-import "./Product.scss";
-import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../../redux/shop/shopActions";
+import { Link } from "react-router-dom";
+import { addToCart, loadCurrentProduct } from "../../../redux/shop/shopActions";
+import "./Product.scss";
 
 Product.propTypes = {
 	product: PropTypes.object,
 };
 
-function Product(props) {
-	const { product } = props;
+function Product({ product }) {
 	const dispatch = useDispatch();
 	return (
 		<div className="product col l-2-4 m-4 c-6">
 			<Link
-				to="/products/id"
+				to={`/products/${product.id}`}
 				className="product__img"
 				style={{ backgroundImage: `url(${product.image})` }}
+				onClick={() => dispatch(loadCurrentProduct(product))}
 			></Link>
 			<div className="product__content">
-				<Link to="/products/id">{product.name}</Link>
+				<Link to={`/products/${product.id}`}>{product.name}</Link>
 				<span>${product.price}</span>
 			</div>
 			<div className="product__action">
-				<button onClick={() => dispatch(addToCart(product.id))}>
+				<button onClick={() => dispatch(addToCart(product.id, 1))}>
 					ADD TO CART
 				</button>
 				<ul>

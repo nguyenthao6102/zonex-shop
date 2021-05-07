@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./CartModal.scss";
 import CartModalItem from "./CartModalItem/CartModalItem";
@@ -22,10 +23,33 @@ export const useClickOutside = (handler) => {
 
 	return domNode;
 };
+
 function CartModal({ cartmodal, setCartmodal, onCloseCartModal }) {
 	let domNode = useClickOutside(() => {
 		setCartmodal(false);
 	});
+
+	const cart = useSelector((state) => state.shop.cart);
+	const showCartModal = (cart) => {
+		let result = null;
+		if (cart.length > 0) {
+			result = cart.map((item, index) => {
+				return <CartModalItem key={item.id} cartItem={item} />;
+			});
+		}
+		return result;
+	};
+
+	const [totalprice, setTotalprice] = useState(0);
+
+	useEffect(() => {
+		let totalPrice = 0;
+		cart.forEach((item) => {
+			totalPrice += item.qty * item.price;
+		});
+		setTotalprice(totalPrice);
+	}, [cart, totalprice]);
+
 	return (
 		<div
 			ref={domNode}
@@ -35,16 +59,11 @@ function CartModal({ cartmodal, setCartmodal, onCloseCartModal }) {
 				<h3>Cart</h3>
 				<i className="fas fa-times" onClick={() => onCloseCartModal()}></i>
 			</div>
-			<ul className="cart-modal__list">
-				<CartModalItem />
-				<CartModalItem />
-				<CartModalItem />
-				<CartModalItem />
-			</ul>
+			<ul className="cart-modal__list">{showCartModal(cart)}</ul>
 			<div className="cart-modal__bottom">
 				<div className="subtotal-modal">
 					<span className="subtotal-modal__title">Subtotal</span>
-					<span className="subtotal-modal__price">$21000</span>
+					<span className="subtotal-modal__price">${totalprice}</span>
 				</div>
 
 				<Link

@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 
 function Cart(props) {
 	const cart = useSelector((state) => state.shop.cart);
-	const showCart = () => {
+
+	const showCart = (cart) => {
 		let result = null;
 		if (cart.length > 0) {
 			result = cart.map((item, index) => {
@@ -17,6 +18,7 @@ function Cart(props) {
 
 	const [totalprice, setTotalprice] = useState(0);
 	const [totalitem, setTotalitem] = useState(0);
+
 	useEffect(() => {
 		let totalItem = 0;
 		let totalPrice = 0;

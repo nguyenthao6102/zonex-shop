@@ -5,6 +5,8 @@ const initialState = {
 		{
 			id: 1,
 			name: "Nordic Half-zip Pullover",
+			description:
+				"We love the dramatic ruffle details down the sleeve, delicate fabric buttons and polished cuffs.",
 			image:
 				"https://zonex.famithemes.com/wp-content/uploads/2019/11/AD178_KA7663.jpg",
 			price: 500,
@@ -13,6 +15,8 @@ const initialState = {
 		{
 			id: 2,
 			name: "Band-collar Popover Tunic",
+			description:
+				"We love the dramatic ruffle details down the sleeve, delicate fabric buttons and polished cuffs.",
 			image:
 				"https://zonex.famithemes.com/wp-content/uploads/2019/11/L1848_WQ1476_d2-768x969.jpg",
 			price: 800,
@@ -21,6 +25,8 @@ const initialState = {
 		{
 			id: 3,
 			name: "Chambray Shirt In Vintage Indigo",
+			description:
+				"We love the dramatic ruffle details down the sleeve, delicate fabric buttons and polished cuffs.",
 			image:
 				"https://zonex.famithemes.com/wp-content/uploads/2019/11/G1394_DM1554-768x969.jpg",
 			price: 1500,
@@ -29,6 +35,8 @@ const initialState = {
 		{
 			id: 4,
 			name: "Balloon-sleeve Turtleneck Sweater",
+			description:
+				"We love the dramatic ruffle details down the sleeve, delicate fabric buttons and polished cuffs.",
 			image:
 				"https://zonex.famithemes.com/wp-content/uploads/2019/11/J6373_YL5461_m-768x969.jpg",
 			price: 900,
@@ -37,6 +45,8 @@ const initialState = {
 		{
 			id: 5,
 			name: "Thelma Penny Loafers",
+			description:
+				"We love the dramatic ruffle details down the sleeve, delicate fabric buttons and polished cuffs.",
 			image:
 				"https://zonex.famithemes.com/wp-content/uploads/2019/11/L1310_EC5461-768x969.jpg",
 			price: 200,
@@ -45,6 +55,8 @@ const initialState = {
 		{
 			id: 6,
 			name: "Cableknit Shawl-collar Cardigan",
+			description:
+				"We love the dramatic ruffle details down the sleeve, delicate fabric buttons and polished cuffs.",
 			image:
 				"https://zonex.famithemes.com/wp-content/uploads/2019/11/AD401_SU2811_m-768x969.jpg",
 			price: 300,
@@ -53,6 +65,8 @@ const initialState = {
 		{
 			id: 7,
 			name: "Tailored Indigo Jumpsuit",
+			description:
+				"We love the dramatic ruffle details down the sleeve, delicate fabric buttons and polished cuffs.",
 			image:
 				"https://zonex.famithemes.com/wp-content/uploads/2019/11/M0479_DM3205_m-768x969.jpg",
 			price: 50000,
@@ -61,6 +75,8 @@ const initialState = {
 		{
 			id: 8,
 			name: "A-line Midi Skirt In Leather",
+			description:
+				"We love the dramatic ruffle details down the sleeve, delicate fabric buttons and polished cuffs.",
 			image:
 				"https://zonex.famithemes.com/wp-content/uploads/2019/11/F4964_BL8133_m-768x969.jpg",
 			price: 6000,
@@ -69,6 +85,8 @@ const initialState = {
 		{
 			id: 9,
 			name: "Bikini Top In Suckered Rainbow Stripe",
+			description:
+				"We love the dramatic ruffle details down the sleeve, delicate fabric buttons and polished cuffs.",
 			image:
 				"https://zonex.famithemes.com/wp-content/uploads/2019/11/L6853_KA7868_m-768x969.jpg",
 			price: 3500,
@@ -77,6 +95,8 @@ const initialState = {
 		{
 			id: 10,
 			name: "Triple Stone Drop Earrings",
+			description:
+				"We love the dramatic ruffle details down the sleeve, delicate fabric buttons and polished cuffs.",
 			image:
 				"https://zonex.famithemes.com/wp-content/uploads/2019/11/AD569_PK5353-768x969.jpg",
 			price: 1500,
@@ -84,15 +104,16 @@ const initialState = {
 		},
 	],
 	cart: [],
-	productCurrent: null,
+	currentProduct: null,
 };
 const shopReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case actionTypes.LOAD_CURRENT_PRODUCT:
 			return {
 				...state,
-				productCurrent: action.payload,
+				currentProduct: action.payload,
 			};
+
 		case actionTypes.ADD_TO_CART:
 			const item = state.products.find(
 				(product) => product.id === action.payload.id
@@ -105,12 +126,11 @@ const shopReducer = (state = initialState, action) => {
 				cart: inCart
 					? state.cart.map((item) =>
 							item.id === action.payload.id
-								? { ...item, qty: item.qty + 1 }
+								? { ...item, qty: item.qty + action.payload.qty }
 								: item
 					  )
-					: [...state.cart, { ...item, qty: 1 }],
+					: [...state.cart, { ...item, qty: action.payload.qty }],
 			};
-
 		case actionTypes.REMOVE_FROM_CART:
 			return {
 				...state,
@@ -139,9 +159,12 @@ const shopReducer = (state = initialState, action) => {
 			return {
 				...state,
 				cart: state.cart.map((item) =>
-					item.id === action.payload.id ? { ...item, qty: item.qty - 1 } : item
+					item.id === action.payload.id
+						? { ...item, qty: item.qty > 1 ? item.qty - 1 : item.qty }
+						: item
 				),
 			};
+
 		default:
 			return state;
 	}

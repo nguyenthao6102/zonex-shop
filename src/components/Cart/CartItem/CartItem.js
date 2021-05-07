@@ -31,7 +31,6 @@ function CartItem({ cartItem }) {
 					<input
 						type="number"
 						step="1"
-						min="1"
 						value={cartItem.qty}
 						onChange={onInputQtyChange}
 					/>
