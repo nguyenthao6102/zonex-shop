@@ -59,23 +59,31 @@ function CartModal({ cartmodal, setCartmodal, onCloseCartModal }) {
 				<h3>Cart</h3>
 				<i className="fas fa-times" onClick={() => onCloseCartModal()}></i>
 			</div>
-			<ul className="cart-modal__list">{showCartModal(cart)}</ul>
-			<div className="cart-modal__bottom">
-				<div className="subtotal-modal">
-					<span className="subtotal-modal__title">Subtotal</span>
-					<span className="subtotal-modal__price">${totalprice}</span>
+			{cart.length > 0 ? (
+				<>
+					<ul className="cart-modal__list">{showCartModal(cart)}</ul>
+					<div className="cart-modal__bottom">
+						<div className="subtotal-modal">
+							<span className="subtotal-modal__title">Subtotal</span>
+							<span className="subtotal-modal__price">${totalprice}</span>
+						</div>
+
+						<Link
+							to="/cart"
+							className="viewcart-modal-btn"
+							onClick={() => onCloseCartModal()}
+						>
+							View cart
+						</Link>
+
+						<button className="checkout-modal-btn">Checkout</button>
+					</div>
+				</>
+			) : (
+				<div className="cart-modal__empty">
+					<h3>No products in the cart.</h3>
 				</div>
-
-				<Link
-					to="/cart"
-					className="viewcart-modal-btn"
-					onClick={() => onCloseCartModal()}
-				>
-					View cart
-				</Link>
-
-				<button className="checkout-modal-btn">Checkout</button>
-			</div>
+			)}
 		</div>
 	);
 }

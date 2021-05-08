@@ -21,7 +21,13 @@ function Product({ product }) {
 			></Link>
 			<div className="product__content">
 				<Link to={`/products/${product.id}`}>{product.name}</Link>
-				<span>${product.price}</span>
+				<div>
+					<span>${product.price}</span>
+					<i
+						className="fas fa-cart-arrow-down"
+						onClick={() => dispatch(addToCart(product.id, 1))}
+					></i>
+				</div>
 			</div>
 			<div className="product__action">
 				<button onClick={() => dispatch(addToCart(product.id, 1))}>

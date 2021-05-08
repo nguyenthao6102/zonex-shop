@@ -44,7 +44,10 @@ function DetailProduct(props) {
 					</div>
 					<button
 						className="detail-product-btn"
-						onClick={() => dispatch(addToCart(currentProduct.id, +quantity))}
+						onClick={() => {
+							dispatch(addToCart(currentProduct.id, +quantity));
+							setQuantity(1);
+						}}
 					>
 						ADD TO CART
 					</button>

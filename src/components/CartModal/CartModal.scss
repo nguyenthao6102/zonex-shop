@@ -46,6 +46,18 @@
 			padding: 20px;
 		}
 	}
+	&__empty {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		h3 {
+			padding-bottom: 200px;
+			@include atTabletScreen {
+				font-size: 30px;
+			}
+		}
+	}
 	&__bottom {
 		background-color: $white-color;
 		position: absolute;
