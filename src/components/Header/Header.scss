@@ -39,12 +39,16 @@
 						left: 0;
 						bottom: 0px;
 						width: 0;
-						height: 2px;
+						height: 1px;
 						background-color: $black-color;
 						transition: all 0.3s linear;
 					}
 				}
 				&:hover a::after {
+					width: 100%;
+					transition: all 0.3s linear;
+				}
+				a.active::after {
 					width: 100%;
 					transition: all 0.3s linear;
 				}
@@ -73,11 +77,21 @@
 			will-change: opacity, transform;
 			li {
 				a {
+					display: block;
+					position: relative;
 					color: $black-color;
 					font-size: 15px;
 					font-weight: 600;
-					display: block;
-					padding: 20px;
+					padding: 10px;
+					margin: 20px 0;
+					line-height: 30px;
+					&:hover {
+						color: $light-gray-color;
+					}
+				}
+
+				a.active {
+					color: $light-gray-color;
 				}
 			}
 		}
@@ -136,6 +150,7 @@
 					top: 10px;
 					left: 80%;
 					@include atMobileScreen {
+						font-size: 10px;
 						top: 0px;
 						left: 40%;
 					}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logoImage from "../../assets/images/logo.png";
 import CartModal from "../CartModal/CartModal";
 import "./Header.scss";
@@ -55,7 +55,9 @@ function Header(props) {
 				<div className="navbar row">
 					<ul className="navbar__list col l-5">
 						<li>
-							<Link to="/">Home</Link>
+							<NavLink to="/" activeClassName="active">
+								Home
+							</NavLink>
 						</li>
 						<li>
 							<a href=".">Product</a>
@@ -71,7 +73,9 @@ function Header(props) {
 						className={navmobile ? "navbar__mobile active" : "navbar__mobile"}
 					>
 						<li onClick={() => onToggleNavMobile()}>
-							<Link to="/">Home</Link>
+							<NavLink to="/" activeClassName="active">
+								Home
+							</NavLink>
 						</li>
 						<li onClick={() => onToggleNavMobile()}>
 							<a href=".">Product</a>
