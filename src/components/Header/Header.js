@@ -55,7 +55,7 @@ function Header(props) {
 				<div className="navbar row">
 					<ul className="navbar__list col l-5">
 						<li>
-							<NavLink to="/" activeClassName="active">
+							<NavLink exact to="/" activeClassName="active">
 								Home
 							</NavLink>
 						</li>
@@ -66,14 +66,16 @@ function Header(props) {
 							<a href=".">About</a>
 						</li>
 						<li>
-							<a href=".">Contact</a>
+							<NavLink exact to="/contact" activeClassName="active">
+								Contact
+							</NavLink>
 						</li>
 					</ul>
 					<ul
 						className={navmobile ? "navbar__mobile active" : "navbar__mobile"}
 					>
 						<li onClick={() => onToggleNavMobile()}>
-							<NavLink to="/" activeClassName="active">
+							<NavLink exact to="/" activeClassName="active">
 								Home
 							</NavLink>
 						</li>
@@ -84,7 +86,9 @@ function Header(props) {
 							<a href=".">About</a>
 						</li>
 						<li onClick={() => onToggleNavMobile()}>
-							<a href=".">Contact</a>
+							<NavLink exact to="/contact" activeClassName="active">
+								Contact
+							</NavLink>
 						</li>
 					</ul>
 					{navmobile ? (
