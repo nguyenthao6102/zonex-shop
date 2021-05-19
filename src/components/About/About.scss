@@ -55,14 +55,13 @@
 			font-weight: 300;
 			color: $light-black-color;
 			line-height: 85px;
-			padding: 0 20px;
+			padding: 0 12px;
 			@include atTabletScreen {
 				font-size: 24px;
 				line-height: 36px;
 				padding: 0 10px;
 			}
 			@include atMobileScreen {
-				padding: 0 12px;
 				margin-bottom: 20px;
 				font-size: 30px;
 				line-height: 40px;
@@ -71,7 +70,7 @@
 		p {
 			font-size: 16px;
 			line-height: 26px;
-			padding: 0 20px;
+			padding: 0 12px 0 45px;
 			@include atTabletScreen {
 				padding: 0 10px;
 				font-size: 14px;
@@ -79,8 +78,8 @@
 			}
 			@include atMobileScreen {
 				font-size: 16px;
-				padding: 0 12px;
 				font-weight: 500;
+				padding-left: 12px;
 			}
 
 			span {
@@ -96,48 +95,7 @@
 			}
 		}
 	}
-	.about-services {
-		padding: 140px 0;
-		.services-title {
-			margin-bottom: 70px;
-			font-size: 48px;
-			font-weight: 300;
-		}
-		.services-content {
-			&__group {
-				@include atMobileTabletScreen {
-					margin-bottom: 40px;
-				}
-				@include atMobileScreen {
-					padding: 0 12px;
-				}
-				img {
-					margin-bottom: 28px;
-				}
-				h4 {
-					font-size: 20px;
-					font-weight: 500;
-					color: $light-black-color;
-					margin-bottom: 15px;
-				}
-				p {
-					font-size: 16px;
-					line-height: 26px;
-					color: $light-black-color;
-					margin-bottom: 18px;
-				}
-				button {
-					border: none;
-					outline: none;
-					background: transparent;
-					font-size: 11px;
-					font-weight: 600;
-					padding: 5px 0;
-					color: $light-gray-color;
-				}
-			}
-		}
-	}
+
 	.about-award {
 		&__bg {
 			background-image: url(../../assets/images/bg-fixed.jpg);
@@ -157,7 +115,6 @@
 		&__content {
 			padding-top: 90px;
 			padding-bottom: 90px;
-			border-bottom: 1px solid $border-color;
 			.about-award__group {
 				@include atMobileScreen {
 					padding: 0 12px;

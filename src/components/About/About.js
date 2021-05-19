@@ -1,9 +1,8 @@
 import React from "react";
 import "./About.scss";
 import weAre from "../../assets/images/we-are.png";
-import servicesIcon1 from "../../assets/images/ic-1.png";
-import servicesIcon2 from "../../assets/images/ic-2.png";
-import servicesIcon3 from "../../assets/images/ic-3.png";
+import AboutServices from "./AboutServices/AboutServices";
+import AboutBrand from "./AboutBrand/AboutBrand";
 
 function About() {
 	return (
@@ -49,41 +48,7 @@ function About() {
 					</div>
 				</div>
 			</div>
-			<div className="about-services grid wide">
-				<h6 className="services-title">Featured Services</h6>
-				<div className="services-content row">
-					<div className="services-content__group col l-4 m-12 c-12">
-						<img src={servicesIcon1} alt="services icon 1" />
-						<h4>We pride ourselves on innovative.</h4>
-						<p>
-							Far far away, behind the word mountains, far from the countries
-							Vokalia and Consonantia, there live the blind texts. Separated
-							they live.
-						</p>
-						<button>LEARN MORE</button>
-					</div>
-					<div className="services-content__group col l-4 m-12 c-12">
-						<img src={servicesIcon2} alt="services icon 2" />
-						<h4>We won many awards.</h4>
-						<p>
-							Far far away, behind the word mountains, far from the countries
-							Vokalia and Consonantia, there live the blind texts. Separated
-							they live.
-						</p>
-						<button>LEARN MORE</button>
-					</div>
-					<div className="services-content__group col l-4 m-12 c-12">
-						<img src={servicesIcon3} alt="services icon 3" />
-						<h4>We are a team of genius people.</h4>
-						<p>
-							Far far away, behind the word mountains, far from the countries
-							Vokalia and Consonantia, there live the blind texts. Separated
-							they live.
-						</p>
-						<button>LEARN MORE</button>
-					</div>
-				</div>
-			</div>
+			<AboutServices />
 			<div className="about-award">
 				<div className="about-award__bg">
 					<h6>Award Winnings</h6>
@@ -147,6 +112,7 @@ function About() {
 					</div>
 				</div>
 			</div>
+			<AboutBrand />
 		</div>
 	);
 }

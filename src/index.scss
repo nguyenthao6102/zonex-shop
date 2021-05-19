@@ -1,3 +1,4 @@
+@import "./assets/styles/variables";
 body {
 	margin: 0;
 	font-family: "Jost", sans-serif;
@@ -34,7 +35,7 @@ code {
 	padding-bottom: 80px;
 }
 .boder-bottom {
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid $border-color;
 }
 button {
 	cursor: pointer;
