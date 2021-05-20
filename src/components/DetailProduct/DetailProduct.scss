@@ -110,6 +110,7 @@
 			.detail-product-category {
 				&__sku,
 				&__cate {
+					text-transform: uppercase;
 					margin-right: 30px;
 					color: $light-gray-color;
 					line-height: 30px;

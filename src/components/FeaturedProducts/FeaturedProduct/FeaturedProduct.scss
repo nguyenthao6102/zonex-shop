@@ -1,0 +1,88 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+.product {
+	position: relative;
+	margin-top: 40px;
+	height: 100%;
+	cursor: pointer;
+	&__img {
+		display: block;
+		// background-image: url(../../assets/images/product-1.jpg);
+		padding-top: 120%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+	}
+	&__content {
+		width: 100%;
+		padding: 0 4px;
+		a {
+			display: block;
+			font-size: 15px;
+			font-weight: 500;
+			color: $gray-color;
+			margin: 26px 0;
+
+			width: 100%;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 1;
+
+			@include atMobileScreen {
+				margin: 20px 0;
+			}
+		}
+		div {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			span {
+				font-size: 13px;
+				line-height: 17px;
+				font-weight: 700;
+			}
+			i {
+				display: none;
+				@include atMobileTabletScreen {
+					display: block;
+				}
+			}
+		}
+	}
+	&__action {
+		position: absolute;
+		bottom: -20px;
+		left: 16px;
+		right: 16px;
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 0;
+		opacity: 0;
+		visibility: hidden;
+		transition: all ease-in 0.15s;
+		@include atMobileTabletScreen {
+			display: none;
+		}
+
+		button {
+			background-color: transparent;
+			border: none;
+			cursor: pointer;
+			font-weight: 600;
+		}
+		ul {
+			display: flex;
+			i {
+				margin-left: 20px;
+			}
+		}
+	}
+	&:hover .product__action {
+		bottom: -10px;
+		opacity: 1;
+		visibility: visible;
+		transition: all 0.15s ease-in;
+		background-color: $white-color;
+	}
+}

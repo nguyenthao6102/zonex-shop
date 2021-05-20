@@ -1,26 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Filter from "../Filter/Filter";
-import Product from "./Product/Product";
-import "./Products.scss";
+import FeaturedProduct from "./FeaturedProduct/FeaturedProduct";
+import "./FeaturedProducts.scss";
 
-Products.propTypes = {};
+FeaturedProducts.propTypes = {};
 
-function Products(props) {
+function FeaturedProducts(props) {
 	const products = useSelector((state) => state.shop.products);
 	const showProducts = () => {
 		let result = null;
 		if (products.length > 0) {
 			result = products.map((product, index) => {
-				return <Product key={product.id} product={product} />;
+				return <FeaturedProduct key={product.id} product={product} />;
 			});
 		}
 		return result;
 	};
 
 	return (
-		<div className="products grid wide">
-			<Filter />
+		<div className="products grid">
+			<h2 className="products__featured">Featured Products</h2>
 
 			<div className="products__list row">{showProducts(products)}</div>
 			<div className="products__more">
@@ -33,4 +32,4 @@ function Products(props) {
 	);
 }
 
-export default Products;
+export default FeaturedProducts;

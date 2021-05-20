@@ -60,7 +60,9 @@ function Header(props) {
 							</NavLink>
 						</li>
 						<li>
-							<a href=".">Product</a>
+							<NavLink exact to="/products" activeClassName="active">
+								Products
+							</NavLink>
 						</li>
 						<li>
 							<NavLink exact to="/about" activeClassName="active">
@@ -82,7 +84,9 @@ function Header(props) {
 							</NavLink>
 						</li>
 						<li onClick={() => onToggleNavMobile()}>
-							<a href=".">Product</a>
+							<NavLink exact to="/products" activeClassName="active">
+								Products
+							</NavLink>
 						</li>
 						<li onClick={() => onToggleNavMobile()}>
 							<NavLink exact to="/about" activeClassName="active">

@@ -4,7 +4,7 @@ import topic1 from "../../assets/images/topic-1.png";
 import topic2 from "../../assets/images/topic-2.png";
 import topic3 from "../../assets/images/topic-3.png";
 
-function Topic(props) {
+function Topic() {
 	return (
 		<div className="topic grid">
 			<div className="row">

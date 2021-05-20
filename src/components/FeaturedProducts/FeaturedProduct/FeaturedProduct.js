@@ -3,16 +3,16 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, loadCurrentProduct } from "../../../redux/shop/shopActions";
-import "./Product.scss";
+import "./FeaturedProduct.scss";
 
-Product.propTypes = {
+FeaturedProduct.propTypes = {
 	product: PropTypes.object,
 };
 
-function Product({ product }) {
+function FeaturedProduct({ product }) {
 	const dispatch = useDispatch();
 	return (
-		<div className="product col l-3 m-4 c-6">
+		<div className="product col l-2-4 m-4 c-6">
 			<Link
 				to={`/products/${product.id}`}
 				className="product__img"
@@ -43,4 +43,4 @@ function Product({ product }) {
 	);
 }
 
-export default Product;
+export default FeaturedProduct;

@@ -60,7 +60,7 @@ function DetailProduct(props) {
 								SKU: <span>463CS90</span>
 							</span>
 							<span className="detail-product-category__cate">
-								CATEGORIES: <span>CLOTHES, DRESSES</span>
+								CATEGORIES: <span>{currentProduct.categories}</span>
 							</span>
 						</div>
 						<div className="detail-product-tag">
