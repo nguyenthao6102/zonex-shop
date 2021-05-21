@@ -5,7 +5,9 @@ function Filter() {
 	return (
 		<div className="product-filter grid wide">
 			<select name="categories" defaultValue="categories">
-				<option value="categories">Categories</option>
+				<option className="pd" value="categories">
+					Categories
+				</option>
 				<option value="jacket">Jacket</option>
 				<option value="clothes">Clothes</option>
 				<option value="shoes">Shoes</option>
@@ -23,7 +25,7 @@ function Filter() {
 				<option value="polo">Polo</option>
 			</select>
 			<select name="sort" defaultValue="sortby">
-				<option value="sortby">sort by</option>
+				<option value="sortby">Sort by</option>
 				<option value="a-z">Name a-z</option>
 				<option value="z-a">Name z-a</option>
 				<option value="low-to-high">Price: low to high</option>

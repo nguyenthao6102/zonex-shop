@@ -14,6 +14,7 @@
 		background-color: #f2f2f2;
 		border-right: 2px solid $white-color;
 		color: $light-black-color;
+		cursor: pointer;
 		&:last-child {
 			border-right: none;
 		}
@@ -28,6 +29,12 @@
 			width: 100%;
 			margin-bottom: 20px;
 			border-right: none;
+		}
+		option {
+			font-size: 17px;
+			color: $light-gray-color;
+			padding: 10px 0;
+			text-transform: none;
 		}
 	}
 }

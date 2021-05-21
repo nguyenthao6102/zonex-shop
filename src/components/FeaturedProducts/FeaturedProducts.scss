@@ -1,7 +1,7 @@
 @import "../../assets/styles/variables.scss";
 @import "../../assets/styles/mixins.scss";
 
-.products {
+.featured-products {
 	padding: 0 50px;
 	@include atMobileScreen {
 		padding: 0 8px;
@@ -9,7 +9,7 @@
 	@include atTabletScreen {
 		padding: 0 12px;
 	}
-	&__featured {
+	&__title {
 		font-size: 40px;
 		color: $light-black-color;
 		font-weight: 500;

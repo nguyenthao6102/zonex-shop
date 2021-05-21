@@ -18,11 +18,13 @@ function FeaturedProducts(props) {
 	};
 
 	return (
-		<div className="products grid">
-			<h2 className="products__featured">Featured Products</h2>
+		<div className="featured-products grid">
+			<h2 className="featured-products__title">Featured Products</h2>
 
-			<div className="products__list row">{showProducts(products)}</div>
-			<div className="products__more">
+			<div className="featured-products__list row">
+				{showProducts(products)}
+			</div>
+			<div className="featured-products__more">
 				<div>
 					<span>Load More</span>
 					<i className="fas fa-arrow-down"></i>
