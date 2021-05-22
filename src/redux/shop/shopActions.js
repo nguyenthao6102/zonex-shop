@@ -1,9 +1,20 @@
 import * as actionTypes from "./shopTypes";
 
+export const setProducts = (products) => {
+	return {
+		type: actionTypes.SET_PRODUCTS,
+		payload: products,
+	};
+};
 export const loadCurrentProduct = (item) => {
 	return {
 		type: actionTypes.LOAD_CURRENT_PRODUCT,
 		payload: item,
+	};
+};
+export const removeCurrentProduct = () => {
+	return {
+		type: actionTypes.REMOVE_CURRENT_PRODUCT,
 	};
 };
 export const addToCart = (itemID, value) => {

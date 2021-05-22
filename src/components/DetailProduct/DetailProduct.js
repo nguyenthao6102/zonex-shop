@@ -1,16 +1,39 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { addToCart } from "../../redux/shop/shopActions";
+import { Link, useParams } from "react-router-dom";
+import {
+	addToCart,
+	loadCurrentProduct,
+	removeCurrentProduct,
+} from "../../redux/shop/shopActions";
 import "./DetailProduct.scss";
 
 function DetailProduct(props) {
+	const { id } = useParams();
 	const currentProduct = useSelector((state) => state.shop.currentProduct);
 	const dispatch = useDispatch();
 	const [quantity, setQuantity] = useState(1);
 	const onInputQtyChange = (e) => {
 		setQuantity(e.target.value);
 	};
+
+	const fetchDetailProduct = async (id) => {
+		const response = await axios
+			.get(`https://60a28a57745cd7001757758c.mockapi.io/api/v1/products/${id}`)
+			.catch((err) => {
+				console.log("error: ", err);
+			});
+		dispatch(loadCurrentProduct(response.data));
+	};
+
+	useEffect(() => {
+		if (id && id !== "") fetchDetailProduct(id);
+		return () => {
+			dispatch(removeCurrentProduct());
+		};
+	}, [id]); // eslint-disable-line react-hooks/exhaustive-deps
+
 	return (
 		<div className="detail-product grid wide">
 			<div className="row">

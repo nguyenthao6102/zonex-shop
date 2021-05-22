@@ -75,6 +75,7 @@
 			opacity: 0;
 			transition: transform ease 0.4s, opacity linear 0.2s;
 			will-change: opacity, transform;
+
 			li {
 				a {
 					display: block;

@@ -2,6 +2,7 @@
 @import "../../assets/styles/variables";
 .product-filter {
 	width: 100%;
+	margin-bottom: 30px !important;
 	select {
 		display: inline-block;
 		width: 25%;
@@ -9,7 +10,7 @@
 		outline: none;
 		font-size: 13px;
 		font-weight: 600;
-		padding: 10px 20px;
+		padding: 13px 20px;
 		text-transform: uppercase;
 		background-color: #f2f2f2;
 		border-right: 2px solid $white-color;
@@ -17,6 +18,10 @@
 		cursor: pointer;
 		&:last-child {
 			border-right: none;
+		}
+		&:focus {
+			background-color: $white-color;
+			box-shadow: 1px -1px 10px $border-color;
 		}
 		@include atTabletScreen {
 			width: 50%;

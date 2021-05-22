@@ -2,9 +2,12 @@
 @import "../../../assets/styles/mixins";
 .product {
 	position: relative;
-	margin-top: 40px;
 	height: 100%;
 	cursor: pointer;
+	border: 1px solid $border-color;
+	@include atMobileTabletScreen {
+		cursor: none;
+	}
 	&__img {
 		display: block;
 		// background-image: url(../../assets/images/product-1.jpg);
@@ -21,8 +24,7 @@
 			font-size: 15px;
 			font-weight: 500;
 			color: $gray-color;
-			margin: 26px 0;
-
+			margin: 24px 0;
 			width: 100%;
 			overflow: hidden;
 			display: -webkit-box;
@@ -41,11 +43,14 @@
 				font-size: 13px;
 				line-height: 17px;
 				font-weight: 700;
+				padding-bottom: 10px;
 			}
 			i {
+				padding-bottom: 10px;
 				display: none;
 				@include atMobileTabletScreen {
 					display: block;
+					cursor: pointer;
 				}
 			}
 		}
@@ -53,8 +58,8 @@
 	&__action {
 		position: absolute;
 		bottom: -20px;
-		left: 16px;
-		right: 16px;
+		left: 4px;
+		right: 4px;
 		display: flex;
 		justify-content: space-between;
 		padding: 10px 0;
@@ -79,7 +84,7 @@
 		}
 	}
 	&:hover .product__action {
-		bottom: -10px;
+		bottom: 0px;
 		opacity: 1;
 		visibility: visible;
 		transition: all 0.15s ease-in;
