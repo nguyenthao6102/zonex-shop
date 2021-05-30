@@ -1,35 +1,37 @@
 import React from "react";
 import "./Filter.scss";
 
-function Filter() {
+function Filter(props) {
+	const { categories, setCategories, sort, setSort } = props;
 	return (
 		<div className="product-filter grid wide">
-			<select name="categories" defaultValue="categories">
-				<option className="pd" value="categories">
-					Categories
-				</option>
-				<option value="jacket">Jacket</option>
-				<option value="clothes">Clothes</option>
-				<option value="shoes">Shoes</option>
+			<input type="text" name="search" />
+			<select
+				name="categories"
+				value={categories}
+				onChange={(e) => {
+					setCategories(e.target.value);
+				}}
+			>
+				<option value="">Categories</option>
+				<option value="&categories=jacket">Jacket</option>
+				<option value="&categories=clothes">Clothes</option>
+				<option value="&categories=shoes">Shoes</option>
+				<option value="&categories=kids">Kids</option>
 			</select>
-			<select name="price" defaultValue="price">
-				<option value="price">Price</option>
-				<option value="100-200">$100 - $200</option>
-				<option value="200-300">$200 - $300</option>
-				<option value="300-400">$300 - $400</option>
-			</select>
-			<select name="brand" defaultValue="brand">
-				<option value="brand">Brand</option>
-				<option value="gucci">Gucci</option>
-				<option value="vans">Vans</option>
-				<option value="polo">Polo</option>
-			</select>
-			<select name="sort" defaultValue="sortby">
-				<option value="sortby">Sort by</option>
-				<option value="a-z">Name a-z</option>
-				<option value="z-a">Name z-a</option>
-				<option value="low-to-high">Price: low to high</option>
-				<option value="high-to-low">Price: high to low</option>
+
+			<select
+				name="categories"
+				value={sort}
+				onChange={(e) => {
+					setSort(e.target.value);
+				}}
+			>
+				<option value="">Sort by</option>
+				<option value="&sortBy=name">Name: A - Z</option>
+				<option value="&sortBy=name&order=desc">Name: Z - A</option>
+				<option value="&sortBy=price">Price: Low to high</option>
+				<option value="&sortBy=price&order=desc">Price: High to low</option>
 			</select>
 		</div>
 	);

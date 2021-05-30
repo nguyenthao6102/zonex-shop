@@ -138,6 +138,7 @@ const initialState = {
 	cart: [],
 	currentProduct: {},
 };
+
 const shopReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case actionTypes.SET_PRODUCTS:

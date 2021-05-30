@@ -14,12 +14,14 @@ function Product({ product }) {
 	return (
 		<div className="col l-3 m-4 c-6 mb-30">
 			<div className="product">
-				<Link
-					to={`/products/${product.id}`}
-					className="product__img"
-					style={{ backgroundImage: `url(${product.image})` }}
-					onClick={() => dispatch(loadCurrentProduct(product))}
-				></Link>
+				<div className="product__img">
+					<Link
+						to={`/products/${product.id}`}
+						style={{ backgroundImage: `url(${product.image})` }}
+						onClick={() => dispatch(loadCurrentProduct(product))}
+					></Link>
+				</div>
+
 				<div className="product__content">
 					<Link to={`/products/${product.id}`}>{product.name}</Link>
 					<div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Filter from "../Filter/Filter";
 import Product from "./Product/Product";
@@ -8,13 +8,23 @@ import { setProducts } from "../../redux/shop/shopActions";
 
 Products.propTypes = {};
 
-function Products(props) {
+function Products() {
 	const products = useSelector((state) => state.shop.products);
 	const dispatch = useDispatch();
+	// filter value
+	const [categories, setCategories] = useState("");
+	const [sort, setSort] = useState("");
+
+	// pagination
+	const [page, setPage] = useState(1);
+	const [limit, setLimit] = useState(12);
+	let pagination = `page=${page}&limit=${limit}`;
 
 	const fetchProducts = async () => {
 		const response = await axios
-			.get("https://60a28a57745cd7001757758c.mockapi.io/api/v1/products")
+			.get(
+				`https://60a28a57745cd7001757758c.mockapi.io/api/v1/products/?${pagination}${categories}${sort}`
+			)
 			.catch((err) => {
 				console.log("Error", err);
 			});
@@ -23,7 +33,7 @@ function Products(props) {
 
 	useEffect(() => {
 		fetchProducts();
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [categories, sort, page, limit]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const showProducts = () => {
 		let result = null;
@@ -37,11 +47,21 @@ function Products(props) {
 
 	return (
 		<div className="products grid wide">
-			<Filter />
+			<Filter
+				categories={categories}
+				setCategories={setCategories}
+				sort={sort}
+				setSort={setSort}
+			/>
 
 			<div className="products__list row">{showProducts(products)}</div>
 			<div className="products__more">
-				<div>
+				<div
+					onClick={() => {
+						setPage(1);
+						setLimit(limit + 18);
+					}}
+				>
 					<span>Load More</span>
 					<i className="fas fa-arrow-down"></i>
 				</div>

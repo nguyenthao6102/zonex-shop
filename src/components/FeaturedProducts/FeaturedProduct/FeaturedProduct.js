@@ -14,12 +14,14 @@ function FeaturedProduct({ product }) {
 	return (
 		<div className="col l-2-4 m-4 c-6 mb-30">
 			<div className="featured-product">
-				<Link
-					to={`/products/${product.id}`}
-					className="featured-product__img"
-					style={{ backgroundImage: `url(${product.image})` }}
-					onClick={() => dispatch(loadCurrentProduct(product))}
-				></Link>
+				<div className="featured-product__img">
+					<Link
+						to={`/products/${product.id}`}
+						style={{ backgroundImage: `url(${product.image})` }}
+						onClick={() => dispatch(loadCurrentProduct(product))}
+					></Link>
+				</div>
+
 				<div className="featured-product__content">
 					<Link to={`/products/${product.id}`}>{product.name}</Link>
 					<div>

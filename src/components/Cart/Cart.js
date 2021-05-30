@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 function Cart(props) {
 	const cart = useSelector((state) => state.shop.cart);
-
 	const showCart = (cart) => {
 		let result = null;
 		if (cart.length > 0) {
