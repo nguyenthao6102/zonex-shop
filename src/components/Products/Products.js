@@ -12,28 +12,36 @@ function Products() {
 	const products = useSelector((state) => state.shop.products);
 	const dispatch = useDispatch();
 	// filter value
-	const [categories, setCategories] = useState("");
+	const [categoryQuery, setCategoryQuery] = useState("");
+	const [priceQuery, setPriceQuery] = useState("");
+	const [brandQuery, setBrandQuery] = useState("");
+
+	// sort value
 	const [sort, setSort] = useState("");
 
 	// pagination
 	const [page, setPage] = useState(1);
 	const [limit, setLimit] = useState(12);
-	let pagination = `page=${page}&limit=${limit}`;
+	const [totalRows, setTotalRows] = useState(undefined);
+
+	let pagination = `_page=${page}&_limit=${limit}`;
 
 	const fetchProducts = async () => {
 		const response = await axios
 			.get(
-				`https://60a28a57745cd7001757758c.mockapi.io/api/v1/products/?${pagination}${categories}${sort}`
+				`https://zonex-fake.herokuapp.com/api/${categoryQuery}products?${pagination}${priceQuery}${brandQuery}${sort}`
 			)
 			.catch((err) => {
 				console.log("Error", err);
 			});
-		dispatch(setProducts(response.data));
+
+		dispatch(setProducts(response.data.data));
+		setTotalRows(response.data.pagination._totalRows);
 	};
 
 	useEffect(() => {
 		fetchProducts();
-	}, [categories, sort, page, limit]); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [categoryQuery, sort, priceQuery, brandQuery, page, limit, totalRows]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const showProducts = () => {
 		let result = null;
@@ -48,24 +56,34 @@ function Products() {
 	return (
 		<div className="products grid wide">
 			<Filter
-				categories={categories}
-				setCategories={setCategories}
+				categoryQuery={categoryQuery}
+				setCategoryQuery={setCategoryQuery}
 				sort={sort}
 				setSort={setSort}
+				priceQuery={priceQuery}
+				setPriceQuery={setPriceQuery}
+				brandQuery={brandQuery}
+				setBrandQuery={setBrandQuery}
 			/>
 
 			<div className="products__list row">{showProducts(products)}</div>
-			<div className="products__more">
-				<div
-					onClick={() => {
-						setPage(1);
-						setLimit(limit + 18);
-					}}
-				>
-					<span>Load More</span>
-					<i className="fas fa-arrow-down"></i>
+			{limit >= totalRows ? (
+				<div className="products__end">
+					<span>Out of Products</span>
 				</div>
-			</div>
+			) : (
+				<div className="products__more">
+					<div
+						onClick={() => {
+							setPage(1);
+							setLimit(limit + 8);
+						}}
+					>
+						<span>Load More</span>
+						<i className="fas fa-arrow-down"></i>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }

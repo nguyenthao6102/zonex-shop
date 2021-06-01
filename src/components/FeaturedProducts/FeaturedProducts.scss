@@ -45,4 +45,15 @@
 			}
 		}
 	}
+	&__end {
+		display: flex;
+		justify-content: center;
+		margin: 30px;
+		span {
+			display: inline-block;
+			font-size: 15px;
+			color: $light-gray-color;
+			font-weight: 600;
+		}
+	}
 }

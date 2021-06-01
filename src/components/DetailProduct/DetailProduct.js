@@ -20,7 +20,7 @@ function DetailProduct(props) {
 
 	const fetchDetailProduct = async (id) => {
 		const response = await axios
-			.get(`https://60a28a57745cd7001757758c.mockapi.io/api/v1/products/${id}`)
+			.get(`https://zonex-fake.herokuapp.com/api/products/${id}`)
 			.catch((err) => {
 				console.log("error: ", err);
 			});
