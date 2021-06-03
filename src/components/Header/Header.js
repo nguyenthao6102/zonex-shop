@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import logoImage from "../../assets/images/logo.png";
-import CartModal from "../CartModal/CartModal";
+import CartModal from "./CartModal/CartModal";
+import SearchBar from "./SearchBar/SearchBar";
 import "./Header.scss";
 
-function Header(props) {
+function Header() {
 	const [cartmodal, setCartmodal] = useState(false);
 	const [navmobile, setNavmobile] = useState(false);
+	const [searchBar, setSearchBar] = useState(false);
 	const [scroll, setScroll] = useState(false);
 	const [cartcount, setCartcount] = useState(0);
 
@@ -42,11 +44,17 @@ function Header(props) {
 	const onCloseCartModal = () => {
 		setCartmodal(false);
 	};
+
 	const onShowCartModal = () => {
 		setCartmodal(true);
 	};
+
 	const onToggleNavMobile = () => {
 		setNavmobile(!navmobile);
+	};
+
+	const onShowSearchBar = () => {
+		setSearchBar(true);
 	};
 
 	return (
@@ -78,22 +86,22 @@ function Header(props) {
 					<ul
 						className={navmobile ? "navbar__mobile active" : "navbar__mobile"}
 					>
-						<li onClick={() => onToggleNavMobile()}>
+						<li onClick={onToggleNavMobile}>
 							<NavLink exact to="/" activeClassName="active">
 								Home
 							</NavLink>
 						</li>
-						<li onClick={() => onToggleNavMobile()}>
+						<li onClick={onToggleNavMobile}>
 							<NavLink exact to="/products" activeClassName="active">
 								Products
 							</NavLink>
 						</li>
-						<li onClick={() => onToggleNavMobile()}>
+						<li onClick={onToggleNavMobile}>
 							<NavLink exact to="/about" activeClassName="active">
 								About
 							</NavLink>
 						</li>
-						<li onClick={() => onToggleNavMobile()}>
+						<li onClick={onToggleNavMobile}>
 							<NavLink exact to="/contact" activeClassName="active">
 								Contact
 							</NavLink>
@@ -101,17 +109,11 @@ function Header(props) {
 					</ul>
 					{navmobile ? (
 						<div className="navbar__close col m-5">
-							<i
-								className="fas fa-times"
-								onClick={() => onToggleNavMobile()}
-							></i>
+							<i className="fas fa-times" onClick={onToggleNavMobile}></i>
 						</div>
 					) : (
 						<div className="navbar__bars col m-5">
-							<i
-								className="fas fa-bars"
-								onClick={() => onToggleNavMobile()}
-							></i>
+							<i className="fas fa-bars" onClick={onToggleNavMobile}></i>
 						</div>
 					)}
 
@@ -120,13 +122,13 @@ function Header(props) {
 					</Link>
 					<ul className="navbar__control col l-5 m-5">
 						<li>
-							<i className="fas fa-search"></i>
+							<i className="fas fa-search" onClick={onShowSearchBar}></i>
 						</li>
 
 						<li>
 							<i className="fas fa-user"></i>
 						</li>
-						<li onClick={() => onShowCartModal()}>
+						<li onClick={onShowCartModal}>
 							<i className="fas fa-shopping-bag"></i>
 							<span>{cartcount}</span>
 						</li>
@@ -138,6 +140,7 @@ function Header(props) {
 				setCartmodal={setCartmodal}
 				onCloseCartModal={onCloseCartModal}
 			/>
+			{searchBar ? <SearchBar setSearchBar={setSearchBar} /> : undefined}
 		</header>
 	);
 }

@@ -3,6 +3,13 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./CartModal.scss";
 import CartModalItem from "./CartModalItem/CartModalItem";
+import PropTypes from "prop-types";
+
+CartModal.propTypes = {
+	cartmodal: PropTypes.bool,
+	setCartmodal: PropTypes.func,
+	onCloseCartModal: PropTypes.func,
+};
 
 export const useClickOutside = (handler) => {
 	const domNode = useRef();
@@ -30,7 +37,8 @@ function CartModal({ cartmodal, setCartmodal, onCloseCartModal }) {
 	});
 
 	const cart = useSelector((state) => state.shop.cart);
-	const showCartModal = (cart) => {
+
+	const showCartModalList = (cart) => {
 		let result = null;
 		if (cart.length > 0) {
 			result = cart.map((item, index) => {
@@ -57,11 +65,11 @@ function CartModal({ cartmodal, setCartmodal, onCloseCartModal }) {
 		>
 			<div className="cart-modal__top">
 				<h3>Cart</h3>
-				<i className="fas fa-times" onClick={() => onCloseCartModal()}></i>
+				<i className="fas fa-times" onClick={onCloseCartModal}></i>
 			</div>
 			{cart.length > 0 ? (
 				<>
-					<ul className="cart-modal__list">{showCartModal(cart)}</ul>
+					<ul className="cart-modal__list">{showCartModalList(cart)}</ul>
 					<div className="cart-modal__bottom">
 						<div className="subtotal-modal">
 							<span className="subtotal-modal__title">Subtotal</span>
@@ -71,7 +79,7 @@ function CartModal({ cartmodal, setCartmodal, onCloseCartModal }) {
 						<Link
 							to="/cart"
 							className="viewcart-modal-btn"
-							onClick={() => onCloseCartModal()}
+							onClick={onCloseCartModal}
 						>
 							View cart
 						</Link>

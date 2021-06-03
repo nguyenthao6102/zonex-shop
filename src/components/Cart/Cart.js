@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import CartItem from "./CartItem/CartItem";
 import { useSelector } from "react-redux";
 
-function Cart(props) {
+function Cart() {
 	const cart = useSelector((state) => state.shop.cart);
+
 	const showCart = (cart) => {
 		let result = null;
 		if (cart.length > 0) {

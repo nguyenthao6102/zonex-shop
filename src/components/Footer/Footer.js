@@ -1,7 +1,7 @@
 import "./Footer.scss";
 import React from "react";
 
-function Footer(props) {
+function Footer() {
 	return (
 		<footer className="footer grid wide">
 			<div className="row pt-80 pb-80 boder-bottom">

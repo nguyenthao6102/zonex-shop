@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Filter from "../Filter/Filter";
 import Product from "./Product/Product";
 import "./Products.scss";
 import axios from "axios";
 import { setProducts } from "../../redux/shop/shopActions";
-
-Products.propTypes = {};
+import Filter from "./Filter/Filter";
 
 function Products() {
 	const products = useSelector((state) => state.shop.products);
 	const dispatch = useDispatch();
+
+	const [loading, setLoading] = useState(true);
+
 	// filter value
 	const [categoryQuery, setCategoryQuery] = useState("");
 	const [priceQuery, setPriceQuery] = useState("");
@@ -26,6 +27,11 @@ function Products() {
 
 	let pagination = `_page=${page}&_limit=${limit}`;
 
+	const onLoadMore = () => {
+		setPage(1);
+		setLimit(limit + 8);
+	};
+
 	const fetchProducts = async () => {
 		const response = await axios
 			.get(
@@ -37,6 +43,7 @@ function Products() {
 
 		dispatch(setProducts(response.data.data));
 		setTotalRows(response.data.pagination._totalRows);
+		setLoading(false);
 	};
 
 	useEffect(() => {
@@ -65,20 +72,19 @@ function Products() {
 				brandQuery={brandQuery}
 				setBrandQuery={setBrandQuery}
 			/>
+			{loading ? (
+				<div className="products__loading">Loading...</div>
+			) : (
+				<div className="products__list row">{showProducts(products)}</div>
+			)}
 
-			<div className="products__list row">{showProducts(products)}</div>
 			{limit >= totalRows ? (
 				<div className="products__end">
 					<span>Out of Products</span>
 				</div>
 			) : (
 				<div className="products__more">
-					<div
-						onClick={() => {
-							setPage(1);
-							setLimit(limit + 8);
-						}}
-					>
+					<div onClick={onLoadMore}>
 						<span>Load More</span>
 						<i className="fas fa-arrow-down"></i>
 					</div>

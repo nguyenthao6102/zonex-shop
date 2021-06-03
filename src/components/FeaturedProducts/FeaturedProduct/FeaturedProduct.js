@@ -11,6 +11,15 @@ FeaturedProduct.propTypes = {
 
 function FeaturedProduct({ product }) {
 	const dispatch = useDispatch();
+
+	const onLoadCurrentProduct = () => {
+		dispatch(loadCurrentProduct(product));
+	};
+
+	const onAddToCart = () => {
+		dispatch(addToCart(product.id, 1));
+	};
+
 	return (
 		<div className="col l-2-4 m-4 c-6 mb-30">
 			<div className="featured-product">
@@ -18,7 +27,7 @@ function FeaturedProduct({ product }) {
 					<Link
 						to={`/products/${product.id}`}
 						style={{ backgroundImage: `url(${product.image})` }}
-						onClick={() => dispatch(loadCurrentProduct(product))}
+						onClick={onLoadCurrentProduct}
 					></Link>
 				</div>
 
@@ -26,16 +35,11 @@ function FeaturedProduct({ product }) {
 					<Link to={`/products/${product.id}`}>{product.name}</Link>
 					<div>
 						<span>${product.price}</span>
-						<i
-							className="fas fa-cart-arrow-down"
-							onClick={() => dispatch(addToCart(product.id, 1))}
-						></i>
+						<i className="fas fa-cart-arrow-down" onClick={onAddToCart}></i>
 					</div>
 				</div>
 				<div className="featured-product__action">
-					<button onClick={() => dispatch(addToCart(product.id, 1))}>
-						ADD TO CART
-					</button>
+					<button onClick={onAddToCart}>ADD TO CART</button>
 					<ul>
 						<li>
 							<i className="fas fa-search"></i>

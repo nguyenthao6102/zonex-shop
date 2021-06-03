@@ -9,13 +9,27 @@ import {
 } from "../../redux/shop/shopActions";
 import "./DetailProduct.scss";
 
-function DetailProduct(props) {
+function DetailProduct() {
 	const { id } = useParams();
 	const currentProduct = useSelector((state) => state.shop.currentProduct);
 	const dispatch = useDispatch();
 	const [quantity, setQuantity] = useState(1);
+
 	const onInputQtyChange = (e) => {
 		setQuantity(e.target.value);
+	};
+
+	const onDecreaseQuantity = () => {
+		setQuantity(quantity > 1 ? quantity - 1 : quantity);
+	};
+
+	const onIncreaseQuantity = () => {
+		setQuantity(quantity + 1);
+	};
+
+	const onAddToCart = () => {
+		dispatch(addToCart(currentProduct.id, +quantity));
+		setQuantity(1);
 	};
 
 	const fetchDetailProduct = async (id) => {
@@ -48,30 +62,16 @@ function DetailProduct(props) {
 						{currentProduct.description}
 					</p>
 					<div className="detail-product-amount">
-						<i
-							className="fas fa-minus"
-							onClick={() =>
-								setQuantity(quantity > 1 ? quantity - 1 : quantity)
-							}
-						></i>
+						<i className="fas fa-minus" onClick={onDecreaseQuantity}></i>
 						<input
 							type="number"
 							step="1"
 							value={quantity}
 							onChange={onInputQtyChange}
 						/>
-						<i
-							className="fas fa-plus"
-							onClick={() => setQuantity(quantity + 1)}
-						></i>
+						<i className="fas fa-plus" onClick={onIncreaseQuantity}></i>
 					</div>
-					<button
-						className="detail-product-btn"
-						onClick={() => {
-							dispatch(addToCart(currentProduct.id, +quantity));
-							setQuantity(1);
-						}}
-					>
+					<button className="detail-product-btn" onClick={onAddToCart}>
 						ADD TO CART
 					</button>
 					<Link to="/" className="detail-product-back">

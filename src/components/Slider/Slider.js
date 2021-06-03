@@ -1,7 +1,7 @@
 import React from "react";
 import "./Slider.scss";
 
-function Slider(props) {
+function Slider() {
 	return (
 		<div className="slider">
 			<div className="slider__caption">

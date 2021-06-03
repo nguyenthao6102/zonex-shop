@@ -1,7 +1,7 @@
 import React from "react";
 import "./Error.scss";
 
-function Error(props) {
+function Error() {
 	return (
 		<div className="error grid wide">
 			<h1 className="error__title">Error 404</h1>

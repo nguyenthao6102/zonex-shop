@@ -5,11 +5,11 @@ import { setProducts } from "../../redux/shop/shopActions";
 import FeaturedProduct from "./FeaturedProduct/FeaturedProduct";
 import "./FeaturedProducts.scss";
 
-FeaturedProducts.propTypes = {};
-
-function FeaturedProducts(props) {
+function FeaturedProducts() {
 	const products = useSelector((state) => state.shop.products);
 	const dispatch = useDispatch();
+
+	const [loading, setLoading] = useState(true);
 
 	// pagination
 	const [page, setPage] = useState(1);
@@ -17,6 +17,11 @@ function FeaturedProducts(props) {
 	const [totalRows, setTotalRows] = useState(undefined);
 
 	let pagination = `_page=${page}&_limit=${limit}`;
+
+	const onLoadMore = () => {
+		setPage(1);
+		setLimit(limit + 5);
+	};
 
 	const fetchProducts = async () => {
 		const response = await axios
@@ -28,6 +33,7 @@ function FeaturedProducts(props) {
 			});
 		dispatch(setProducts(response.data.data));
 		setTotalRows(response.data.pagination._totalRows);
+		setLoading(false);
 	};
 
 	useEffect(() => {
@@ -48,21 +54,21 @@ function FeaturedProducts(props) {
 		<div className="featured-products grid">
 			<h2 className="featured-products__title">Featured Products</h2>
 
-			<div className="featured-products__list row">
-				{showProducts(products)}
-			</div>
+			{loading ? (
+				<div className="featured-products__loading">Loading...</div>
+			) : (
+				<div className="featured-products__list row">
+					{showProducts(products)}
+				</div>
+			)}
+
 			{limit >= totalRows ? (
 				<div className="featured-products__end">
 					<span>Out of Products</span>
 				</div>
 			) : (
 				<div className="featured-products__more">
-					<div
-						onClick={() => {
-							setPage(1);
-							setLimit(limit + 5);
-						}}
-					>
+					<div onClick={onLoadMore}>
 						<span>Load More</span>
 						<i className="fas fa-arrow-down"></i>
 					</div>
