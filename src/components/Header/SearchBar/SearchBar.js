@@ -34,7 +34,7 @@ function SearchBar({ setSearchBar }) {
 
 		return debounced;
 	};
-	const debouncedSearchValue = useDebounce(searchValue, 300);
+	const debouncedSearchValue = useDebounce(searchValue, 500);
 
 	const fetchSearchResult = async () => {
 		const response = await axios
@@ -52,6 +52,9 @@ function SearchBar({ setSearchBar }) {
 		if (debouncedSearchValue) {
 			fetchSearchResult();
 		}
+		return () => {
+			setSearchResult([]);
+		};
 	}, [debouncedSearchValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const showSearchResult = (searchResult) => {
