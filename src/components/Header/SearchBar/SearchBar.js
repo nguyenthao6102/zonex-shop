@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ResultItem from "./ResultItem/ResultItem";
 import "./SearchBar.scss";
 import PropTypes from "prop-types";
@@ -11,6 +11,8 @@ SearchBar.propTypes = {
 function SearchBar({ setSearchBar }) {
 	const [searchValue, setSearchValue] = useState("");
 	const [searchResult, setSearchResult] = useState([]);
+
+	const ref = useRef(null);
 
 	const onInputChange = (e) => {
 		let value = e.target.value;
@@ -49,6 +51,12 @@ function SearchBar({ setSearchBar }) {
 	};
 
 	useEffect(() => {
+		if (ref.current) {
+			ref.current.focus();
+		}
+	}, []);
+
+	useEffect(() => {
 		if (debouncedSearchValue) {
 			fetchSearchResult();
 		}
@@ -85,6 +93,7 @@ function SearchBar({ setSearchBar }) {
 						placeholder="Search here..."
 						value={searchValue}
 						onChange={onInputChange}
+						ref={ref}
 					/>
 					<i className="fas fa-search"></i>
 					<div className="search-form__result row no-gutters">

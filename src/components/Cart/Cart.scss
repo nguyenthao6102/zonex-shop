@@ -15,17 +15,20 @@
 	}
 	.cart-content {
 		&__list {
-			border-collapse: collapse;
-			margin-bottom: 30px;
-			thead {
-				tr {
-					border-bottom: 1px solid $border-color;
-					th {
-						padding: 20px;
-						color: $gray-color;
-						font-size: 11px;
-						@include atMobileScreen {
-							padding: 10px 0px;
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-bottom: 30px;
+				thead {
+					tr {
+						border-bottom: 1px solid $border-color;
+						th {
+							padding: 20px;
+							color: $gray-color;
+							font-size: 11px;
+							@include atMobileScreen {
+								padding: 10px 0px;
+							}
 						}
 					}
 				}
