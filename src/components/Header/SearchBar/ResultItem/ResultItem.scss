@@ -39,12 +39,21 @@
 				margin: 14px 0;
 			}
 		}
-		div {
+		.result-item-price {
 			margin-bottom: 16px;
-			span {
+			&__current {
 				font-size: 13px;
 				line-height: 17px;
-				font-weight: 700;
+				font-weight: 600;
+			}
+			&__old {
+				font-size: 13px;
+				font-weight: 600;
+				line-height: 17px;
+				padding-bottom: 10px;
+				color: $light-gray-color;
+				text-decoration: line-through;
+				margin-left: 10px;
 			}
 		}
 	}

@@ -130,7 +130,7 @@ function Header() {
 						</li>
 						<li onClick={onShowCartModal}>
 							<i className="fas fa-shopping-bag"></i>
-							<span>{cartcount}</span>
+							{cartcount ? <span>{cartcount}</span> : undefined}
 						</li>
 					</ul>
 				</div>

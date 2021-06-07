@@ -58,7 +58,16 @@ function DetailProduct() {
 
 				<div className="detail-product__content col l-5 m-6 c-12">
 					<h3 className="detail-product-name">{currentProduct.name}</h3>
-					<span className="detail-product-price">${currentProduct.price}</span>
+					<div className="detail-product-price">
+						<span className="detail-product-price__current">
+							${currentProduct.price}
+						</span>
+						{currentProduct.oldPrice ? (
+							<span className="detail-product-price__old">
+								${currentProduct.oldPrice}
+							</span>
+						) : undefined}
+					</div>
 					<p className="detail-product-description">
 						{currentProduct.description}
 					</p>

@@ -30,11 +30,20 @@
 			margin-bottom: 20px;
 		}
 		.detail-product-price {
-			display: block;
-			font-size: 24px;
-			font-weight: 600;
-			color: $light-black-color;
 			margin-bottom: 20px;
+
+			&__current {
+				color: $light-black-color;
+				font-size: 24px;
+				font-weight: 600;
+			}
+			&__old {
+				color: $light-gray-color;
+				text-decoration: line-through;
+				margin-left: 10px;
+				font-size: 20px;
+				font-weight: 600;
+			}
 		}
 		.detail-product-description {
 			font-size: 15px;

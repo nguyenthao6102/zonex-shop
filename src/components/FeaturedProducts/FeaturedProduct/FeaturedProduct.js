@@ -34,7 +34,16 @@ function FeaturedProduct({ product }) {
 				<div className="featured-product__content">
 					<Link to={`/products/${product.id}`}>{product.name}</Link>
 					<div>
-						<span>${product.price}</span>
+						<div className="featured-product-price">
+							<span className="featured-product-price__current">
+								${product.price}
+							</span>
+							{product.oldPrice ? (
+								<span className="featured-product-price__old">
+									${product.oldPrice}
+								</span>
+							) : undefined}
+						</div>
 						<i className="fas fa-cart-arrow-down" onClick={onAddToCart}></i>
 					</div>
 				</div>

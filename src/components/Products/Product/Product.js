@@ -34,7 +34,12 @@ function Product({ product }) {
 				<div className="product__content">
 					<Link to={`/products/${product.id}`}>{product.name}</Link>
 					<div>
-						<span>${product.price}</span>
+						<div className="product-price">
+							<span className="product-price__current">${product.price}</span>
+							{product.oldPrice ? (
+								<span className="product-price__old">${product.oldPrice}</span>
+							) : undefined}
+						</div>
 						<i className="fas fa-cart-arrow-down" onClick={onAddToCart}></i>
 					</div>
 				</div>

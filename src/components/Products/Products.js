@@ -71,6 +71,7 @@ function Products() {
 				setPriceQuery={setPriceQuery}
 				brandQuery={brandQuery}
 				setBrandQuery={setBrandQuery}
+				setLoading={setLoading}
 			/>
 			{loading ? (
 				<div className="products__loading">Loading...</div>

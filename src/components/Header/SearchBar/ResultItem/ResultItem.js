@@ -32,8 +32,15 @@ function ResultItem({ resultItem, setSearchBar }) {
 					<Link to={`/products/${resultItem.id}`} onClick={onResultItemClick}>
 						{resultItem.name}
 					</Link>
-					<div>
-						<span>${resultItem.price}</span>
+					<div className="result-item-price">
+						<span className="result-item-price__current">
+							${resultItem.price}
+						</span>
+						{resultItem.oldPrice ? (
+							<span className="result-item-price__old">
+								${resultItem.oldPrice}
+							</span>
+						) : undefined}
 					</div>
 				</div>
 			</div>

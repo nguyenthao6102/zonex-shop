@@ -26,6 +26,7 @@ function Filter(props) {
 		setBrandQuery,
 		sort,
 		setSort,
+		setLoading,
 	} = props;
 
 	const categories = useSelector((state) => state.shop.categories);
@@ -33,18 +34,22 @@ function Filter(props) {
 
 	const onCategoryQueryChange = (e) => {
 		setCategoryQuery(e.target.value);
+		setLoading(true);
 	};
 
 	const onPriceQueryChange = (e) => {
 		setPriceQuery(e.target.value);
+		setLoading(true);
 	};
 
 	const onBrandQueryChange = (e) => {
 		setBrandQuery(e.target.value);
+		setLoading(true);
 	};
 
 	const onSortChange = (e) => {
 		setSort(e.target.value);
+		setLoading(true);
 	};
 
 	const fetchCategories = async () => {
