@@ -17,6 +17,7 @@ function SearchBar({ setSearchBar }) {
 	const onInputChange = (e) => {
 		let value = e.target.value;
 		setSearchValue(value);
+		setSearchResult([]);
 	};
 
 	// Debounce function
@@ -78,7 +79,7 @@ function SearchBar({ setSearchBar }) {
 				);
 			});
 		}
-		if (searchValue === "") {
+		if (searchValue.trim() === "") {
 			result = undefined;
 		}
 		return result;

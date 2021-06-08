@@ -14,6 +14,7 @@ function DetailProduct() {
 	const currentProduct = useSelector((state) => state.shop.currentProduct);
 	const dispatch = useDispatch();
 	const [quantity, setQuantity] = useState(1);
+	const [categoryName, setCategoryName] = useState("");
 
 	const onInputQtyChange = (e) => {
 		setQuantity(e.target.value);
@@ -41,6 +42,15 @@ function DetailProduct() {
 		dispatch(loadCurrentProduct(response.data));
 	};
 
+	const fetchCategory = async (categoryId) => {
+		const response = await axios
+			.get(`https://zonex-fake.herokuapp.com/api/categories/${categoryId}`)
+			.catch((err) => {
+				console.log("error: ", err);
+			});
+		setCategoryName(response.data.name);
+	};
+
 	useEffect(() => {
 		if (id && id !== "") fetchDetailProduct(id);
 		return () => {
@@ -48,6 +58,9 @@ function DetailProduct() {
 		};
 	}, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
+	useEffect(() => {
+		fetchCategory(currentProduct.categoryId);
+	}, [currentProduct.categoryId]);
 	return (
 		<div className="detail-product grid wide">
 			<div className="row">
@@ -93,7 +106,7 @@ function DetailProduct() {
 								SKU: <span>463CS90</span>
 							</span>
 							<span className="detail-product-category__cate">
-								CATEGORIES: <span>{currentProduct.categories}</span>
+								CATEGORIES: <span>{categoryName}</span>
 							</span>
 						</div>
 						<div className="detail-product-tag">
