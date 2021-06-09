@@ -23,22 +23,21 @@ function FeaturedProducts() {
 		setLimit(limit + 5);
 	};
 
-	const fetchProducts = async () => {
-		const response = await axios
-			.get(
-				`https://zonex-fake.herokuapp.com/api/products?${pagination}&featured=true`
-			)
-			.catch((err) => {
-				console.log("Error", err);
-			});
-		dispatch(setProducts(response.data.data));
-		setTotalRows(response.data.pagination._totalRows);
-		setLoading(false);
-	};
-
 	useEffect(() => {
+		const fetchProducts = async () => {
+			const response = await axios
+				.get(
+					`https://zonex-fake.herokuapp.com/api/products?${pagination}&featured=true`
+				)
+				.catch((err) => {
+					console.log("Error", err);
+				});
+			dispatch(setProducts(response.data.data));
+			setTotalRows(response.data.pagination._totalRows);
+			setLoading(false);
+		};
 		fetchProducts();
-	}, [page, limit, totalRows]); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [dispatch, pagination]);
 
 	const showProducts = () => {
 		let result = null;

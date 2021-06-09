@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart, loadCurrentProduct } from "../../../redux/shop/shopActions";
+import { loadCurrentProduct } from "../../../redux/shop/shopActions";
+import { addToCart } from "../../../redux/cart/cartActions";
 import "./FeaturedProduct.scss";
 
 FeaturedProduct.propTypes = {
@@ -17,7 +18,7 @@ function FeaturedProduct({ product }) {
 	};
 
 	const onAddToCart = () => {
-		dispatch(addToCart(product.id, 1));
+		dispatch(addToCart(product, 1));
 	};
 
 	return (

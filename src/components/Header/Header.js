@@ -20,7 +20,7 @@ function Header() {
 		};
 	});
 
-	const cart = useSelector((state) => state.shop.cart);
+	const cart = useSelector((state) => state.cart);
 	useEffect(() => {
 		let count = 0;
 		cart.forEach((item) => {

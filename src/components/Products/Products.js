@@ -32,23 +32,23 @@ function Products() {
 		setLimit(limit + 8);
 	};
 
-	const fetchProducts = async () => {
-		const response = await axios
-			.get(
-				`https://zonex-fake.herokuapp.com/api/${categoryQuery}products?${pagination}${priceQuery}${brandQuery}${sort}`
-			)
-			.catch((err) => {
-				console.log("Error", err);
-			});
-
-		dispatch(setProducts(response.data.data));
-		setTotalRows(response.data.pagination._totalRows);
-		setLoading(false);
-	};
-
 	useEffect(() => {
+		const fetchProducts = async () => {
+			const response = await axios
+				.get(
+					`https://zonex-fake.herokuapp.com/api/${categoryQuery}products?${pagination}${priceQuery}${brandQuery}${sort}`
+				)
+				.catch((err) => {
+					console.log("Error", err);
+				});
+
+			dispatch(setProducts(response.data.data));
+			setTotalRows(response.data.pagination._totalRows);
+			setLoading(false);
+		};
+
 		fetchProducts();
-	}, [categoryQuery, sort, priceQuery, brandQuery, page, limit, totalRows]); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [dispatch, categoryQuery, sort, priceQuery, brandQuery, pagination]);
 
 	const showProducts = () => {
 		let result = null;

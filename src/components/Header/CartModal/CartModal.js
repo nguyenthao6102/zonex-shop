@@ -36,7 +36,7 @@ function CartModal({ cartmodal, setCartmodal, onCloseCartModal }) {
 		setCartmodal(false);
 	});
 
-	const cart = useSelector((state) => state.shop.cart);
+	const cart = useSelector((state) => state.cart);
 
 	const showCartModalList = (cart) => {
 		let result = null;

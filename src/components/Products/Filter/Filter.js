@@ -52,19 +52,19 @@ function Filter(props) {
 		setLoading(true);
 	};
 
-	const fetchCategories = async () => {
-		const response = await axios
-			.get(`https://zonex-fake.herokuapp.com/api/categories`)
-			.catch((err) => {
-				console.log("Error", err);
-			});
-
-		dispatch(setCategories(response.data));
-	};
-
 	useEffect(() => {
+		const fetchCategories = async () => {
+			const response = await axios
+				.get(`https://zonex-fake.herokuapp.com/api/categories`)
+				.catch((err) => {
+					console.log("Error", err);
+				});
+
+			dispatch(setCategories(response.data));
+		};
+
 		fetchCategories();
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [dispatch]);
 	return (
 		<div className="product-filter grid wide">
 			<select

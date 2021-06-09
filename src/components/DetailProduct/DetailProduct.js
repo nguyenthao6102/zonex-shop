@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import {
-	addToCart,
 	loadCurrentProduct,
 	removeCurrentProduct,
 } from "../../redux/shop/shopActions";
+import { addToCart } from "../../redux/cart/cartActions";
 import "./DetailProduct.scss";
 
 function DetailProduct() {
@@ -29,38 +29,39 @@ function DetailProduct() {
 	};
 
 	const onAddToCart = () => {
-		dispatch(addToCart(currentProduct.id, +quantity));
+		dispatch(addToCart(currentProduct, +quantity));
 		setQuantity(1);
 	};
 
-	const fetchDetailProduct = async (id) => {
-		const response = await axios
-			.get(`https://zonex-fake.herokuapp.com/api/products/${id}`)
-			.catch((err) => {
-				console.log("error: ", err);
-			});
-		dispatch(loadCurrentProduct(response.data));
-	};
-
-	const fetchCategory = async (categoryId) => {
-		const response = await axios
-			.get(`https://zonex-fake.herokuapp.com/api/categories/${categoryId}`)
-			.catch((err) => {
-				console.log("error: ", err);
-			});
-		setCategoryName(response.data.name);
-	};
-
 	useEffect(() => {
+		const fetchDetailProduct = async (id) => {
+			const response = await axios
+				.get(`https://zonex-fake.herokuapp.com/api/products/${id}`)
+				.catch((err) => {
+					console.log("error: ", err);
+				});
+			dispatch(loadCurrentProduct(response.data));
+		};
+
 		if (id && id !== "") fetchDetailProduct(id);
 		return () => {
 			dispatch(removeCurrentProduct());
 		};
-	}, [id]); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [id, dispatch]);
 
 	useEffect(() => {
+		const fetchCategory = async (categoryId) => {
+			const response = await axios
+				.get(`https://zonex-fake.herokuapp.com/api/categories/${categoryId}`)
+				.catch((err) => {
+					console.log("error: ", err);
+				});
+			setCategoryName(response.data.name);
+		};
+
 		fetchCategory(currentProduct.categoryId);
 	}, [currentProduct.categoryId]);
+
 	return (
 		<div className="detail-product grid wide">
 			<div className="row">

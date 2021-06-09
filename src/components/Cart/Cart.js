@@ -4,7 +4,7 @@ import CartItem from "./CartItem/CartItem";
 import { useSelector } from "react-redux";
 
 function Cart() {
-	const cart = useSelector((state) => state.shop.cart);
+	const cart = useSelector((state) => state.cart);
 
 	const showCart = (cart) => {
 		let result = null;

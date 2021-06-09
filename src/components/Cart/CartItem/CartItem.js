@@ -6,7 +6,7 @@ import {
 	decreaseQuantity,
 	increaseQuantity,
 	removeFromCart,
-} from "../../../redux/shop/shopActions";
+} from "../../../redux/cart/cartActions";
 import "./CartItem.scss";
 
 CartItem.propTypes = {
