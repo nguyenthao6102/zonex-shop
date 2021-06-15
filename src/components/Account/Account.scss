@@ -1,0 +1,115 @@
+@import "../../assets/styles/mixins";
+@import "../../assets/styles/variables";
+.account {
+	padding-top: 100px;
+	.account-title {
+		text-align: center;
+		padding: 60px 0 80px 0;
+		h2 {
+			font-size: 36px;
+			font-weight: 700;
+			color: $light-black-color;
+		}
+	}
+	.account-body {
+		width: 33%;
+		border: 2px solid $border-color;
+		margin: 0 auto;
+		@include atTabletScreen {
+			width: 60%;
+		}
+		@include atMobileScreen {
+			width: 95%;
+		}
+		.account-tabs {
+			.account-tab {
+				display: inline-block;
+				font-size: 10px;
+				text-transform: uppercase;
+				font-weight: 700;
+				width: 50%;
+				text-align: center;
+				line-height: 60px;
+				color: rgba(21, 21, 21, 0.5);
+				border-bottom: 2px solid $border-color;
+				cursor: pointer;
+				&:hover {
+					color: $light-black-color;
+					border-color: $light-black-color;
+				}
+			}
+			.account-tab.active-tab {
+				color: $light-black-color;
+				border-color: $light-black-color;
+			}
+		}
+		.account-content {
+			padding: 50px;
+			@include atTabletScreen {
+				padding: 40px;
+			}
+			@include atMobileScreen {
+				padding: 40px 20px;
+			}
+			.account-item {
+				display: none;
+				.account-form {
+					display: flex;
+					flex-direction: column;
+					&__username {
+						font-size: 13px;
+						line-height: 40px;
+						outline: none;
+						border: none;
+						border-bottom: 2px solid $light-black-color;
+						margin-bottom: 30px;
+					}
+					&__password {
+						@extend .account-form__username;
+					}
+					&__submit {
+						outline: none;
+						line-height: 50px;
+						text-transform: uppercase;
+						color: $light-black-color;
+						background-color: $light-black-color;
+						color: $white-color;
+						font-size: 11px;
+						font-weight: 600;
+						margin-bottom: 15px;
+						&:hover {
+							opacity: 0.8;
+							transition: all ease-in-out 0.4s;
+						}
+					}
+					p {
+						font-size: 15px;
+						line-height: 22px;
+						font-weight: 400;
+						margin-bottom: 30px;
+					}
+				}
+				button {
+					width: 100%;
+					text-align: center;
+					color: $light-black-color;
+					border: 1px solid $light-black-color;
+					outline: none;
+					line-height: 50px;
+					text-transform: uppercase;
+					background-color: $white-color;
+					font-size: 11px;
+					font-weight: 600;
+					&:hover {
+						background-color: $light-black-color;
+						color: $white-color;
+						transition: all ease-in-out 0.4s;
+					}
+				}
+			}
+			.account-item.active-content {
+				display: block;
+			}
+		}
+	}
+}

@@ -125,8 +125,10 @@ function Header() {
 							<i className="fas fa-search" onClick={onShowSearchBar}></i>
 						</li>
 
-						<li>
-							<i className="fas fa-user"></i>
+						<li className="navbar-account">
+							<NavLink exact to="/account">
+								<i className="fas fa-user"></i>
+							</NavLink>
 						</li>
 						<li onClick={onShowCartModal}>
 							<i className="fas fa-shopping-bag"></i>

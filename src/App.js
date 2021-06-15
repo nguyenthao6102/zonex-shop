@@ -4,6 +4,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import AboutPage from "./pages/AboutPage";
+import AccountPage from "./pages/AccountPage";
 import CartPage from "./pages/CartPage";
 import ContactPage from "./pages/ContactPage";
 import DetailProductPage from "./pages/DetailProductPage";
@@ -36,6 +37,9 @@ function App() {
 					</Route>
 					<Route exact path="/cart">
 						<CartPage />
+					</Route>
+					<Route exact path="/account">
+						<AccountPage />
 					</Route>
 					<Route>
 						<ErrorPage />
