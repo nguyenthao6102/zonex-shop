@@ -4,6 +4,7 @@ const initialState = {
 	categories: [],
 	products: [],
 	currentProduct: {},
+	showMessage: false,
 };
 
 const shopReducer = (state = initialState, action) => {
@@ -30,7 +31,11 @@ const shopReducer = (state = initialState, action) => {
 				...state,
 				currentProduct: {},
 			};
-
+		case actionTypes.SHOW_MESSAGE:
+			return {
+				...state,
+				showMessage: action.payload,
+			};
 		default:
 			return state;
 	}

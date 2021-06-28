@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import {
 	loadCurrentProduct,
 	removeCurrentProduct,
+	showMessage,
 } from "../../redux/shop/shopActions";
 import { addToCart } from "../../redux/cart/cartActions";
 import "./DetailProduct.scss";
@@ -29,6 +30,7 @@ function DetailProduct() {
 
 	const onAddToCart = () => {
 		dispatch(addToCart(currentProduct, +quantity));
+		dispatch(showMessage(true));
 		setQuantity(1);
 	};
 

@@ -2,7 +2,10 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { loadCurrentProduct } from "../../../redux/shop/shopActions";
+import {
+	loadCurrentProduct,
+	showMessage,
+} from "../../../redux/shop/shopActions";
 import { addToCart } from "../../../redux/cart/cartActions";
 import "./Product.scss";
 
@@ -19,6 +22,7 @@ function Product({ product }) {
 
 	const onAddToCart = () => {
 		dispatch(addToCart(product, 1));
+		dispatch(showMessage(true));
 	};
 
 	return (

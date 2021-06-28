@@ -24,3 +24,10 @@ export const removeCurrentProduct = () => {
 		type: actionTypes.REMOVE_CURRENT_PRODUCT,
 	};
 };
+
+export const showMessage = (show) => {
+	return {
+		type: actionTypes.SHOW_MESSAGE,
+		payload: show,
+	};
+};
