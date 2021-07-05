@@ -1,7 +1,7 @@
 @import "../../../assets/styles/mixins";
 @import "../.././../assets/styles/variables";
 
-.account-item {
+.account-login {
 	display: none;
 	.account-form {
 		display: flex;
@@ -12,10 +12,10 @@
 			outline: none;
 			border: none;
 			border-bottom: 2px solid $light-black-color;
-			margin-bottom: 30px;
 		}
 		&__password {
 			@extend .account-form__username;
+			margin-top: 30px;
 		}
 		&__submit {
 			outline: none;
@@ -26,7 +26,9 @@
 			color: $white-color;
 			font-size: 11px;
 			font-weight: 600;
+			margin-top: 30px;
 			margin-bottom: 15px;
+
 			&:hover {
 				opacity: 0.8;
 				transition: all ease-in-out 0.4s;
@@ -49,6 +51,14 @@
 			color: $white-color;
 			transition: all ease-in-out 0.4s;
 		}
+	}
+	.login-wrong {
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		background-color: #f2dede;
+		color: #af514f;
 	}
 }
 .account-item.active-content {

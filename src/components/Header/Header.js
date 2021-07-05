@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import logoImage from "../../assets/images/logo.png";
 import CartModal from "./CartModal/CartModal";
 import SearchBar from "./SearchBar/SearchBar";
 import "./Header.scss";
+import { removeUser } from "../../redux/user/userActions";
 
 function Header() {
 	const [cartmodal, setCartmodal] = useState(false);
@@ -12,6 +13,7 @@ function Header() {
 	const [searchBar, setSearchBar] = useState(false);
 	const [scroll, setScroll] = useState(false);
 	const [cartcount, setCartcount] = useState(0);
+	const history = useHistory();
 
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll);
@@ -21,6 +23,9 @@ function Header() {
 	});
 
 	const cart = useSelector((state) => state.cart);
+	const user = useSelector((state) => state.user);
+
+	const dispatch = useDispatch();
 	useEffect(() => {
 		let count = 0;
 		cart.forEach((item) => {
@@ -57,6 +62,10 @@ function Header() {
 		setSearchBar(true);
 	};
 
+	const onLogout = () => {
+		dispatch(removeUser());
+		history.push("/account");
+	};
 	return (
 		<header className={scroll ? "header scroll" : "header"}>
 			<div className="header-wrapper grid wide">
@@ -125,11 +134,22 @@ function Header() {
 							<i className="fas fa-search" onClick={onShowSearchBar}></i>
 						</li>
 
-						<li className="navbar-account">
-							<NavLink exact to="/account">
+						{user ? (
+							<li className="navbar-account">
 								<i className="fas fa-user"></i>
-							</NavLink>
-						</li>
+								<ul className="navbar-account__popup">
+									<li>{user.userName}</li>
+									<li onClick={onLogout}>Logout</li>
+								</ul>
+							</li>
+						) : (
+							<li className="navbar-account">
+								<NavLink exact to="/account">
+									<i className="fas fa-user"></i>
+								</NavLink>
+							</li>
+						)}
+
 						<li onClick={onShowCartModal}>
 							<i className="fas fa-shopping-bag"></i>
 							{cartcount ? <span>{cartcount}</span> : undefined}

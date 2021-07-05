@@ -1,26 +1,59 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { setUser } from "../../../redux/user/userActions";
 import "./Login.scss";
 
 function Login({ tab, onTabClick }) {
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
+	const [loginFailed, setLoginFailed] = useState(false);
+	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const onUserNameChange = (e) => {
 		setUserName(e.target.value);
+		setLoginFailed(false);
 	};
 	const onPasswordChange = (e) => {
 		setPassword(e.target.value);
+		setLoginFailed(false);
+	};
+
+	const fetchUser = () => {
+		axios
+			.get(
+				`https://zonex-fake.herokuapp.com/api/users?userName=${userName}&password=${password}`
+			)
+			.then(function (response) {
+				// handle success
+				if (response.data[0]) {
+					dispatch(setUser(response.data[0]));
+					history.push("/cart");
+				} else {
+					setLoginFailed(true);
+				}
+			})
+			.catch((err) => {
+				console.log("Error", err);
+			});
 	};
 
 	const onSubmitSignIn = (e) => {
 		e.preventDefault();
 		console.log(userName, password);
+		fetchUser();
 	};
 
 	return (
 		<>
 			<div
-				className={tab === 1 ? "account-item active-content" : "account-item"}
+				className={
+					tab === 1
+						? "account-item account-login active-content"
+						: "account-item account-login"
+				}
 			>
 				<form className="account-form" onSubmit={onSubmitSignIn}>
 					<input
@@ -48,6 +81,9 @@ function Login({ tab, onTabClick }) {
 					/>
 				</form>
 				<button onClick={() => onTabClick(2)}>create an account</button>
+				{loginFailed ? (
+					<div className="login-wrong">Wrong username or password</div>
+				) : undefined}
 			</div>
 		</>
 	);

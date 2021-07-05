@@ -1,7 +1,7 @@
 @import "../../../assets/styles/mixins";
 @import "../.././../assets/styles/variables";
 
-.account-item {
+.account-register {
 	display: none;
 	.account-form {
 		display: flex;
@@ -12,10 +12,20 @@
 			outline: none;
 			border: none;
 			border-bottom: 2px solid $light-black-color;
-			margin-bottom: 30px;
+		}
+		.usename-err {
+			display: block;
+			margin: 0;
+			width: 100%;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			background-color: #f2dede;
+			color: #af514f;
 		}
 		&__password {
 			@extend .account-form__username;
+			margin-top: 30px;
 		}
 		&__submit {
 			outline: none;
@@ -36,6 +46,7 @@
 			font-size: 15px;
 			line-height: 22px;
 			font-weight: 400;
+			margin-top: 30px;
 			margin-bottom: 30px;
 		}
 	}

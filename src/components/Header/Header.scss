@@ -157,6 +157,35 @@
 					}
 				}
 			}
+			.navbar-account {
+				position: relative;
+				&:hover {
+					opacity: 1;
+				}
+				&:hover .navbar-account__popup {
+					display: block;
+				}
+
+				&__popup {
+					position: absolute;
+					background-color: $white-color;
+					box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+					top: 100%;
+					left: 0;
+					padding: 10px 20px;
+					display: none;
+
+					li {
+						cursor: pointer;
+						line-height: 30px;
+						font-size: 14px;
+						color: $gray-color;
+						font-weight: 600;
+						border-bottom: 1px solid transparent;
+					}
+				}
+			}
+
 			.navbar-account a i {
 				color: $black-color;
 			}

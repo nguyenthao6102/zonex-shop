@@ -7,11 +7,11 @@
 	transform: translate(-50%, -50%);
 	width: 270px;
 	height: 100px;
-	color: $white-color;
+	color: #858585;
 	font-size: 16px;
 	font-weight: 700;
-	background-color: rgba(0, 0, 0, 0.637);
+	background-color: $white-color;
 	text-align: center;
 	line-height: 100px;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+	box-shadow: 0 0px 20px rgba(0, 0, 0, 0.2);
 }

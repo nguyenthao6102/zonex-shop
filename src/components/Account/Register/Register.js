@@ -1,26 +1,67 @@
+import axios from "axios";
 import React, { useState } from "react";
 import "./Register.scss";
 
 function Register({ tab, onTabClick }) {
-	const onSubmitRegister = (e) => {
-		e.preventDefault();
-		console.log(userName, password);
-	};
-
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
 
+	const [userNameErr, setuserNameErr] = useState(false);
+
 	const onUserNameChange = (e) => {
 		setUserName(e.target.value);
+		setuserNameErr(false);
 	};
 	const onPasswordChange = (e) => {
 		setPassword(e.target.value);
 	};
 
+	const onSubmitRegister = (e) => {
+		e.preventDefault();
+		fetchUser();
+	};
+
+	const fetchUser = () => {
+		axios
+			.get(`https://zonex-fake.herokuapp.com/api/users?userName=${userName}`)
+			.then(function (response) {
+				// handle success
+				if (response.data[0]) {
+					setuserNameErr(true);
+				} else {
+					setuserNameErr(false);
+					postUser();
+				}
+			})
+			.catch((err) => {
+				console.log("Error", err);
+			});
+	};
+
+	const postUser = () => {
+		axios
+			.post(`https://zonex-fake.herokuapp.com/api/users`, {
+				userName: userName,
+				password: password,
+			})
+			.then(function (response) {
+				console.log(response.data);
+				onTabClick(1);
+				setUserName("");
+				setPassword("");
+			})
+			.catch((err) => {
+				console.log("Error", err);
+			});
+	};
 	return (
 		<>
 			<div
-				className={tab === 2 ? "account-item active-content" : "account-item"}
+				className={
+					tab === 2
+						? "account-item account-register active-content"
+						: "account-item account-register"
+				}
 			>
 				<form className="account-form" onSubmit={onSubmitRegister}>
 					<input
@@ -32,6 +73,9 @@ function Register({ tab, onTabClick }) {
 						className="account-form__username"
 						required
 					/>
+					{userNameErr ? (
+						<p className="usename-err">Username already exists</p>
+					) : undefined}
 					<input
 						type="password"
 						name="password"
