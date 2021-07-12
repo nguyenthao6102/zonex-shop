@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setUser } from "../../../redux/user/userActions";
+import { setAuth } from "../../../redux/auth/authActions";
 import "./Login.scss";
 
 function Login({ tab, onTabClick }) {
@@ -29,8 +29,8 @@ function Login({ tab, onTabClick }) {
 			.then(function (response) {
 				// handle success
 				if (response.data[0]) {
-					dispatch(setUser(response.data[0]));
-					history.push("/cart");
+					dispatch(setAuth(response.data[0]));
+					history.goBack();
 				} else {
 					setLoginFailed(true);
 				}

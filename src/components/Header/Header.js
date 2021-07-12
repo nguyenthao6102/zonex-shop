@@ -5,7 +5,7 @@ import logoImage from "../../assets/images/logo.png";
 import CartModal from "./CartModal/CartModal";
 import SearchBar from "./SearchBar/SearchBar";
 import "./Header.scss";
-import { removeUser } from "../../redux/user/userActions";
+import { removeAuth } from "../../redux/auth/authActions";
 
 function Header() {
 	const [cartmodal, setCartmodal] = useState(false);
@@ -23,7 +23,7 @@ function Header() {
 	});
 
 	const cart = useSelector((state) => state.cart);
-	const user = useSelector((state) => state.user);
+	const auth = useSelector((state) => state.auth);
 
 	const dispatch = useDispatch();
 	useEffect(() => {
@@ -63,7 +63,7 @@ function Header() {
 	};
 
 	const onLogout = () => {
-		dispatch(removeUser());
+		dispatch(removeAuth());
 		history.push("/account");
 	};
 	return (
@@ -130,15 +130,15 @@ function Header() {
 						<img src={logoImage} alt="logo" />
 					</Link>
 					<ul className="navbar__control col l-5 m-5">
-						<li>
+						<li className="navbar-search">
 							<i className="fas fa-search" onClick={onShowSearchBar}></i>
 						</li>
 
-						{user ? (
+						{auth ? (
 							<li className="navbar-account">
 								<i className="fas fa-user"></i>
 								<ul className="navbar-account__popup">
-									<li>{user.userName}</li>
+									<li>{auth.userName}</li>
 									<li onClick={onLogout}>Logout</li>
 								</ul>
 							</li>
@@ -150,7 +150,7 @@ function Header() {
 							</li>
 						)}
 
-						<li onClick={onShowCartModal}>
+						<li className="navbar-cart" onClick={onShowCartModal}>
 							<i className="fas fa-shopping-bag"></i>
 							{cartcount ? <span>{cartcount}</span> : undefined}
 						</li>

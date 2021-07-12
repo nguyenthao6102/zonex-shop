@@ -131,7 +131,8 @@
 			display: flex;
 			justify-content: flex-end;
 			align-items: center;
-			li {
+			.navbar-search,
+			.navbar-cart {
 				position: relative;
 				i {
 					cursor: pointer;
@@ -159,8 +160,16 @@
 			}
 			.navbar-account {
 				position: relative;
-				&:hover {
-					opacity: 1;
+				i {
+					cursor: pointer;
+					display: block;
+					padding: 10px 14px;
+					@include atMobileScreen {
+						padding: 10px 16px 10px 0;
+					}
+				}
+				&:hover i {
+					opacity: 0.5;
 				}
 				&:hover .navbar-account__popup {
 					display: block;
@@ -168,13 +177,13 @@
 
 				&__popup {
 					position: absolute;
+					min-width: 100px;
 					background-color: $white-color;
 					box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 					top: 100%;
-					left: 0;
+					right: 0;
 					padding: 10px 20px;
 					display: none;
-
 					li {
 						cursor: pointer;
 						line-height: 30px;
@@ -182,6 +191,9 @@
 						color: $gray-color;
 						font-weight: 600;
 						border-bottom: 1px solid transparent;
+						&:hover {
+							opacity: 0.5;
+						}
 					}
 				}
 			}
