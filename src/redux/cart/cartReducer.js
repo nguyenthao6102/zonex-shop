@@ -6,6 +6,10 @@ const initialState = data ? data : [];
 
 const cartReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case actionTypes.SET_CART:
+			localStorage.setItem("CART", JSON.stringify(action.payload));
+			return action.payload;
+
 		case actionTypes.ADD_TO_CART:
 			const inCart = state.find((item) =>
 				item.id === action.payload.item.id ? true : false

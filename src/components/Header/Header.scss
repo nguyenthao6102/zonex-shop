@@ -139,7 +139,7 @@
 					display: block;
 					padding: 10px 14px;
 					@include atMobileScreen {
-						padding: 10px 16px 10px 0;
+						padding: 10px 8px 10px 8px;
 					}
 				}
 				&:hover {
@@ -165,7 +165,7 @@
 					display: block;
 					padding: 10px 14px;
 					@include atMobileScreen {
-						padding: 10px 16px 10px 0;
+						padding: 10px 8px 10px 8px;
 					}
 				}
 				&:hover i {
@@ -191,6 +191,9 @@
 						color: $gray-color;
 						font-weight: 600;
 						border-bottom: 1px solid transparent;
+						a {
+							color: $gray-color;
+						}
 						&:hover {
 							opacity: 0.5;
 						}

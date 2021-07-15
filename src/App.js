@@ -1,5 +1,10 @@
 import { useSelector } from "react-redux";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Redirect,
+	Route,
+	Switch,
+} from "react-router-dom";
 import "./App.scss";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -12,11 +17,13 @@ import ContactPage from "./pages/ContactPage";
 import DetailProductPage from "./pages/DetailProductPage";
 import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
+import OrdersPage from "./pages/OrdersPage";
 import ProductsPage from "./pages/ProductsPage";
 
 function App() {
 	const message = useSelector((state) => state.shop.showMessage);
 
+	const auth = useSelector((state) => state.auth);
 	return (
 		<Router>
 			<ScrollToTop />
@@ -42,9 +49,20 @@ function App() {
 					<Route exact path="/cart">
 						<CartPage />
 					</Route>
-					<Route exact path="/account">
-						<AccountPage />
-					</Route>
+					<Route
+						exact
+						path="/account"
+						render={() => {
+							return !auth ? <AccountPage /> : <Redirect to="/" />;
+						}}
+					></Route>
+					<Route
+						exact
+						path="/orders"
+						render={() => {
+							return auth ? <OrdersPage /> : <Redirect to="/account" />;
+						}}
+					></Route>
 					<Route>
 						<ErrorPage />
 					</Route>

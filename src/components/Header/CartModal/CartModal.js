@@ -37,6 +37,7 @@ function CartModal({ cartmodal, setCartmodal, onCloseCartModal }) {
 	});
 
 	const cart = useSelector((state) => state.cart);
+	const auth = useSelector((state) => state.auth);
 
 	const showCartModalList = (cart) => {
 		let result = null;
@@ -84,7 +85,13 @@ function CartModal({ cartmodal, setCartmodal, onCloseCartModal }) {
 							View cart
 						</Link>
 
-						<button className="checkout-modal-btn">Checkout</button>
+						<Link
+							to={auth ? "/cart" : "/account"}
+							className="checkout-modal-btn"
+							onClick={onCloseCartModal}
+						>
+							Checkout
+						</Link>
 					</div>
 				</>
 			) : (

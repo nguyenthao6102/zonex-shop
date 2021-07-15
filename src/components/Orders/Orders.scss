@@ -1,10 +1,8 @@
 @import "../../assets/styles/variables";
 @import "../../assets/styles/mixins";
-
-.cart {
+.orders {
 	padding-top: 100px;
-	overflow: hidden;
-	.cart-title {
+	.orders-title {
 		font-size: 36px;
 		font-weight: 600;
 		color: $light-black-color;
@@ -13,7 +11,7 @@
 			font-size: 26px;
 		}
 	}
-	.cart-content {
+	.orders-content {
 		&__list {
 			table {
 				width: 100%;
@@ -22,12 +20,13 @@
 				thead {
 					tr {
 						border-bottom: 1px solid $border-color;
+						text-align: left;
 						th {
 							padding: 20px;
 							color: $gray-color;
 							font-size: 11px;
 							@include atMobileScreen {
-								padding: 10px 0px;
+								padding: 20px 10px;
 							}
 						}
 					}
@@ -35,7 +34,7 @@
 			}
 		}
 	}
-	.cart-empty {
+	.orders-empty {
 		display: flex;
 		justify-content: center;
 		align-items: center;

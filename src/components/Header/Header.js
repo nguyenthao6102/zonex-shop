@@ -139,6 +139,9 @@ function Header() {
 								<i className="fas fa-user"></i>
 								<ul className="navbar-account__popup">
 									<li>{auth.userName}</li>
+									<li>
+										<NavLink to="/orders">Orders</NavLink>
+									</li>
 									<li onClick={onLogout}>Logout</li>
 								</ul>
 							</li>
