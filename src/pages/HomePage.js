@@ -1,7 +1,7 @@
 import React from "react";
 import SliderBaner from "../components/SliderBaner/SliderBaner";
 import TopicTop from "../components/TopicTop/TopicTop";
-import FeaturedProducts from "../components/FeaturedProducts/FeaturedProducts";
+import HomeProducts from "../components/HomeProducts/HomeProducts";
 import TopicBottom from "../components/TopicBottom/TopicBottom";
 
 function HomePage(props) {
@@ -9,7 +9,7 @@ function HomePage(props) {
 		<>
 			<SliderBaner />
 			<TopicTop />
-			<FeaturedProducts />
+			<HomeProducts />
 			<TopicBottom />
 		</>
 	);

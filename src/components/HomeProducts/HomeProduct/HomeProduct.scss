@@ -1,6 +1,6 @@
 @import "../../../assets/styles/variables";
 @import "../../../assets/styles/mixins";
-.featured-product {
+.home-product {
 	position: relative;
 	height: 100%;
 	cursor: pointer;
@@ -44,7 +44,7 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			.featured-product-price {
+			.home-product-price {
 				&__current {
 					font-size: 13px;
 					line-height: 17px;
@@ -99,15 +99,29 @@
 			}
 		}
 	}
-	&:hover .featured-product__action {
+	&:hover .home-product__action {
 		bottom: 0px;
 		opacity: 1;
 		visibility: visible;
 		transition: all 0.15s ease-in;
 		background-color: $white-color;
 	}
-	&:hover .featured-product__img a {
+	&:hover .home-product__img a {
 		transform: scale(1.3);
 		transition: all 0.4s linear;
 	}
+}
+.home-product.sale::after {
+	content: "SALE";
+	display: block;
+	position: absolute;
+	display: inline-block;
+	font-size: 10px;
+	font-weight: 600;
+	line-height: 18px;
+	left: 20px;
+	top: 20px;
+	background-color: transparent;
+	border: 2px solid $light-black-color;
+	padding: 0 10px;
 }

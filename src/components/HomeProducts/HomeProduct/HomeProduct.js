@@ -7,13 +7,13 @@ import {
 	showMessage,
 } from "../../../redux/shop/shopActions";
 import { addToCart } from "../../../redux/cart/cartActions";
-import "./FeaturedProduct.scss";
+import "./HomeProduct.scss";
 
-FeaturedProduct.propTypes = {
+HomeProduct.propTypes = {
 	product: PropTypes.object,
 };
 
-function FeaturedProduct({ product }) {
+function HomeProduct({ product }) {
 	const dispatch = useDispatch();
 
 	const onLoadCurrentProduct = () => {
@@ -27,8 +27,8 @@ function FeaturedProduct({ product }) {
 
 	return (
 		<div className="col l-2-4 m-4 c-6 mb-30">
-			<div className="featured-product">
-				<div className="featured-product__img">
+			<div className={product.oldPrice ? "home-product sale" : "home-product"}>
+				<div className="home-product__img">
 					<Link
 						to={`/products/${product.id}`}
 						style={{ backgroundImage: `url(${product.image})` }}
@@ -36,15 +36,15 @@ function FeaturedProduct({ product }) {
 					></Link>
 				</div>
 
-				<div className="featured-product__content">
+				<div className="home-product__content">
 					<Link to={`/products/${product.id}`}>{product.name}</Link>
 					<div>
-						<div className="featured-product-price">
-							<span className="featured-product-price__current">
+						<div className="home-product-price">
+							<span className="home-product-price__current">
 								${product.price}
 							</span>
 							{product.oldPrice ? (
-								<span className="featured-product-price__old">
+								<span className="home-product-price__old">
 									${product.oldPrice}
 								</span>
 							) : undefined}
@@ -52,7 +52,7 @@ function FeaturedProduct({ product }) {
 						<i className="fas fa-cart-arrow-down" onClick={onAddToCart}></i>
 					</div>
 				</div>
-				<div className="featured-product__action">
+				<div className="home-product__action">
 					<button onClick={onAddToCart}>ADD TO CART</button>
 					<ul>
 						<li>
@@ -65,4 +65,4 @@ function FeaturedProduct({ product }) {
 	);
 }
 
-export default FeaturedProduct;
+export default HomeProduct;
