@@ -20,14 +20,15 @@ function HomeProducts() {
 
 	let pagination = `_page=${page}&_limit=${limit}`;
 
-	const onActiveTabChange = (tab, content) => {
-		setActiveTab(tab);
-		setEndpoint(content);
-	};
-
 	const onLoadMore = () => {
 		setPage(1);
 		setLimit(limit + 5);
+	};
+
+	const onActiveTabChange = (tab, content) => {
+		setActiveTab(tab);
+		setEndpoint(content);
+		setLoading(true);
 	};
 
 	useEffect(() => {

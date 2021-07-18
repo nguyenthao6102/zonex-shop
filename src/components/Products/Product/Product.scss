@@ -112,3 +112,17 @@
 		transition: all 0.4s linear;
 	}
 }
+.product.sale::after {
+	content: "SALE";
+	display: block;
+	position: absolute;
+	display: inline-block;
+	font-size: 10px;
+	font-weight: 600;
+	line-height: 18px;
+	left: 20px;
+	top: 20px;
+	background-color: transparent;
+	border: 2px solid $light-black-color;
+	padding: 0 10px;
+}

@@ -27,7 +27,7 @@ function Product({ product }) {
 
 	return (
 		<div className="col l-3 m-4 c-6 mb-30">
-			<div className="product">
+			<div className={product.oldPrice ? "product sale" : "product"}>
 				<div className="product__img">
 					<Link
 						to={`/products/${product.id}`}

@@ -2,7 +2,7 @@
 @import "../../assets/styles/mixins";
 
 .header {
-	padding: 25px 0;
+	padding: 26px 0;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -148,15 +148,19 @@
 				span {
 					position: absolute;
 					display: inline-block;
-					font-size: 12px;
-					top: 10px;
+					font-size: 11px;
+					font-weight: 500;
+					top: 6px;
 					left: 80%;
 					@include atMobileScreen {
 						font-size: 10px;
 						top: 0px;
-						left: 40%;
+						left: 70%;
 					}
 				}
+			}
+			.navbar-cart {
+				margin-right: 4px;
 			}
 			.navbar-account {
 				position: relative;
