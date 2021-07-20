@@ -9,7 +9,7 @@ function Message() {
 	useEffect(() => {
 		const timeHide = setTimeout(() => {
 			dispatch(showMessage(false));
-		}, 1000);
+		}, 800);
 		return () => {
 			clearTimeout(timeHide);
 		};
