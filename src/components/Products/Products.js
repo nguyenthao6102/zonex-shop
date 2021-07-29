@@ -29,7 +29,7 @@ function Products() {
 		setParams({
 			...params,
 			_page: 1,
-			_limit: params.limit + 8,
+			_limit: params._limit + 8,
 		});
 	};
 
