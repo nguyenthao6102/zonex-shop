@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -9,6 +8,7 @@ import {
 } from "../../redux/shop/shopActions";
 import { addToCart } from "../../redux/cart/cartActions";
 import "./DetailProduct.scss";
+import productsApi from "../../api/productsApi";
 
 function DetailProduct() {
 	const { id } = useParams();
@@ -35,15 +35,14 @@ function DetailProduct() {
 	};
 
 	useEffect(() => {
-		const fetchDetailProduct = async (id) => {
-			const response = await axios
-				.get(`https://zonex-fake.herokuapp.com/api/products/${id}`)
-				.catch((err) => {
-					console.log("error: ", err);
-				});
-			dispatch(loadCurrentProduct(response.data));
+		const fetchDetailProduct = async () => {
+			try {
+				const response = await productsApi.get(id);
+				dispatch(loadCurrentProduct(response));
+			} catch (error) {
+				console.log("Failed to fetch detail product: ", error);
+			}
 		};
-
 		if (id && id !== "") fetchDetailProduct(id);
 		return () => {
 			dispatch(removeCurrentProduct());

@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import productsApi from "../../api/productsApi";
 import { setProducts } from "../../redux/shop/shopActions";
 import HomeProduct from "./HomeProduct/HomeProduct";
 import "./HomeProducts.scss";
@@ -10,42 +10,47 @@ function HomeProducts() {
 	const dispatch = useDispatch();
 
 	const [loading, setLoading] = useState(true);
-	const [activeTab, setActiveTab] = useState(1);
-	const [endpoint, setEndpoint] = useState("&bestSellers=true");
 
-	// pagination
-	const [page, setPage] = useState(1);
-	const [limit, setLimit] = useState(10);
+	const [params, setParams] = useState({
+		_page: 1,
+		_limit: 10,
+		bestSellers: true,
+	});
+
+	const [activeTab, setActiveTab] = useState(1);
 	const [totalRows, setTotalRows] = useState(undefined);
 
-	let pagination = `_page=${page}&_limit=${limit}`;
-
 	const onLoadMore = () => {
-		setPage(1);
-		setLimit(limit + 5);
+		setParams({ ...params, _limit: params._limit + 5 });
 	};
 
-	const onActiveTabChange = (tab, content) => {
+	const onActiveTabChange = (tab) => {
 		setActiveTab(tab);
-		setEndpoint(content);
+		if (tab === 1) {
+			setParams({ _page: 1, _limit: 10, bestSellers: true });
+		}
+		if (tab === 2) {
+			setParams({ _page: 1, _limit: 10, new: true });
+		}
+		if (tab === 3) {
+			setParams({ _page: 1, _limit: 10, oldPrice_ne: null });
+		}
 		setLoading(true);
 	};
 
 	useEffect(() => {
 		const fetchProducts = async () => {
-			const response = await axios
-				.get(
-					`https://zonex-fake.herokuapp.com/api/products?${pagination}${endpoint}`
-				)
-				.catch((err) => {
-					console.log("Error", err);
-				});
-			dispatch(setProducts(response.data.data));
-			setTotalRows(response.data.pagination._totalRows);
-			setLoading(false);
+			try {
+				const response = await productsApi.getAll(params);
+				dispatch(setProducts(response.data));
+				setTotalRows(response.pagination._totalRows);
+				setLoading(false);
+			} catch (error) {
+				console.log("Failed to fetch products: ", error);
+			}
 		};
 		fetchProducts();
-	}, [dispatch, pagination, endpoint]);
+	}, [dispatch, params]);
 
 	const showProducts = () => {
 		let result = null;
@@ -63,7 +68,7 @@ function HomeProducts() {
 				<li>
 					<button
 						className={activeTab === 1 ? "active" : ""}
-						onClick={() => onActiveTabChange(1, "&bestSellers=true")}
+						onClick={() => onActiveTabChange(1)}
 					>
 						Best Sellers
 					</button>
@@ -72,7 +77,7 @@ function HomeProducts() {
 				<li>
 					<button
 						className={activeTab === 2 ? "active" : ""}
-						onClick={() => onActiveTabChange(2, "&new=true")}
+						onClick={() => onActiveTabChange(2)}
 					>
 						New Products
 					</button>
@@ -80,7 +85,7 @@ function HomeProducts() {
 				<li>
 					<button
 						className={activeTab === 3 ? "active" : ""}
-						onClick={() => onActiveTabChange(3, "&oldPrice_ne=null")}
+						onClick={() => onActiveTabChange(3)}
 					>
 						Sale Products
 					</button>
@@ -93,7 +98,7 @@ function HomeProducts() {
 				<div className="home-products__list row">{showProducts(products)}</div>
 			)}
 
-			{limit >= totalRows ? (
+			{params._limit >= totalRows ? (
 				<div className="home-products__end">
 					<span>Out of Products</span>
 				</div>

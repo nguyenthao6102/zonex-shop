@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Product from "./Product/Product";
 import "./Products.scss";
-import axios from "axios";
 import { setProducts } from "../../redux/shop/shopActions";
 import Filter from "./Filter/Filter";
+import productsApi from "../../api/productsApi";
 
 function Products() {
 	const products = useSelector((state) => state.shop.products);
@@ -12,43 +12,42 @@ function Products() {
 
 	const [loading, setLoading] = useState(true);
 
-	// filter value
-	const [categoryQuery, setCategoryQuery] = useState("");
-	const [priceQuery, setPriceQuery] = useState("");
-	const [brandQuery, setBrandQuery] = useState("");
-
-	// sort value
-	const [sort, setSort] = useState("");
-
-	// pagination
-	const [page, setPage] = useState(1);
-	const [limit, setLimit] = useState(12);
 	const [totalRows, setTotalRows] = useState(undefined);
 
-	let pagination = `_page=${page}&_limit=${limit}`;
+	const [params, setParams] = useState({
+		_page: 1,
+		_limit: 12,
+		categoryId: "",
+		price_gte: "",
+		price_lte: "",
+		brands: "",
+		_sort: "",
+		_order: "",
+	});
 
 	const onLoadMore = () => {
-		setPage(1);
-		setLimit(limit + 8);
+		setParams({
+			...params,
+			_page: 1,
+			_limit: params.limit + 8,
+		});
 	};
 
 	useEffect(() => {
 		const fetchProducts = async () => {
-			const response = await axios
-				.get(
-					`https://zonex-fake.herokuapp.com/api/${categoryQuery}products?${pagination}${priceQuery}${brandQuery}${sort}`
-				)
-				.catch((err) => {
-					console.log("Error", err);
-				});
+			try {
+				const response = await productsApi.getAll(params);
 
-			dispatch(setProducts(response.data.data));
-			setTotalRows(response.data.pagination._totalRows);
-			setLoading(false);
+				dispatch(setProducts(response.data));
+				setTotalRows(response.pagination._totalRows);
+				setLoading(false);
+			} catch (error) {
+				console.log("Failed to fetch prodcuts");
+			}
 		};
 
 		fetchProducts();
-	}, [dispatch, categoryQuery, sort, priceQuery, brandQuery, pagination]);
+	}, [dispatch, params]);
 
 	const showProducts = () => {
 		let result = null;
@@ -62,24 +61,14 @@ function Products() {
 
 	return (
 		<div className="products grid wide">
-			<Filter
-				categoryQuery={categoryQuery}
-				setCategoryQuery={setCategoryQuery}
-				sort={sort}
-				setSort={setSort}
-				priceQuery={priceQuery}
-				setPriceQuery={setPriceQuery}
-				brandQuery={brandQuery}
-				setBrandQuery={setBrandQuery}
-				setLoading={setLoading}
-			/>
+			<Filter params={params} setParams={setParams} setLoading={setLoading} />
 			{loading ? (
 				<div className="products__loading">Loading...</div>
 			) : (
 				<div className="products__list row">{showProducts(products)}</div>
 			)}
 
-			{limit >= totalRows ? (
+			{params._limit >= totalRows ? (
 				<div className="products__end">
 					<span>Out of Products</span>
 				</div>

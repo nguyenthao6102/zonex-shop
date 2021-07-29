@@ -1,8 +1,8 @@
-import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import ResultItem from "./ResultItem/ResultItem";
 import "./SearchBar.scss";
 import PropTypes from "prop-types";
+import productsApi from "../../../api/productsApi";
 
 SearchBar.propTypes = {
 	setSearchBar: PropTypes.func,
@@ -39,32 +39,28 @@ function SearchBar({ setSearchBar }) {
 	};
 	const debouncedSearchValue = useDebounce(searchValue, 500);
 
-	const fetchSearchResult = async () => {
-		const response = await axios
-			.get(
-				`https://zonex-fake.herokuapp.com/api/products?name_like=${searchValue}`
-			)
-			.catch((err) => {
-				console.log("Error", err);
-			});
-
-		setSearchResult(response.data);
-	};
-
 	useEffect(() => {
-		if (ref.current) {
-			ref.current.focus();
-		}
-	}, []);
-
-	useEffect(() => {
+		const fetchSearchResult = async () => {
+			try {
+				const response = await productsApi.search(debouncedSearchValue);
+				setSearchResult(response);
+			} catch (error) {
+				console.log("Failed fetch search products");
+			}
+		};
 		if (debouncedSearchValue) {
 			fetchSearchResult();
 		}
 		return () => {
 			setSearchResult([]);
 		};
-	}, [debouncedSearchValue]); // eslint-disable-line react-hooks/exhaustive-deps
+	}, [debouncedSearchValue]);
+
+	useEffect(() => {
+		if (ref.current) {
+			ref.current.focus();
+		}
+	}, []);
 
 	const showSearchResult = (searchResult) => {
 		let result = null;
@@ -84,6 +80,7 @@ function SearchBar({ setSearchBar }) {
 		}
 		return result;
 	};
+
 	return (
 		<div className="search ">
 			<div className="search-form grid wide">

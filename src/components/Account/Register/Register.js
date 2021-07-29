@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useState } from "react";
+import usersApi from "../../../api/usersApi";
 import "./Register.scss";
 
 function Register({ tab, onTabClick }) {
@@ -21,38 +21,33 @@ function Register({ tab, onTabClick }) {
 		fetchUser();
 	};
 
-	const fetchUser = () => {
-		axios
-			.get(`https://zonex-fake.herokuapp.com/api/users?userName=${userName}`)
-			.then(function (response) {
-				// handle success
-				if (response.data[0]) {
-					setuserNameErr(true);
-				} else {
-					setuserNameErr(false);
-					postUser();
-				}
-			})
-			.catch((err) => {
-				console.log("Error", err);
-			});
+	const fetchUser = async () => {
+		try {
+			const params = { userName: userName };
+			const response = await usersApi.get(params);
+			if (response[0]) {
+				setuserNameErr(true);
+			} else {
+				setuserNameErr(false);
+				postUser();
+			}
+		} catch (error) {
+			console.log("Failed to fetch user");
+		}
 	};
 
-	const postUser = () => {
-		axios
-			.post(`https://zonex-fake.herokuapp.com/api/users`, {
+	const postUser = async () => {
+		try {
+			await usersApi.post({
 				userName: userName,
 				password: password,
-			})
-			.then(function (response) {
-				console.log(response.data);
-				onTabClick(1);
-				setUserName("");
-				setPassword("");
-			})
-			.catch((err) => {
-				console.log("Error", err);
 			});
+			onTabClick(1);
+			setUserName("");
+			setPassword("");
+		} catch (error) {
+			console.log("Failed to post user");
+		}
 	};
 	return (
 		<>

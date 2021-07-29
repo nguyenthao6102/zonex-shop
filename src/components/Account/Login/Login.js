@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import usersApi from "../../../api/usersApi";
 import { setAuth } from "../../../redux/auth/authActions";
 import "./Login.scss";
 
@@ -21,28 +21,26 @@ function Login({ tab, onTabClick }) {
 		setLoginFailed(false);
 	};
 
-	const fetchUser = () => {
-		axios
-			.get(
-				`https://zonex-fake.herokuapp.com/api/users?userName=${userName}&password=${password}`
-			)
-			.then(function (response) {
-				// handle success
-				if (response.data[0]) {
-					dispatch(setAuth(response.data[0]));
-					history.goBack();
-				} else {
-					setLoginFailed(true);
-				}
-			})
-			.catch((err) => {
-				console.log("Error", err);
-			});
+	const fetchUser = async () => {
+		try {
+			let params = {
+				userName: userName,
+				password: password,
+			};
+			const response = await usersApi.get(params);
+			if (response[0]) {
+				dispatch(setAuth(response[0]));
+				history.goBack();
+			} else {
+				setLoginFailed(true);
+			}
+		} catch (error) {
+			console.log("Failed to fetch users");
+		}
 	};
 
 	const onSubmitSignIn = (e) => {
 		e.preventDefault();
-		console.log(userName, password);
 		fetchUser();
 	};
 
