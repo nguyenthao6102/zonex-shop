@@ -1,6 +1,6 @@
 import React from "react";
-import BannerProducts from "../components/BannerProducts/BannerProducts";
-import Products from "../components/Products/Products";
+import BannerProducts from "../components/BannerProducts";
+import Products from "../components/Products";
 
 function ProductsPage() {
 	return (

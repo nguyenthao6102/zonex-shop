@@ -1,0 +1,15 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+
+.about-brand {
+	&__slide {
+		border-top: 1px solid $border-color;
+		border-bottom: 1px solid $border-color;
+		padding: 60px 0;
+
+		@include atMobileScreen {
+			margin-left: 12px;
+			margin-right: 12px;
+		}
+	}
+}

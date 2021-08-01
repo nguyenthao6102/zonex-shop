@@ -1,0 +1,45 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+.error {
+	padding: 250px 0 200px;
+	text-align: center;
+
+	@include atMobileScreen {
+		padding: 200px 0 150px;
+	}
+
+	&__title {
+		font-size: 72px;
+		font-weight: 700;
+		margin: 0;
+		color: $light-black-color;
+		margin-bottom: 10px;
+
+		@include atMobileScreen {
+			font-size: 50px;
+		}
+	}
+
+	&__sub {
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 30px;
+		color: $light-black-color;
+		margin-bottom: 50px;
+	}
+
+	&__back {
+		background-color: $light-black-color;
+		color: $white-color;
+		padding: 18px 60px;
+		display: inline-block;
+		font-size: 12px;
+		font-weight: 500;
+
+		&:hover {
+			opacity: 0.9;
+			transition: all ease-in-out 0.3s;
+		}
+	}
+}

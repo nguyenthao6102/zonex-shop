@@ -1,0 +1,241 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+.header {
+	padding: 26px 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	background-color: transparent;
+	transition: all ease 0.7s;
+
+	@include atMobileTabletScreen {
+		background-color: $white-color;
+		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+		padding: 14px 0;
+	}
+
+	.navbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		&__list {
+			display: flex;
+			li {
+				a {
+					position: relative;
+					display: inline-block;
+					padding: 10px 0;
+					margin-right: 30px;
+					font-weight: 600;
+					color: $black-color;
+					font-size: 15px;
+					&::after {
+						content: "";
+						position: absolute;
+						display: inline-block;
+						left: 0;
+						bottom: 0px;
+						width: 0;
+						height: 1px;
+						background-color: $black-color;
+						transition: all 0.3s linear;
+					}
+				}
+
+				&:hover a::after {
+					width: 100%;
+					transition: all 0.3s linear;
+				}
+
+				a.active::after {
+					width: 100%;
+					transition: all 0.3s linear;
+				}
+			}
+
+			@include atMobileTabletScreen {
+				display: none;
+			}
+		}
+		&__mobile {
+			display: block;
+			padding: 40px;
+			position: fixed;
+			overflow: auto;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			margin-top: 50px;
+			width: 300px;
+			max-width: 100%;
+			z-index: 5;
+			background-color: $white-color;
+			transform: translateX(-100%);
+			opacity: 0;
+			transition: transform ease 0.4s, opacity linear 0.2s;
+			will-change: opacity, transform;
+
+			li {
+				a {
+					display: block;
+					position: relative;
+					color: $black-color;
+					font-size: 15px;
+					font-weight: 600;
+					padding: 10px;
+					margin: 20px 0;
+					line-height: 30px;
+
+					&:hover {
+						color: $light-gray-color;
+					}
+				}
+
+				a.active {
+					color: $light-gray-color;
+				}
+			}
+		}
+		&__mobile.active {
+			@include atMobileTabletScreen {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+		&__bars,
+		&__close {
+			display: none;
+
+			@include atMobileTabletScreen {
+				display: block;
+			}
+
+			i {
+				width: 40px;
+				height: 40px;
+				padding: 10px 15px;
+				font-size: 20px;
+				cursor: pointer;
+			}
+		}
+
+		&__close {
+			i {
+				font-size: 24px;
+				padding: 8px 15px;
+			}
+		}
+
+		&__logo {
+			display: block;
+			text-align: center;
+		}
+
+		&__control {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+
+			.navbar-search,
+			.navbar-cart {
+				position: relative;
+
+				i {
+					cursor: pointer;
+					display: block;
+					padding: 10px 14px;
+
+					@include atMobileScreen {
+						padding: 10px 8px 10px 8px;
+					}
+				}
+
+				&:hover {
+					opacity: 0.5;
+				}
+
+				span {
+					position: absolute;
+					display: inline-block;
+					font-size: 11px;
+					font-weight: 500;
+					top: 6px;
+					left: 80%;
+
+					@include atMobileScreen {
+						font-size: 10px;
+						top: 0px;
+						left: 70%;
+					}
+				}
+			}
+			.navbar-cart {
+				margin-right: 4px;
+			}
+
+			.navbar-account {
+				position: relative;
+
+				i {
+					cursor: pointer;
+					display: block;
+					padding: 10px 14px;
+
+					@include atMobileScreen {
+						padding: 10px 8px 10px 8px;
+					}
+				}
+
+				&:hover i {
+					opacity: 0.5;
+				}
+
+				&:hover .navbar-account__popup {
+					display: block;
+				}
+
+				&__popup {
+					position: absolute;
+					min-width: 100px;
+					background-color: $white-color;
+					box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+					top: 100%;
+					right: 0;
+					padding: 10px 20px;
+					display: none;
+
+					li {
+						cursor: pointer;
+						line-height: 30px;
+						font-size: 14px;
+						color: $gray-color;
+						font-weight: 600;
+						border-bottom: 1px solid transparent;
+
+						a {
+							color: $gray-color;
+						}
+
+						&:hover {
+							opacity: 0.5;
+						}
+					}
+				}
+			}
+
+			.navbar-account a i {
+				color: $black-color;
+			}
+		}
+	}
+}
+
+.header.scroll {
+	background-color: $white-color;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	padding: 14px 0;
+}

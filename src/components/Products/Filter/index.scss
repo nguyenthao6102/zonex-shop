@@ -1,0 +1,53 @@
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/variables";
+
+.product-filter {
+	width: 100%;
+	margin-bottom: 30px !important;
+
+	select {
+		display: inline-block;
+		width: 25%;
+		border: none;
+		outline: none;
+		font-size: 13px;
+		font-weight: 600;
+		padding: 13px 20px;
+		text-transform: uppercase;
+		background-color: #f2f2f2;
+		border-right: 2px solid $white-color;
+		color: $light-black-color;
+		cursor: pointer;
+
+		&:last-child {
+			border-right: none;
+		}
+
+		&:focus {
+			background-color: $white-color;
+			box-shadow: 1px -1px 10px $border-color;
+		}
+
+		@include atTabletScreen {
+			width: 50%;
+			margin-bottom: 20px;
+
+			&:nth-child(2) {
+				border-right: none;
+			}
+		}
+
+		@include atMobileScreen {
+			width: 100%;
+			margin-bottom: 20px;
+			border-right: none;
+		}
+
+		option {
+			font-size: 17px;
+			color: $light-gray-color;
+			padding: 10px 0;
+			text-transform: none;
+		}
+	}
+}

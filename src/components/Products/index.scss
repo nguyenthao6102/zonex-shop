@@ -1,0 +1,59 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.products {
+	@include atMobileScreen {
+		padding: 0 8px;
+	}
+
+	&__loading {
+		display: block;
+		height: 100vh;
+		padding: 100px 0;
+		text-align: center;
+		font-size: 20px;
+		color: $light-gray-color;
+		font-weight: 500;
+	}
+
+	&__more {
+		text-align: center;
+		padding-top: 50px;
+		font-size: 13px;
+
+		div {
+			display: inline-block;
+			cursor: pointer;
+
+			&:hover span {
+				color: $black-color;
+			}
+
+			span {
+				display: block;
+				cursor: pointer;
+				color: $light-gray-color;
+				font-weight: 500;
+			}
+
+			i {
+				display: block;
+				cursor: pointer;
+				padding-top: 10px;
+			}
+		}
+	}
+
+	&__end {
+		display: flex;
+		justify-content: center;
+		margin: 30px;
+
+		span {
+			display: inline-block;
+			font-size: 15px;
+			color: $light-gray-color;
+			font-weight: 600;
+		}
+	}
+}

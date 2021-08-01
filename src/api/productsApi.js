@@ -2,16 +2,16 @@ import axiosClient from "./axiosClient";
 
 // api/productsApi.js
 const productsApi = {
-	getAll: (params) => {
+	getList: (params) => {
 		const url = "/products";
 		return axiosClient.get(url, { params });
 	},
-	get: (id) => {
+	getByProductId: (id) => {
 		const url = `/products/${id}`;
 		return axiosClient.get(url);
 	},
-	search: (value) => {
-		const url = `/products/?name_like=${value}`;
+	searchByProductName: (name) => {
+		const url = `/products/?name_like=${name}`;
 		return axiosClient.get(url);
 	},
 };

@@ -6,10 +6,10 @@ import {
 	Switch,
 } from "react-router-dom";
 import "./App.scss";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import Message from "./components/Message/Message";
-import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import ToastMessage from "./components/ToastMessage";
+import ScrollToTop from "./components/ScrollToTop";
 import AboutPage from "./pages/AboutPage";
 import AccountPage from "./pages/AccountPage";
 import CartPage from "./pages/CartPage";
@@ -67,7 +67,7 @@ function App() {
 						<ErrorPage />
 					</Route>
 				</Switch>
-				{message ? <Message /> : undefined}
+				{message && <ToastMessage />}
 				<Footer />
 			</div>
 		</Router>

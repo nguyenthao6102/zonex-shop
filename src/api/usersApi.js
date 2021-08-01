@@ -2,13 +2,13 @@ import axiosClient from "./axiosClient";
 
 // api/usersApi.js
 const usersApi = {
-	get: (params) => {
+	getUsers: (params) => {
 		const url = "/users";
 		return axiosClient.get(url, { params });
 	},
-	post: (data) => {
+	postUser: (user) => {
 		const url = "/users";
-		return axiosClient.post(url, data);
+		return axiosClient.post(url, user);
 	},
 };
 export default usersApi;

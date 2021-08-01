@@ -1,0 +1,90 @@
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/variables";
+
+.bill {
+	margin: 0;
+
+	.bill-wrapper {
+		width: 100%;
+		padding: 40px;
+		background-color: #f5f5f5;
+
+		.bill-title {
+			font-size: 15px;
+			font-weight: 600;
+			line-height: 46px;
+			color: $gray-color;
+			border-bottom: 1px solid $border-color;
+			margin-bottom: 30px;
+			text-transform: uppercase;
+		}
+
+		.bill-subtotal,
+		.bill-shipping {
+			display: flex;
+			justify-content: space-between;
+
+			span {
+				color: $light-black-color;
+				font-size: 14px;
+				font-weight: 600;
+				padding: 8px 0;
+				line-height: 30px;
+			}
+		}
+
+		.bill-text {
+			font-size: 15px;
+			letter-spacing: 0px;
+			padding-left: 40%;
+			margin: 30px 0;
+			line-height: 26px;
+			font-weight: 400;
+		}
+
+		.bill-total {
+			display: flex;
+			justify-content: space-between;
+			border-top: 1px solid $border-color;
+			margin-bottom: 30px;
+
+			span {
+				font-size: 18px;
+				font-weight: 800;
+				padding: 30px 0 8px;
+			}
+		}
+
+		.bill-form {
+			&__input {
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+				border: none;
+				outline: none;
+				border-bottom: 2px solid $border-color;
+				margin-top: 20px;
+			}
+
+			&__submit {
+				cursor: pointer;
+				font-size: 11px;
+				letter-spacing: 1px;
+				font-weight: 600;
+				color: $white-color;
+				background-color: $light-black-color;
+				width: 100%;
+				padding: 20px 0;
+				outline: none;
+				border: none;
+				margin-top: 20px;
+			}
+
+			.bill-input-err {
+				width: 100%;
+				color: #af514f;
+				margin-top: 10px;
+			}
+		}
+	}
+}
