@@ -175,7 +175,7 @@ function DetailProduct() {
 				</div>
 				<div className="image-right col l-5 m-5 c-12">
 					<img
-						src="https://zonex.famithemes.com/wp-content/uploads/2019/10/img-des-1.jpg"
+						src="https://cdn.shopify.com/s/files/1/0256/4594/0810/files/bn-2_987b0f69-547f-4cd6-a974-b7f0e2cd1de4_720x.jpg?v=1619498322"
 						alt="img right"
 					/>
 				</div>

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import productsApi from "../../api/productsApi";
 import { setProducts } from "../../redux/shop/shopActions";
-import HomeProduct from "./HomeProduct";
+import Loading from "../Loading/Loading";
+import Product from "../Products/Product";
 import "./index.scss";
 
 function HomeProducts() {
@@ -57,7 +58,7 @@ function HomeProducts() {
 		let result = null;
 		if (products.length > 0) {
 			result = products.map((product, index) => {
-				return <HomeProduct key={product.id} product={product} />;
+				return <Product key={product.id} product={product} />;
 			});
 		}
 		return result;
@@ -94,12 +95,12 @@ function HomeProducts() {
 			</ul>
 
 			{loading ? (
-				<div className="home-products__loading">Loading...</div>
+				<Loading />
 			) : (
 				<div className="home-products__list row">{showProducts(products)}</div>
 			)}
 
-			{params._limit >= totalRows ? (
+			{params._limit >= totalRows && loading === false ? (
 				<div className="home-products__end">
 					<span>Out of Products</span>
 				</div>

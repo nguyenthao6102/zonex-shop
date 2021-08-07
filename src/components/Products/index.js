@@ -5,6 +5,7 @@ import "./index.scss";
 import { setProducts } from "../../redux/shop/shopActions";
 import Filter from "./Filter";
 import productsApi from "../../api/productsApi";
+import Loading from "../Loading/Loading";
 
 function Products() {
 	const products = useSelector((state) => state.shop.products);
@@ -65,12 +66,12 @@ function Products() {
 		<div className="products grid wide">
 			<Filter params={params} setParams={setParams} setLoading={setLoading} />
 			{loading ? (
-				<div className="products__loading">Loading...</div>
+				<Loading />
 			) : (
 				<div className="products__list row">{showProducts(products)}</div>
 			)}
 
-			{params._limit >= totalRows ? (
+			{params._limit >= totalRows && loading === false ? (
 				<div className="products__end">
 					<span>Out of Products</span>
 				</div>

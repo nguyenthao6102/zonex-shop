@@ -9,24 +9,32 @@ function TopicTop() {
 		<div className="topic-top grid">
 			<div className="row">
 				<div className="topic-top__item col l-4 m-4 c-12">
-					<img className="topic-top__img" src={topic1} alt="topic1" />
-					<div className="topic-top__content">
-						<h3 className="topic-top__name">Women's Mid-Season</h3>
-						<span className="topic-top__btn">Shop Now</span>
+					<div className="topic-top__wrap">
+						<img className="topic-top__img" src={topic1} alt="topic1" />
+						<div className="topic-top__content">
+							<h3 className="topic-top__name">Women's Mid-Season</h3>
+							<span className="topic-top__btn">Shop Now</span>
+						</div>
 					</div>
 				</div>
+
 				<div className="topic-top__item col l-4 m-4 c-12">
-					<img className="topic-top__img" src={topic2} alt="topic2" />
-					<div className="topic-top__content">
-						<h3 className="topic-top__name">Summer Romance</h3>
-						<span className="topic-top__btn">Shop Now</span>
+					<div className="topic-top__wrap">
+						<img className="topic-top__img" src={topic2} alt="topic2" />
+						<div className="topic-top__content">
+							<h3 className="topic-top__name">Summer Romance</h3>
+							<span className="topic-top__btn">Shop Now</span>
+						</div>
 					</div>
 				</div>
+
 				<div className="topic-top__item col l-4 m-4 c-12">
-					<img className="topic-top__img" src={topic3} alt="topic3" />
-					<div className="topic-top__content">
-						<h3 className="topic-top__name">20% Off Accessories</h3>
-						<span className="topic-top__btn">Shop Now</span>
+					<div className="topic-top__wrap">
+						<img className="topic-top__img" src={topic3} alt="topic3" />
+						<div className="topic-top__content">
+							<h3 className="topic-top__name">20% Off Accessories</h3>
+							<span className="topic-top__btn">Shop Now</span>
+						</div>
 					</div>
 				</div>
 			</div>

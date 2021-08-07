@@ -8,6 +8,7 @@ import {
 } from "../../../redux/shop/shopActions";
 import { addToCart } from "../../../redux/cart/cartActions";
 import "./index.scss";
+import { useLocation } from "react-router";
 
 Product.propTypes = {
 	product: PropTypes.object,
@@ -25,8 +26,16 @@ function Product({ product }) {
 		dispatch(showMessage(true));
 	};
 
+	const { pathname } = useLocation();
+
 	return (
-		<div className="col l-3 m-4 c-6 mb-30">
+		<div
+			className={
+				pathname === "/products"
+					? "col l-3 m-4 c-6 mb-30"
+					: "col l-2-4 m-4 c-6 mb-30"
+			}
+		>
 			<div className={product.oldPrice ? "product sale" : "product"}>
 				<div className="product__img">
 					<Link
