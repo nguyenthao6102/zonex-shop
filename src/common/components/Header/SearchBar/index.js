@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import ResultItem from "./ResultItem";
-import "./index.scss";
 import PropTypes from "prop-types";
-import productsApi from "../../../api/productsApi";
+import React, { useEffect, useRef, useState } from "react";
+import productsApi from "../../../../api/productsApi";
+import "./index.scss";
+import ResultItem from "./ResultItem";
 
 SearchBar.propTypes = {
 	setSearchBar: PropTypes.func,

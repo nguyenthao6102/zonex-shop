@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import productsApi from "../../api/productsApi";
+import { addToCart } from "../../redux/cart/cartActions";
 import {
 	loadCurrentProduct,
 	removeCurrentProduct,
 	showMessage,
 } from "../../redux/shop/shopActions";
-import { addToCart } from "../../redux/cart/cartActions";
 import "./index.scss";
-import productsApi from "../../api/productsApi";
 
 function DetailProduct() {
 	const { id } = useParams();

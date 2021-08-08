@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Product from "./Product";
-import "./index.scss";
+import productsApi from "../../api/productsApi";
+import Loading from "../../common/components/Loading";
 import { setProducts } from "../../redux/shop/shopActions";
 import Filter from "./Filter";
-import productsApi from "../../api/productsApi";
-import Loading from "../Loading/Loading";
+import "./index.scss";
+import Product from "./Product";
 
 function Products() {
 	const products = useSelector((state) => state.shop.products);

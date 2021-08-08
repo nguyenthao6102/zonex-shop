@@ -6,10 +6,10 @@ import {
 	Switch,
 } from "react-router-dom";
 import "./App.scss";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import ToastMessage from "./components/ToastMessage";
-import ScrollToTop from "./components/ScrollToTop";
+import Footer from "./common/components/Footer";
+import Header from "./common/components/Header";
+import ScrollToTop from "./common/components/ScrollToTop";
+import ToastMessage from "./common/components/ToastMessage";
 import AboutPage from "./pages/AboutPage";
 import AccountPage from "./pages/AccountPage";
 import CartPage from "./pages/CartPage";
@@ -24,9 +24,11 @@ function App() {
 	const message = useSelector((state) => state.shop.showMessage);
 
 	const auth = useSelector((state) => state.auth);
+
 	return (
 		<Router>
 			<ScrollToTop />
+
 			<div className="App">
 				<Header />
 
@@ -34,21 +36,27 @@ function App() {
 					<Route exact path="/">
 						<HomePage />
 					</Route>
+
 					<Route exact path="/products">
 						<ProductsPage />
 					</Route>
+
 					<Route exact path="/products/:id">
 						<DetailProductPage />
 					</Route>
+
 					<Route exact path="/about">
 						<AboutPage />
 					</Route>
+
 					<Route exact path="/contact">
 						<ContactPage />
 					</Route>
+
 					<Route exact path="/cart">
 						<CartPage />
 					</Route>
+
 					<Route
 						exact
 						path="/account"
@@ -56,6 +64,7 @@ function App() {
 							return !auth ? <AccountPage /> : <Redirect to="/" />;
 						}}
 					></Route>
+
 					<Route
 						exact
 						path="/orders"
@@ -63,10 +72,12 @@ function App() {
 							return auth ? <OrdersPage /> : <Redirect to="/account" />;
 						}}
 					></Route>
+
 					<Route>
 						<ErrorPage />
 					</Route>
 				</Switch>
+
 				{message && <ToastMessage />}
 				<Footer />
 			</div>

@@ -1,8 +1,8 @@
 import React from "react";
-import SliderBaner from "../components/SliderBaner";
-import TopicTop from "../components/TopicTop";
 import HomeProducts from "../components/HomeProducts";
+import SliderBaner from "../components/SliderBaner";
 import TopicBottom from "../components/TopicBottom";
+import TopicTop from "../components/TopicTop";
 
 function HomePage(props) {
 	return (

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import PropTypes from "prop-types";
+import React, { useState } from "react";
 import usersApi from "../../../api/usersApi";
 import "./index.scss";
 
@@ -64,7 +64,7 @@ function Register({ tab, onTabClick }) {
 						value={userName}
 						onChange={onUserNameChange}
 						placeholder="User Name"
-						className="account-form__username"
+						className={`account-form__username${userNameErr ? " failed" : ""}`}
 						required
 					/>
 					{userNameErr && (

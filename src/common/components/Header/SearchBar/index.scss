@@ -1,5 +1,16 @@
-@import "../../../assets/styles/mixins";
-@import "../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/variables";
+
+@keyframes TopToBottom {
+	from {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
 
 .search {
 	//custom scroll bar
@@ -30,6 +41,7 @@
 	right: 0;
 	background-color: $white-color;
 	padding: 100px 0;
+	animation: TopToBottom ease 0.5s;
 
 	@include atTabletScreen {
 		padding: 50px 0;

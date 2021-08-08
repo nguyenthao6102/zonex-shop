@@ -8,21 +8,28 @@
 
 	&__more {
 		text-align: center;
-		padding-top: 50px;
+		margin-top: 50px;
 		font-size: 13px;
 
 		div {
 			display: inline-block;
 			cursor: pointer;
+			padding: 10px;
+			color: $light-gray-color;
+			transition: all linear 0.3s;
 
-			&:hover span {
+			&:hover {
 				color: $black-color;
+			}
+
+			&:hover i {
+				transform: translateY(6px);
+				transition: all linear 0.3s;
 			}
 
 			span {
 				display: block;
 				cursor: pointer;
-				color: $light-gray-color;
 				font-weight: 500;
 			}
 

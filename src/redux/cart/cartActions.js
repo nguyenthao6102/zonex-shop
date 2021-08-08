@@ -16,6 +16,7 @@ export const addToCart = (item, value) => {
 		},
 	};
 };
+
 export const removeFromCart = (itemID) => {
 	return {
 		type: actionTypes.REMOVE_FROM_CART,
@@ -34,6 +35,7 @@ export const changeQuantity = (itemId, value) => {
 		},
 	};
 };
+
 export const increaseQuantity = (itemId) => {
 	return {
 		type: actionTypes.INCREASE_QUANTITY,
@@ -42,6 +44,7 @@ export const increaseQuantity = (itemId) => {
 		},
 	};
 };
+
 export const decreaseQuantity = (itemId) => {
 	return {
 		type: actionTypes.DECREASE_QUANTITY,

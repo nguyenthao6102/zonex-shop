@@ -6,6 +6,7 @@ export const setCategories = (categories) => {
 		payload: categories,
 	};
 };
+
 export const setProducts = (products) => {
 	return {
 		type: actionTypes.SET_PRODUCTS,
@@ -19,6 +20,7 @@ export const loadCurrentProduct = (item) => {
 		payload: item,
 	};
 };
+
 export const removeCurrentProduct = () => {
 	return {
 		type: actionTypes.REMOVE_CURRENT_PRODUCT,

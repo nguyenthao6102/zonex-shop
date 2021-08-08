@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { loadCurrentProduct } from "../../../../redux/shop/shopActions";
+import { loadCurrentProduct } from "../../../../../redux/shop/shopActions";
 import "./index.scss";
 
 ResultItem.propTypes = {

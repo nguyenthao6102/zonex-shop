@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ordersApi from "../../api/ordersApi";
-import OrderItem from "./OrderItem";
 import "./index.scss";
+import OrderItem from "./OrderItem";
 
 function Orders() {
 	const [orders, setOrders] = useState([]);

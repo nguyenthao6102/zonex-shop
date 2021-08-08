@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import brand1 from "../../../assets/images/brand1.jpg";
 import brand2 from "../../../assets/images/brand2.jpg";
 import brand3 from "../../../assets/images/brand3.jpg";

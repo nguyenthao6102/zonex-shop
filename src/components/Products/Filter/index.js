@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import categoriesApi from "../../../api/categoriesApi";
 import { setCategories } from "../../../redux/shop/shopActions";
 import "./index.scss";
-import categoriesApi from "../../../api/categoriesApi";
 
 Filter.propTypes = {
 	params: PropTypes.object,

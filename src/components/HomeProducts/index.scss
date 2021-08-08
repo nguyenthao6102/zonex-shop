@@ -35,7 +35,7 @@
 				margin: 30px 13px;
 
 				@include atMobileScreen {
-					font-size: 12px;
+					font-size: 15px;
 					margin: 30px 8px;
 					font-weight: 600;
 				}
@@ -80,22 +80,29 @@
 
 	&__more {
 		text-align: center;
-		padding-top: 50px;
-		padding-bottom: 50px;
+		margin-top: 50px;
+		margin-bottom: 50px;
 		font-size: 13px;
 
 		div {
 			display: inline-block;
 			cursor: pointer;
+			padding: 10px;
+			color: $light-gray-color;
+			transition: all linear 0.3s;
 
-			&:hover span {
+			&:hover {
 				color: $black-color;
+			}
+
+			&:hover i {
+				transform: translateY(6px);
+				transition: all linear 0.3s;
 			}
 
 			span {
 				display: block;
 				cursor: pointer;
-				color: $light-gray-color;
 				font-weight: 500;
 			}
 

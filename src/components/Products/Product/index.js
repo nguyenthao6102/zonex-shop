@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import { addToCart } from "../../../redux/cart/cartActions";
 import {
 	loadCurrentProduct,
 	showMessage,
 } from "../../../redux/shop/shopActions";
-import { addToCart } from "../../../redux/cart/cartActions";
 import "./index.scss";
-import { useLocation } from "react-router";
 
 Product.propTypes = {
 	product: PropTypes.object,

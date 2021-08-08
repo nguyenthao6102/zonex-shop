@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import PropTypes from "prop-types";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import usersApi from "../../../api/usersApi";
@@ -62,7 +62,7 @@ function Login({ tab, onTabClick }) {
 						value={userName}
 						onChange={onUserNameChange}
 						placeholder="User Name"
-						className="account-form__username"
+						className={`account-form__username${loginFailed ? " failed" : ""}`}
 						required
 					/>
 					<input
@@ -71,7 +71,7 @@ function Login({ tab, onTabClick }) {
 						value={password}
 						onChange={onPasswordChange}
 						placeholder="Password"
-						className="account-form__password"
+						className={`account-form__password${loginFailed ? " failed" : ""}`}
 						required
 					/>
 					<input

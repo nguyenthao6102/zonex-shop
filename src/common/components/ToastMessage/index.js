@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { showMessage } from "../../redux/shop/shopActions";
+import { showMessage } from "../../../redux/shop/shopActions";
 import "./index.scss";
 
 function ToastMessage() {

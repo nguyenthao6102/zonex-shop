@@ -15,6 +15,10 @@
 			border: none;
 			border-bottom: 2px solid $light-black-color;
 		}
+		&__username.failed {
+			border-color: #af514f;
+			color: #af514f;
+		}
 
 		.usename-err {
 			display: block;

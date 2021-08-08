@@ -1,8 +1,8 @@
 import React from "react";
-import "./index.scss";
 import weAre from "../../assets/images/we-are.png";
-import AboutServices from "./AboutServices";
 import AboutBrand from "./AboutBrand";
+import AboutServices from "./AboutServices";
+import "./index.scss";
 
 function About() {
 	return (

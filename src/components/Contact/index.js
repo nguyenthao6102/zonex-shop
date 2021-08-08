@@ -1,8 +1,8 @@
 import React from "react";
-import "./index.scss";
+import mailIcon from "../../assets/images/mail-icon.png";
 import mapIcon from "../../assets/images/map-icon.png";
 import phoneIcon from "../../assets/images/phone-icon.png";
-import mailIcon from "../../assets/images/mail-icon.png";
+import "./index.scss";
 
 function Contact() {
 	return (

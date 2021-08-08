@@ -1,7 +1,7 @@
 import React from "react";
-import "./index.scss";
 import topic4 from "../../assets/images/topic-4.jpg";
 import topic5 from "../../assets/images/topic-5.jpg";
+import "./index.scss";
 
 function TopicBottom() {
 	return (

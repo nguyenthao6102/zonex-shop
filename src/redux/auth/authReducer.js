@@ -8,9 +8,11 @@ const authReducer = (state = initialState, action) => {
 		case actionTypes.SET_AUTH:
 			localStorage.setItem("AUTH", JSON.stringify(action.payload));
 			return action.payload;
+
 		case actionTypes.REMOVE_AUTH:
 			localStorage.removeItem("AUTH");
 			return null;
+
 		default:
 			return state;
 	}

@@ -1,12 +1,12 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import { useDispatch } from "react-redux";
 import {
 	changeQuantity,
 	decreaseQuantity,
 	increaseQuantity,
 	removeFromCart,
-} from "../../../../redux/cart/cartActions";
+} from "../../../../../redux/cart/cartActions";
 import "./index.scss";
 
 CartModalItem.propTypes = {

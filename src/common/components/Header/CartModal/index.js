@@ -1,9 +1,9 @@
+import PropTypes from "prop-types";
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import "./index.scss";
 import CartModalItem from "./CartModalItem";
-import PropTypes from "prop-types";
+import "./index.scss";
 
 CartModal.propTypes = {
 	cartmodal: PropTypes.bool,

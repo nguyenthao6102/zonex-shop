@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Bill from "./Bill";
-import "./index.scss";
 import CartItem from "./CartItem";
+import "./index.scss";
 
 function Cart() {
 	const cart = useSelector((state) => state.cart);

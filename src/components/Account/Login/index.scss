@@ -21,6 +21,12 @@
 			margin-top: 30px;
 		}
 
+		&__username.failed,
+		&__password.failed {
+			border-bottom: 2px solid #af514f;
+			color: #af514f;
+		}
+
 		&__submit {
 			outline: none;
 			line-height: 50px;

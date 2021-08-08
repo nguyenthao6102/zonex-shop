@@ -1,10 +1,10 @@
-import "./index.scss";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setCart } from "../../../redux/cart/cartActions";
 import ordersApi from "../../../api/ordersApi";
+import { setCart } from "../../../redux/cart/cartActions";
+import "./index.scss";
 
 Bill.propTypes = {
 	cart: PropTypes.array,

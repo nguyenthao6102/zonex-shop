@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import productsApi from "../../api/productsApi";
+import Loading from "../../common/components/Loading";
 import { setProducts } from "../../redux/shop/shopActions";
-import Loading from "../Loading/Loading";
 import Product from "../Products/Product";
 import "./index.scss";
 

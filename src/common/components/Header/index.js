@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useHistory } from "react-router-dom";
-import logoImage from "../../assets/images/logo.png";
+import logoImage from "../../../assets/images/logo.png";
+import { removeAuth } from "../../../redux/auth/authActions";
 import CartModal from "./CartModal";
-import SearchBar from "./SearchBar";
 import "./index.scss";
-import { removeAuth } from "../../redux/auth/authActions";
+import SearchBar from "./SearchBar";
 
 function Header() {
 	const [cartmodal, setCartmodal] = useState(false);
