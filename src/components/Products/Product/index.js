@@ -7,6 +7,7 @@ import { addToCart } from "../../../redux/cart/cartActions";
 import {
 	loadCurrentProduct,
 	showMessage,
+	showModalProduct,
 } from "../../../redux/shop/shopActions";
 import "./index.scss";
 
@@ -19,6 +20,11 @@ function Product({ product }) {
 
 	const onLoadCurrentProduct = () => {
 		dispatch(loadCurrentProduct(product));
+	};
+
+	const onShowModalProduct = () => {
+		dispatch(loadCurrentProduct(product));
+		dispatch(showModalProduct(true));
 	};
 
 	const onAddToCart = () => {
@@ -60,7 +66,7 @@ function Product({ product }) {
 				<div className="product__action">
 					<button onClick={onAddToCart}>ADD TO CART</button>
 					<ul>
-						<li>
+						<li onClick={onShowModalProduct}>
 							<i className="fas fa-search"></i>
 						</li>
 					</ul>

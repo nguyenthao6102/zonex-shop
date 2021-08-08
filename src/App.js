@@ -8,6 +8,7 @@ import {
 import "./App.scss";
 import Footer from "./common/components/Footer";
 import Header from "./common/components/Header";
+import ModalProduct from "./common/components/ModalProduct";
 import ScrollToTop from "./common/components/ScrollToTop";
 import ToastMessage from "./common/components/ToastMessage";
 import AboutPage from "./pages/AboutPage";
@@ -22,6 +23,7 @@ import ProductsPage from "./pages/ProductsPage";
 
 function App() {
 	const message = useSelector((state) => state.shop.showMessage);
+	const modalProduct = useSelector((state) => state.shop.showModalProduct);
 
 	const auth = useSelector((state) => state.auth);
 
@@ -79,6 +81,7 @@ function App() {
 				</Switch>
 
 				{message && <ToastMessage />}
+				{modalProduct && <ModalProduct />}
 				<Footer />
 			</div>
 		</Router>

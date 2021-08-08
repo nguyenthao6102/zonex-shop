@@ -33,3 +33,10 @@ export const showMessage = (show) => {
 		payload: show,
 	};
 };
+
+export const showModalProduct = (show) => {
+	return {
+		type: actionTypes.SHOW_MODAL_PRODUCT,
+		payload: show,
+	};
+};

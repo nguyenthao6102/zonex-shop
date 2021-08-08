@@ -5,6 +5,7 @@ const initialState = {
 	products: [],
 	currentProduct: {},
 	showMessage: false,
+	showModalProduct: false,
 };
 
 const shopReducer = (state = initialState, action) => {
@@ -39,6 +40,11 @@ const shopReducer = (state = initialState, action) => {
 				showMessage: action.payload,
 			};
 
+		case actionTypes.SHOW_MODAL_PRODUCT:
+			return {
+				...state,
+				showModalProduct: action.payload,
+			};
 		default:
 			return state;
 	}
