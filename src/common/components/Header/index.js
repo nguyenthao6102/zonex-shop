@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory, useLocation } from "react-router-dom";
 import logoImage from "../../../assets/images/logo.png";
 import { removeAuth } from "../../../redux/auth/authActions";
 import CartModal from "./CartModal";
@@ -14,6 +14,7 @@ function Header() {
 	const [scroll, setScroll] = useState(false);
 	const [cartcount, setCartcount] = useState(0);
 	const history = useHistory();
+	const { pathname } = useLocation();
 
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll);
@@ -70,7 +71,13 @@ function Header() {
 		history.push("/account");
 	};
 	return (
-		<header className={scroll ? "header scroll" : "header"}>
+		<header
+			className={
+				scroll
+					? `header scroll`
+					: `header${pathname === "/products" ? " bg-white" : ""}`
+			}
+		>
 			<div className="header-wrapper grid wide">
 				<div className="navbar row">
 					<ul className="navbar__list col l-5">

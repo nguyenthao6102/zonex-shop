@@ -44,7 +44,7 @@ function ModalProduct() {
 			<div className="modal-overlay" onClick={onCloseModalProduct}></div>
 			<div className="modal-product">
 				<div className="modal-product__close" onClick={onCloseModalProduct}>
-					<i class="fas fa-times"></i>
+					<i className="fas fa-times"></i>
 				</div>
 				<div className="modal-product__left">
 					<img src={currentProduct.image} alt="" />

@@ -133,6 +133,10 @@
 		&__logo {
 			display: block;
 			text-align: center;
+			img {
+				display: block;
+				margin: auto;
+			}
 		}
 
 		&__control {
@@ -238,4 +242,8 @@
 	background-color: $white-color;
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 	padding: 14px 0;
+}
+
+.header.bg-white {
+	background-color: $white-color;
 }
