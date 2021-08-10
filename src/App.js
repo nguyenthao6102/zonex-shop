@@ -29,8 +29,6 @@ function App() {
 
 	return (
 		<Router>
-			<ScrollToTop />
-
 			<div className="App">
 				<Header />
 
@@ -84,6 +82,7 @@ function App() {
 				{modalProduct && <ModalProduct />}
 				<Footer />
 			</div>
+			<ScrollToTop />
 		</Router>
 	);
 }

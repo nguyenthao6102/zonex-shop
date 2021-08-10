@@ -1,0 +1,29 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+
+.scroll-wrap {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+
+	.scroll-btn {
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		background-color: $light-black-color;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&:hover {
+			opacity: 0.8;
+			transition: all 0.3s ease;
+		}
+
+		i {
+			display: block;
+			color: $white-color;
+			font-size: 20px;
+		}
+	}
+}
