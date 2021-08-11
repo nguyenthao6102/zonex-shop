@@ -120,13 +120,20 @@
 				padding: 10px 15px;
 				font-size: 20px;
 				cursor: pointer;
+
+				@include atTabletScreen {
+					padding: 10px 14px;
+				}
+
+				@include atMobileScreen {
+					padding: 10px;
+				}
 			}
 		}
 
 		&__close {
 			i {
-				font-size: 24px;
-				padding: 8px 15px;
+				font-size: 23px;
 			}
 		}
 
@@ -136,6 +143,10 @@
 			img {
 				display: block;
 				margin: auto;
+
+				@include atMobileTabletScreen {
+					width: 100%;
+				}
 			}
 		}
 
@@ -143,6 +154,9 @@
 			display: flex;
 			justify-content: flex-end;
 			align-items: center;
+			@include atMobileScreen {
+				padding: 0;
+			}
 
 			.navbar-search,
 			.navbar-cart {
@@ -154,7 +168,7 @@
 					padding: 10px 14px;
 
 					@include atMobileScreen {
-						padding: 10px 8px 10px 8px;
+						padding: 10px;
 					}
 				}
 
@@ -173,7 +187,7 @@
 					@include atMobileScreen {
 						font-size: 10px;
 						top: 0px;
-						left: 70%;
+						left: 60%;
 					}
 				}
 			}
@@ -190,7 +204,7 @@
 					padding: 10px 14px;
 
 					@include atMobileScreen {
-						padding: 10px 8px 10px 8px;
+						padding: 10px;
 					}
 				}
 
