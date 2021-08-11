@@ -110,6 +110,20 @@
 				@include atMobileScreen {
 					max-height: 78vh;
 				}
+
+				.search-form__loading {
+					height: 80px;
+					line-height: 80px;
+				}
+
+				.search-form__nors {
+					color: $gray-color;
+					font-size: 18px;
+					font-weight: 600;
+					text-align: center;
+					height: 80px;
+					line-height: 80px;
+				}
 			}
 		}
 

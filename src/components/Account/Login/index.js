@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import usersApi from "../../../api/usersApi";
+import Loading from "../../../common/components/Loading";
 import { setAuth } from "../../../redux/auth/authActions";
 import "./index.scss";
 
@@ -15,6 +16,8 @@ function Login({ tab, onTabClick }) {
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
 	const [loginFailed, setLoginFailed] = useState(false);
+	const [loading, setLoading] = useState(false);
+
 	const dispatch = useDispatch();
 	const history = useHistory();
 
@@ -30,13 +33,14 @@ function Login({ tab, onTabClick }) {
 
 	const onSubmitSignIn = async (e) => {
 		e.preventDefault();
+		setLoading(true);
 		try {
 			let params = {
 				userName,
 				password,
 			};
 			const response = await usersApi.getUsers(params);
-
+			setLoading(false);
 			if (response[0]) {
 				dispatch(setAuth(response[0]));
 				history.goBack();
@@ -74,6 +78,9 @@ function Login({ tab, onTabClick }) {
 						className={`account-form__password${loginFailed ? " failed" : ""}`}
 						required
 					/>
+
+					<div className="account-form__loading">{loading && <Loading />}</div>
+
 					<input
 						type="submit"
 						value="sign in"

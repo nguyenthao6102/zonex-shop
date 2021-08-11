@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useRef, useState } from "react";
 import productsApi from "../../../../api/productsApi";
+import Loading from "../../Loading";
 import "./index.scss";
 import ResultItem from "./ResultItem";
 
@@ -11,12 +12,15 @@ SearchBar.propTypes = {
 function SearchBar({ setSearchBar }) {
 	const [searchValue, setSearchValue] = useState("");
 	const [searchResult, setSearchResult] = useState([]);
+	const [loading, setLoading] = useState(false);
+	const [searchNoResult, setSearchNoResult] = useState(false);
 
 	const ref = useRef(null);
 
 	const onInputChange = (e) => {
 		let value = e.target.value;
 		setSearchValue(value);
+		setSearchNoResult(false);
 		setSearchResult([]);
 	};
 
@@ -44,6 +48,10 @@ function SearchBar({ setSearchBar }) {
 				const response = await productsApi.searchByProductName(
 					debouncedSearchValue
 				);
+				if (response.length === 0) {
+					setSearchNoResult(true);
+				}
+				setLoading(false);
 				setSearchResult(response);
 			} catch (error) {
 				console.log("Failed fetch search products");
@@ -51,6 +59,7 @@ function SearchBar({ setSearchBar }) {
 		};
 
 		if (debouncedSearchValue) {
+			setLoading(true);
 			fetchSearchResult();
 		}
 
@@ -100,7 +109,18 @@ function SearchBar({ setSearchBar }) {
 					/>
 					<i className="fas fa-search"></i>
 					<div className="search-form__result row no-gutters">
-						{showSearchResult(searchResult)}
+						{loading ? (
+							<div className="search-form__loading col l-12 m-12 c-12">
+								<Loading />
+							</div>
+						) : (
+							showSearchResult(searchResult)
+						)}
+						{searchNoResult && (
+							<div className="search-form__nors col l-12 m-12 c-12">
+								0 Results For "{searchValue}"
+							</div>
+						)}
 					</div>
 				</div>
 				<div className="search-form__close" onClick={() => setSearchBar(false)}>

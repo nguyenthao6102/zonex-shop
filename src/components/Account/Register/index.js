@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import usersApi from "../../../api/usersApi";
+import Loading from "../../../common/components/Loading";
 import "./index.scss";
 
 Register.propTypes = {
@@ -11,6 +12,7 @@ Register.propTypes = {
 function Register({ tab, onTabClick }) {
 	const [userName, setUserName] = useState("");
 	const [password, setPassword] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	const [userNameErr, setUserNameErr] = useState(false);
 
@@ -24,12 +26,14 @@ function Register({ tab, onTabClick }) {
 
 	const onSubmitRegister = async (e) => {
 		e.preventDefault();
+		setLoading(true);
 		try {
 			const params = { userName };
 			const response = await usersApi.getUsers(params);
 
 			if (response[0]) {
 				setUserNameErr(true);
+				setLoading(false);
 			} else {
 				setUserNameErr(false);
 
@@ -38,6 +42,7 @@ function Register({ tab, onTabClick }) {
 						userName: userName,
 						password: password,
 					});
+					setLoading(false);
 					onTabClick(1);
 					setUserName("");
 					setPassword("");
@@ -84,6 +89,7 @@ function Register({ tab, onTabClick }) {
 						throughout this website, to manage access to your account, and for
 						other purposes described in our <span>privacy policy</span>.
 					</p>
+					<div className="account-form__loading">{loading && <Loading />}</div>
 					<input
 						type="submit"
 						value="sign up"

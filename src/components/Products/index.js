@@ -66,7 +66,9 @@ function Products() {
 		<div className="products grid wide">
 			<Filter params={params} setParams={setParams} setLoading={setLoading} />
 			{loading ? (
-				<Loading />
+				<div className="products__loading">
+					<Loading />
+				</div>
 			) : (
 				<div className="products__list row">{showProducts(products)}</div>
 			)}

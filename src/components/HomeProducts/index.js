@@ -95,7 +95,9 @@ function HomeProducts() {
 			</ul>
 
 			{loading ? (
-				<Loading />
+				<div className="home-products__loading">
+					<Loading />
+				</div>
 			) : (
 				<div className="home-products__list row">{showProducts(products)}</div>
 			)}
