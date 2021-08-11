@@ -12,6 +12,8 @@
 
 		@include atMobileTabletScreen {
 			padding-bottom: 0;
+			padding-left: 12px;
+			padding-right: 12px;
 		}
 
 		&__title {
