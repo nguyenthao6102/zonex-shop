@@ -3,7 +3,7 @@
 
 .about {
 	.about-banner {
-		background-image: url(../../assets/images/about-banner.jpg);
+		background-image: url(../../assets/images/about-banner.png);
 		width: 100%;
 		padding-top: 60%;
 		background-size: cover;
@@ -21,24 +21,32 @@
 
 		&__content {
 			text-align: center;
-			width: 40%;
+			width: 43%;
 			position: absolute;
-			top: 50%;
+			top: 56%;
 			left: 50%;
-			transform: translate(-50%, -50%);
+			transform: translate(-50%, -56%);
+			color: $white-color;
 
 			@include atMobileTabletScreen {
 				width: 90%;
 			}
-
-			color: $white-color;
-
+			img {
+				@include atMobileScreen {
+					width: 200px;
+				}
+			}
 			h1 {
 				font-size: 78px;
 				line-height: 78px;
 				margin: 0;
 				padding: 20px 0;
 				text-shadow: 2px 2px 1px $light-gray-color;
+
+				@include atMobileScreen {
+					font-size: 52px;
+					line-height: 60px;
+				}
 			}
 
 			p {
