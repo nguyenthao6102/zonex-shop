@@ -6,12 +6,12 @@ OrderItem.propTypes = {
 	orderItem: PropTypes.object,
 };
 
-function OrderItem({ orderItem }) {
+function OrderItem({ orderItem, index }) {
 	const showProduts = (products) => {
 		let result = null;
 
 		if (products.length > 0) {
-			result = products.map((item, index) => {
+			result = products.map((item) => {
 				return (
 					<tr className="order-product" key={item.id} product={item}>
 						<td colSpan={3}>
@@ -28,7 +28,7 @@ function OrderItem({ orderItem }) {
 	return (
 		<>
 			<tr className="order-item">
-				<td className="order-item__id">#{orderItem.id}</td>
+				<td className="order-item__id">#{index + 1}</td>
 				<td className="order-item__date">{orderItem.date}</td>
 				<td className="order-item__total">${orderItem.total}</td>
 				<td className="order-item__status">{orderItem.status}</td>

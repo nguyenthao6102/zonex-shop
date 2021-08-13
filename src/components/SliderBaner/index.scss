@@ -19,8 +19,12 @@
 		display: flex;
 		align-items: center;
 
-		@include atMobileTabletScreen {
+		@include atTabletScreen {
 			padding-top: 140%;
+		}
+
+		@include atMobileScreen {
+			padding-top: 174%;
 		}
 
 		&__caption {
@@ -64,8 +68,12 @@
 		padding-top: 50%;
 		position: relative;
 
-		@include atMobileTabletScreen {
+		@include atTabletScreen {
 			padding-top: 140%;
+		}
+
+		@include atMobileScreen {
+			padding-top: 174%;
 		}
 
 		&__caption {
@@ -122,6 +130,10 @@
 			padding-top: 140%;
 			background-size: 70% 100%;
 			background-position: 150% 50%;
+		}
+
+		@include atMobileScreen {
+			padding-top: 174%;
 		}
 
 		&__caption {

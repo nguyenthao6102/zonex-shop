@@ -4,14 +4,12 @@
 .topic-top {
 	padding: 50px;
 
-	@include atMobileScreen {
-		padding: 10px;
+	@include atTabletScreen {
+		padding: 50px 12px;
 	}
 
-	@include atTabletScreen {
-		padding: 12px;
-		padding-top: 20px;
-		padding-bottom: 40px;
+	@include atMobileScreen {
+		padding: 50px 10px;
 	}
 
 	&__item {
@@ -62,6 +60,10 @@
 					display: block;
 					padding-top: 10px;
 					font-size: 15px;
+
+					&:hover {
+						opacity: 0.8;
+					}
 
 					@include atTabletScreen {
 						font-size: 10px;

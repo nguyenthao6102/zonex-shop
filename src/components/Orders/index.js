@@ -27,7 +27,7 @@ function Orders() {
 		let result = null;
 		if (orders.length > 0) {
 			result = orders.map((item, index) => {
-				return <OrderItem key={item.id} orderItem={item} />;
+				return <OrderItem key={item.id} orderItem={item} index={index} />;
 			});
 		}
 		return result;
