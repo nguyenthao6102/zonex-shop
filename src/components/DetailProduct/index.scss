@@ -111,7 +111,7 @@
 
 			&:hover {
 				opacity: 0.9;
-				transition: all ease-in-out 0.3s;
+				transition: all 0.3s ease-in-out;
 			}
 		}
 
@@ -129,7 +129,7 @@
 			&:hover {
 				background-color: $light-black-color;
 				color: $white-color;
-				transition: all ease-in-out 0.4s;
+				transition: all 0.4s ease-in-out;
 			}
 		}
 		.detail-product-footer {

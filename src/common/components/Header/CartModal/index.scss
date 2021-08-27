@@ -12,7 +12,7 @@
 	z-index: 20;
 	transform: translateX(100%);
 	opacity: 0;
-	transition: transform ease 0.4s, opacity linear 0.2s;
+	transition: transform 0.4s ease, opacity 0.2s linear;
 	will-change: opacity, transform;
 	box-shadow: -1px 0px 10px $border-color;
 
@@ -108,7 +108,7 @@
 			&:hover {
 				background-color: $light-black-color;
 				color: $white-color;
-				transition: all ease-in-out 0.4s;
+				transition: all 0.4s ease-in-out;
 			}
 		}
 
@@ -126,7 +126,7 @@
 
 			&:hover {
 				opacity: 0.9;
-				transition: all ease-in-out 0.3s;
+				transition: all 0.3s ease-in-out;
 			}
 		}
 	}

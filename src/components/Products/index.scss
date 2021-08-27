@@ -20,7 +20,7 @@
 			cursor: pointer;
 			padding: 10px;
 			color: $light-gray-color;
-			transition: all linear 0.3s;
+			transition: all 0.3s linear;
 
 			&:hover {
 				color: $black-color;
@@ -28,7 +28,7 @@
 
 			&:hover i {
 				transform: translateY(6px);
-				transition: all linear 0.3s;
+				transition: all 0.3s linear;
 			}
 
 			span {

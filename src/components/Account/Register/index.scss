@@ -54,7 +54,7 @@
 
 			&:hover {
 				opacity: 0.8;
-				transition: all ease-in-out 0.4s;
+				transition: all 0.4s ease-in-out;
 			}
 		}
 
@@ -82,7 +82,7 @@
 		&:hover {
 			background-color: $light-black-color;
 			color: $white-color;
-			transition: all ease-in-out 0.4s;
+			transition: all 0.4s ease-in-out;
 		}
 	}
 }
