@@ -1,67 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import productsApi from "../../api/productsApi";
-import Loading from "../../common/components/Loading";
-import { setProducts } from "../../redux/shop/shopActions";
-import Product from "../Products/Product";
+import React, { useState } from "react";
 import "./index.scss";
+import TabBest from "./TabBest";
+import TabNew from "./TabNew";
+import TabSale from "./TabSale";
 
 function HomeProducts() {
-	const products = useSelector((state) => state.shop.products);
-	const dispatch = useDispatch();
-
-	const [loading, setLoading] = useState(true);
-
-	const [params, setParams] = useState({
-		_page: 1,
-		_limit: 10,
-		bestSellers: true,
-	});
-
 	const [activeTab, setActiveTab] = useState(1);
+	const [loading, setLoading] = useState(true);
 	const [totalRows, setTotalRows] = useState(undefined);
 
-	const onLoadMore = () => {
-		setParams({ ...params, _limit: params._limit + 5 });
-	};
-
-	const onActiveTabChange = (tab) => {
-		setActiveTab(tab);
-		if (tab === 1) {
-			setParams({ _page: 1, _limit: 10, bestSellers: true });
-		}
-		if (tab === 2) {
-			setParams({ _page: 1, _limit: 10, new: true });
-		}
-		if (tab === 3) {
-			setParams({ _page: 1, _limit: 10, oldPrice_ne: null });
-		}
+	const onActiveTab = (tabIndex) => {
+		setActiveTab(tabIndex);
 		setLoading(true);
-	};
-
-	useEffect(() => {
-		const fetchProducts = async () => {
-			try {
-				const response = await productsApi.getList(params);
-				dispatch(setProducts(response.data));
-				setTotalRows(response.pagination._totalRows);
-				setLoading(false);
-			} catch (error) {
-				console.log("Failed to fetch products: ", error);
-			}
-		};
-
-		fetchProducts();
-	}, [dispatch, params]);
-
-	const showProducts = () => {
-		let result = null;
-		if (products.length > 0) {
-			result = products.map((product, index) => {
-				return <Product key={product.id} product={product} />;
-			});
-		}
-		return result;
 	};
 
 	return (
@@ -70,7 +20,7 @@ function HomeProducts() {
 				<li>
 					<button
 						className={activeTab === 1 ? "active" : ""}
-						onClick={() => onActiveTabChange(1)}
+						onClick={() => onActiveTab(1)}
 					>
 						Best Sellers
 					</button>
@@ -79,7 +29,7 @@ function HomeProducts() {
 				<li>
 					<button
 						className={activeTab === 2 ? "active" : ""}
-						onClick={() => onActiveTabChange(2)}
+						onClick={() => onActiveTab(2)}
 					>
 						New Products
 					</button>
@@ -87,33 +37,39 @@ function HomeProducts() {
 				<li>
 					<button
 						className={activeTab === 3 ? "active" : ""}
-						onClick={() => onActiveTabChange(3)}
+						onClick={() => onActiveTab(3)}
 					>
 						Sale Products
 					</button>
 				</li>
 			</ul>
 
-			{loading ? (
-				<div className="home-products__loading">
-					<Loading />
-				</div>
-			) : (
-				<div className="home-products__list row">{showProducts(products)}</div>
-			)}
-
-			{params._limit >= totalRows && loading === false ? (
-				<div className="home-products__end">
-					<span>Out of Products</span>
-				</div>
-			) : (
-				<div className="home-products__more">
-					<div onClick={onLoadMore}>
-						<span>Load More</span>
-						<i className="fas fa-arrow-down"></i>
-					</div>
-				</div>
-			)}
+			<div className="home-products__list">
+				{activeTab === 1 && (
+					<TabBest
+						loading={loading}
+						setLoading={setLoading}
+						totalRows={totalRows}
+						setTotalRows={setTotalRows}
+					/>
+				)}
+				{activeTab === 2 && (
+					<TabNew
+						loading={loading}
+						setLoading={setLoading}
+						totalRows={totalRows}
+						setTotalRows={setTotalRows}
+					/>
+				)}
+				{activeTab === 3 && (
+					<TabSale
+						loading={loading}
+						setLoading={setLoading}
+						totalRows={totalRows}
+						setTotalRows={setTotalRows}
+					/>
+				)}
+			</div>
 		</div>
 	);
 }

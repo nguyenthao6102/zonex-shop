@@ -18,10 +18,6 @@ Product.propTypes = {
 function Product({ product }) {
 	const dispatch = useDispatch();
 
-	const onLoadCurrentProduct = () => {
-		dispatch(loadCurrentProduct(product));
-	};
-
 	const onShowModalProduct = () => {
 		dispatch(loadCurrentProduct(product));
 		dispatch(showModalProduct(true));
@@ -47,7 +43,6 @@ function Product({ product }) {
 					<Link
 						to={`/products/${product.id}`}
 						style={{ backgroundImage: `url(${product.image})` }}
-						onClick={onLoadCurrentProduct}
 					></Link>
 				</div>
 

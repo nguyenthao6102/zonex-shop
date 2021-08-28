@@ -1,0 +1,55 @@
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/variables";
+
+.tab-loading {
+	height: 50vh;
+}
+
+.tab-end {
+	display: flex;
+	justify-content: center;
+	margin: 30px;
+
+	span {
+		display: inline-block;
+		font-size: 15px;
+		color: $light-gray-color;
+		font-weight: 600;
+	}
+}
+
+.tab-more {
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-size: 13px;
+
+	div {
+		display: inline-block;
+		cursor: pointer;
+		padding: 10px;
+		color: $light-gray-color;
+		transition: all 0.3s linear;
+
+		&:hover {
+			color: $black-color;
+		}
+
+		&:hover i {
+			transform: translateY(6px);
+			transition: all 0.3s linear;
+		}
+
+		span {
+			display: block;
+			cursor: pointer;
+			font-weight: 500;
+		}
+
+		i {
+			display: block;
+			cursor: pointer;
+			padding-top: 10px;
+		}
+	}
+}
