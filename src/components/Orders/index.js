@@ -1,27 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import ordersApi from "../../api/ordersApi";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Loading from "../../common/components/Loading";
+import { setOrders, showLoading } from "../../redux/shop/shopActions";
 import "./index.scss";
 import OrderItem from "./OrderItem";
 
 function Orders() {
-	const [orders, setOrders] = useState([]);
-	const [loading, setLoading] = useState(true);
 	const auth = useSelector((state) => state.auth);
+	const orders = useSelector((state) => state.shop.orders);
+	const loading = useSelector((state) => state.shop.loading);
+
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		const fetchOrders = async () => {
-			try {
-				const response = await ordersApi.getListByUserId(auth.id);
-				setOrders(response);
-				setLoading(false);
-			} catch (error) {
-				console.log("Failed to fetch orders", error);
-			}
-		};
-
-		fetchOrders();
-	}, [auth.id]);
+		dispatch(showLoading(true));
+		dispatch(setOrders(auth.id));
+	}, [auth.id, dispatch]);
 
 	const showOrders = (orders) => {
 		let result = null;
@@ -36,7 +30,9 @@ function Orders() {
 		<div className="orders grid wide">
 			<h3 className="orders-title row">Orders</h3>
 			{loading ? (
-				<div className="orders-loading">Loading...</div>
+				<div className="orders-loading">
+					<Loading />
+				</div>
 			) : (
 				<div className="orders-content row">
 					<div className="orders-content__list col l-12 m-12 c-12">

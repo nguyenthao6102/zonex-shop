@@ -3,9 +3,12 @@ import * as actionTypes from "./shopTypes";
 const initialState = {
 	categories: [],
 	products: [],
+	orders: [],
 	currentProduct: {},
 	showMessage: false,
 	showModalProduct: false,
+	totalRows: null,
+	loading: true,
 };
 
 const shopReducer = (state = initialState, action) => {
@@ -19,13 +22,23 @@ const shopReducer = (state = initialState, action) => {
 		case actionTypes.SET_PRODUCTS:
 			return {
 				...state,
-				products: action.payload,
+				products: action.payload.data,
+				totalRows: action.payload.pagination._totalRows,
+				loading: false,
+			};
+
+		case actionTypes.SET_ORDERS:
+			return {
+				...state,
+				orders: action.payload,
+				loading: false,
 			};
 
 		case actionTypes.LOAD_CURRENT_PRODUCT:
 			return {
 				...state,
 				currentProduct: action.payload,
+				loading: false,
 			};
 
 		case actionTypes.REMOVE_CURRENT_PRODUCT:
@@ -44,6 +57,12 @@ const shopReducer = (state = initialState, action) => {
 			return {
 				...state,
 				showModalProduct: action.payload,
+			};
+
+		case actionTypes.SHOW_LOADING:
+			return {
+				...state,
+				loading: action.payload,
 			};
 		default:
 			return state;

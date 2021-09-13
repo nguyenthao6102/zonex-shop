@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { showLoading } from "../../redux/shop/shopActions";
 import "./index.scss";
 import TabBest from "./TabBest";
 import TabNew from "./TabNew";
@@ -6,13 +8,20 @@ import TabSale from "./TabSale";
 
 function HomeProducts() {
 	const [activeTab, setActiveTab] = useState(1);
-	const [loading, setLoading] = useState(true);
-	const [totalRows, setTotalRows] = useState(undefined);
+	const dispatch = useDispatch();
+
+	const products = useSelector((state) => state.shop.products);
+	const totalRows = useSelector((state) => state.shop.totalRows);
+	const loading = useSelector((state) => state.shop.loading);
 
 	const onActiveTab = (tabIndex) => {
+		dispatch(showLoading(true));
 		setActiveTab(tabIndex);
-		setLoading(true);
 	};
+
+	useEffect(() => {
+		dispatch(showLoading(true));
+	}, [dispatch]);
 
 	return (
 		<div className="home-products grid">
@@ -47,26 +56,19 @@ function HomeProducts() {
 			<div className="home-products__list">
 				{activeTab === 1 && (
 					<TabBest
+						products={products}
 						loading={loading}
-						setLoading={setLoading}
 						totalRows={totalRows}
-						setTotalRows={setTotalRows}
 					/>
 				)}
 				{activeTab === 2 && (
-					<TabNew
-						loading={loading}
-						setLoading={setLoading}
-						totalRows={totalRows}
-						setTotalRows={setTotalRows}
-					/>
+					<TabNew products={products} loading={loading} totalRows={totalRows} />
 				)}
 				{activeTab === 3 && (
 					<TabSale
+						products={products}
 						loading={loading}
-						setLoading={setLoading}
 						totalRows={totalRows}
-						setTotalRows={setTotalRows}
 					/>
 				)}
 			</div>

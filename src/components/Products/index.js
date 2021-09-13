@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import productsApi from "../../api/productsApi";
 import Loading from "../../common/components/Loading";
-import { setProducts } from "../../redux/shop/shopActions";
+import { setProducts, showLoading } from "../../redux/shop/shopActions";
 import Filter from "./Filter";
 import "./index.scss";
 import Product from "./Product";
 
 function Products() {
 	const products = useSelector((state) => state.shop.products);
+	const totalRows = useSelector((state) => state.shop.totalRows);
+	const loading = useSelector((state) => state.shop.loading);
+
 	const dispatch = useDispatch();
-
-	const [loading, setLoading] = useState(true);
-
-	const [totalRows, setTotalRows] = useState(undefined);
 
 	const [params, setParams] = useState({
 		_page: 1,
@@ -35,22 +33,11 @@ function Products() {
 	};
 
 	useEffect(() => {
-		const fetchProducts = async () => {
-			try {
-				const response = await productsApi.getList(params);
-
-				dispatch(setProducts(response.data));
-				setTotalRows(response.pagination._totalRows);
-				setLoading(false);
-			} catch (error) {
-				console.log("Failed to fetch prodcuts");
-			}
-		};
-
-		fetchProducts();
+		dispatch(showLoading(true));
+		dispatch(setProducts(params));
 	}, [dispatch, params]);
 
-	const showProducts = () => {
+	const showProducts = (products) => {
 		let result = null;
 
 		if (products.length > 0) {
@@ -64,7 +51,7 @@ function Products() {
 
 	return (
 		<div className="products grid wide">
-			<Filter params={params} setParams={setParams} setLoading={setLoading} />
+			<Filter params={params} setParams={setParams} />
 			{loading ? (
 				<div className="products__loading">
 					<Loading />

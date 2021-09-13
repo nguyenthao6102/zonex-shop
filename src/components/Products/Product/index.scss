@@ -16,7 +16,7 @@
 	position: relative;
 	height: 100%;
 	border: 1px solid $border-color;
-	animation: ZoomIn linear 0.4s;
+	animation: ZoomIn 0.4s linear;
 
 	&__img {
 		overflow: hidden;

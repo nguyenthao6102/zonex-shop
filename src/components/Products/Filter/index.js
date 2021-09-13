@@ -1,19 +1,15 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import categoriesApi from "../../../api/categoriesApi";
-import { setCategories } from "../../../redux/shop/shopActions";
+import { setCategories, showLoading } from "../../../redux/shop/shopActions";
 import "./index.scss";
 
 Filter.propTypes = {
 	params: PropTypes.object,
 	setParams: PropTypes.func,
-	setLoading: PropTypes.func,
 };
 
-function Filter(props) {
-	const { params, setParams, setLoading } = props;
-
+function Filter({ params, setParams }) {
 	const categories = useSelector((state) => state.shop.categories);
 	const dispatch = useDispatch();
 
@@ -22,7 +18,7 @@ function Filter(props) {
 
 	const onCategoryQueryChange = (e) => {
 		setParams({ ...params, categoryId: e.target.value });
-		setLoading(true);
+		dispatch(showLoading(true));
 	};
 
 	const onPriceQueryChange = (e) => {
@@ -35,12 +31,12 @@ function Filter(props) {
 			setParams({ ...params, price_gte: result[0], price_lte: result[1] });
 		}
 
-		setLoading(true);
+		dispatch(showLoading(true));
 	};
 
 	const onBrandQueryChange = (e) => {
 		setParams({ ...params, brands: e.target.value });
-		setLoading(true);
+		dispatch(showLoading(true));
 	};
 
 	const onSortChange = (e) => {
@@ -52,20 +48,11 @@ function Filter(props) {
 			const result = value.split("-");
 			setParams({ ...params, _sort: result[0], _order: result[1] });
 		}
-		setLoading(true);
+		dispatch(showLoading(true));
 	};
 
 	useEffect(() => {
-		const fetchCategories = async () => {
-			try {
-				const response = await categoriesApi.getList();
-				dispatch(setCategories(response));
-			} catch (error) {
-				console.log("Failed to fetch categories");
-			}
-		};
-
-		fetchCategories();
+		dispatch(setCategories());
 	}, [dispatch]);
 	return (
 		<div className="product-filter grid wide">

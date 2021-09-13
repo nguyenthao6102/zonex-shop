@@ -19,7 +19,7 @@ function Product({ product }) {
 	const dispatch = useDispatch();
 
 	const onShowModalProduct = () => {
-		dispatch(loadCurrentProduct(product));
+		dispatch(loadCurrentProduct(product.id));
 		dispatch(showModalProduct(true));
 	};
 

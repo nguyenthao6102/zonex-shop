@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import productsApi from "../../../api/productsApi";
+import { useDispatch } from "react-redux";
 import Loading from "../../../common/components/Loading";
 import { setProducts } from "../../../redux/shop/shopActions";
 import Product from "../../Products/Product";
 import "./index.scss";
 
-function TabBest({ loading, setLoading, totalRows, setTotalRows }) {
-	const products = useSelector((state) => state.shop.products);
+function TabBest({ products, loading, totalRows }) {
 	const dispatch = useDispatch();
 
 	const [params, setParams] = useState({
@@ -18,23 +16,11 @@ function TabBest({ loading, setLoading, totalRows, setTotalRows }) {
 
 	const onLoadMore = () => {
 		setParams({ ...params, _limit: params._limit + 5 });
-		setLoading(false);
 	};
 
 	useEffect(() => {
-		const fetchProducts = async () => {
-			try {
-				const response = await productsApi.getList(params);
-				dispatch(setProducts(response.data));
-				setTotalRows(response.pagination._totalRows);
-				setLoading(false);
-			} catch (error) {
-				console.log("Failed to fetch products: ", error);
-			}
-		};
-
-		fetchProducts();
-	}, [dispatch, params, setLoading, setTotalRows]);
+		dispatch(setProducts(params));
+	}, [dispatch, params]);
 
 	const showProducts = (products) => {
 		let result = null;

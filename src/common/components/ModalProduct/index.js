@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../redux/cart/cartActions";
-import { showMessage, showModalProduct } from "../../../redux/shop/shopActions";
+import {
+	removeCurrentProduct,
+	showMessage,
+	showModalProduct,
+} from "../../../redux/shop/shopActions";
 import "./index.scss";
 
 function ModalProduct() {
@@ -36,8 +40,9 @@ function ModalProduct() {
 		document.body.style.overflow = "hidden";
 		return () => {
 			document.body.style.overflow = "unset";
+			dispatch(removeCurrentProduct());
 		};
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div className="modal">

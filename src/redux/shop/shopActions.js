@@ -1,24 +1,54 @@
+import categoriesApi from "../../api/categoriesApi";
+import ordersApi from "../../api/ordersApi";
+import productsApi from "../../api/productsApi";
 import * as actionTypes from "./shopTypes";
 
-export const setCategories = (categories) => {
-	return {
-		type: actionTypes.SET_CATEGORIES,
-		payload: categories,
-	};
+export const setCategories = () => async (dispatch) => {
+	try {
+		const result = await categoriesApi.getList();
+		dispatch({
+			type: actionTypes.SET_CATEGORIES,
+			payload: result,
+		});
+	} catch (error) {
+		console.log("Failed to fetch categories");
+	}
 };
 
-export const setProducts = (products) => {
-	return {
-		type: actionTypes.SET_PRODUCTS,
-		payload: products,
-	};
+export const setProducts = (params) => async (dispatch) => {
+	try {
+		const result = await productsApi.getList(params);
+		dispatch({
+			type: actionTypes.SET_PRODUCTS,
+			payload: result,
+		});
+	} catch (error) {
+		console.log("Failed to fetch products: ", error);
+	}
 };
 
-export const loadCurrentProduct = (item) => {
-	return {
-		type: actionTypes.LOAD_CURRENT_PRODUCT,
-		payload: item,
-	};
+export const setOrders = (userId) => async (dispatch) => {
+	try {
+		const result = await ordersApi.getListByUserId(userId);
+		dispatch({
+			type: actionTypes.SET_ORDERS,
+			payload: result,
+		});
+	} catch (error) {
+		console.log("Failed to fetch orders: ", error);
+	}
+};
+
+export const loadCurrentProduct = (id) => async (dispatch) => {
+	try {
+		const result = await productsApi.getByProductId(id);
+		dispatch({
+			type: actionTypes.LOAD_CURRENT_PRODUCT,
+			payload: result,
+		});
+	} catch (error) {
+		console.log("Failed to fetch product: ", error);
+	}
 };
 
 export const removeCurrentProduct = () => {
@@ -37,6 +67,13 @@ export const showMessage = (show) => {
 export const showModalProduct = (show) => {
 	return {
 		type: actionTypes.SHOW_MODAL_PRODUCT,
+		payload: show,
+	};
+};
+
+export const showLoading = (show) => {
+	return {
+		type: actionTypes.SHOW_LOADING,
 		payload: show,
 	};
 };

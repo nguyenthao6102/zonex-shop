@@ -5,6 +5,10 @@
 	padding-top: 130px;
 	overflow: hidden;
 
+	&__loading {
+		height: 50vh;
+	}
+
 	&__img {
 		background-image: url(https://zonex.famithemes.com/wp-content/uploads/2019/11/AD178_KA7663-675x852.jpg);
 		background-repeat: no-repeat;
