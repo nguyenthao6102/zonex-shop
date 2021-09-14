@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
+import loadingUrl from "./assets/images/loading-1.gif";
 import {
 	BrowserRouter as Router,
 	Redirect,
@@ -9,7 +10,6 @@ import {
 import "./App.scss";
 import Footer from "./common/components/Footer";
 import Header from "./common/components/Header";
-import Loading from "./common/components/Loading";
 import ModalProduct from "./common/components/ModalProduct";
 import ToastMessage from "./common/components/ToastMessage";
 
@@ -32,7 +32,13 @@ function App() {
 
 	return (
 		<Router>
-			<Suspense fallback={<Loading />}>
+			<Suspense
+				fallback={
+					<div className="loading-page">
+						<img src={loadingUrl} alt="loading-page" />
+					</div>
+				}
+			>
 				<div className="App">
 					<Header />
 

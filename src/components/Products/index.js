@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../common/components/Loading";
 import { setProducts, showLoading } from "../../redux/shop/shopActions";
+import { showProducts } from "../../util";
 import Filter from "./Filter";
 import "./index.scss";
-import Product from "./Product";
 
 function Products() {
 	const products = useSelector((state) => state.shop.products);
@@ -36,18 +36,6 @@ function Products() {
 		dispatch(showLoading(true));
 		dispatch(setProducts(params));
 	}, [dispatch, params]);
-
-	const showProducts = (products) => {
-		let result = null;
-
-		if (products.length > 0) {
-			result = products.map((product, index) => {
-				return <Product key={product.id} product={product} />;
-			});
-		}
-
-		return result;
-	};
 
 	return (
 		<div className="products grid wide">

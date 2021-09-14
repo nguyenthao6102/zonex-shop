@@ -41,6 +41,7 @@ function DetailProduct() {
 	useEffect(() => {
 		dispatch(showLoading(true));
 		dispatch(loadCurrentProduct(id));
+
 		return () => {
 			dispatch(removeCurrentProduct());
 		};
@@ -55,10 +56,9 @@ function DetailProduct() {
 			) : (
 				<>
 					<div className="row">
-						<div
-							className="detail-product__img col l-7 m-6 c-12"
-							style={{ backgroundImage: `url(${currentProduct.image})` }}
-						></div>
+						<div className="detail-product__img col l-7 m-6 c-12">
+							<img src={currentProduct.image} alt={currentProduct.id} />
+						</div>
 
 						<div className="detail-product__content col l-5 m-6 c-12">
 							<h3 className="detail-product-name">{currentProduct.name}</h3>

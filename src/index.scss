@@ -59,3 +59,16 @@ code {
 button {
 	cursor: pointer;
 }
+
+.loading-page {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	img {
+		display: block;
+		width: 150px;
+		margin-bottom: 80px;
+	}
+}

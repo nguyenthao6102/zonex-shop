@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Loading from "../../../common/components/Loading";
 import { setProducts } from "../../../redux/shop/shopActions";
-import Product from "../../Products/Product";
+import { showProducts } from "../../../util";
 import "./index.scss";
 
 function TabNew({ products, loading, totalRows }) {
@@ -22,15 +22,6 @@ function TabNew({ products, loading, totalRows }) {
 		dispatch(setProducts(params));
 	}, [dispatch, params]);
 
-	const showProducts = (products) => {
-		let result = null;
-		if (products.length > 0) {
-			result = products.map((product, index) => {
-				return <Product key={product.id} product={product} />;
-			});
-		}
-		return result;
-	};
 	return (
 		<>
 			{loading ? (

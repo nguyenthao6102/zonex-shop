@@ -3,12 +3,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import { addToCart } from "../../../redux/cart/cartActions";
+import { addToCart } from "../../redux/cart/cartActions";
 import {
 	loadCurrentProduct,
 	showMessage,
 	showModalProduct,
-} from "../../../redux/shop/shopActions";
+} from "../../redux/shop/shopActions";
 import "./index.scss";
 
 Product.propTypes = {
