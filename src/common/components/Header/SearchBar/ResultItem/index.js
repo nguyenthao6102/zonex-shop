@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { loadCurrentProduct } from "../../../../../redux/shop/shopActions";
 import "./index.scss";
 
 ResultItem.propTypes = {
@@ -11,10 +9,7 @@ ResultItem.propTypes = {
 };
 
 function ResultItem({ resultItem, setSearchBar }) {
-	const dispatch = useDispatch();
-
 	const onResultItemClick = () => {
-		dispatch(loadCurrentProduct(resultItem));
 		setSearchBar(false);
 	};
 	return (

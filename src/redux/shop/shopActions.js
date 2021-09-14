@@ -41,13 +41,11 @@ export const setOrders = (userId) => async (dispatch) => {
 
 export const loadCurrentProduct = (id) => async (dispatch) => {
 	try {
-		if (id && id !== "") {
-			const result = await productsApi.getByProductId(id);
-			dispatch({
-				type: actionTypes.LOAD_CURRENT_PRODUCT,
-				payload: result,
-			});
-		}
+		const result = await productsApi.getByProductId(id);
+		dispatch({
+			type: actionTypes.LOAD_CURRENT_PRODUCT,
+			payload: result,
+		});
 	} catch (error) {
 		console.log("Failed to fetch current product: ", error);
 	}

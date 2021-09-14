@@ -13,8 +13,10 @@ import "./index.scss";
 
 function DetailProduct() {
 	const { id } = useParams();
+
 	const currentProduct = useSelector((state) => state.shop.currentProduct);
 	const loading = useSelector((state) => state.shop.loading);
+
 	const dispatch = useDispatch();
 	const [quantity, setQuantity] = useState(1);
 
