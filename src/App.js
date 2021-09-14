@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
-import loadingUrl from "./assets/images/loading-1.gif";
 import {
 	BrowserRouter as Router,
 	Redirect,
@@ -8,6 +7,7 @@ import {
 	Switch,
 } from "react-router-dom";
 import "./App.scss";
+import loadingUrl from "./assets/images/loading-1.gif";
 import Footer from "./common/components/Footer";
 import Header from "./common/components/Header";
 import ModalProduct from "./common/components/ModalProduct";

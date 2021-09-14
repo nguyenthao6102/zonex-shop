@@ -52,7 +52,7 @@ function ModalProduct() {
 					<i className="fas fa-times"></i>
 				</div>
 				<div className="modal-product__left">
-					<img src={currentProduct.image} alt="" />
+					<img src={currentProduct.image} alt={currentProduct.name} />
 				</div>
 				<div className="modal-product__right">
 					<h3 className="modal-product-name">{currentProduct.name}</h3>
