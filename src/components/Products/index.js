@@ -34,6 +34,13 @@ function Products() {
 
 	useEffect(() => {
 		dispatch(showLoading(true));
+
+		return () => {
+			dispatch(showLoading(false));
+		};
+	}, [dispatch]);
+
+	useEffect(() => {
 		dispatch(setProducts(params));
 	}, [dispatch, params]);
 
